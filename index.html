@@ -1,0 +1,2071 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#030407">
+  <meta name="description" content="NEO — Hardware Series & Crimson Night Action RPG. Pre-order Standard, Premium, and Ultimate Editions plus the official Halo crossover.">
+  <title>NEO x Crimson Night — Editions & Halo Collaboration</title>
+  <link rel="icon" type="image/png" href="assets/neo-icon-transparent.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Orbitron:wght@500;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #030407;
+      --bg-darker: #010204;
+      --panel: #07090f;
+      --panel-card: rgba(10, 13, 20, 0.88);
+      --panel-crimson: rgba(13, 7, 10, 0.92);
+      --text: #eaeef6;
+      --text-muted: #82889a;
+      --muted: #73788a;
+      --cyan: #8be5e3;
+      --cyan-dim: rgba(139, 229, 227, 0.12);
+      --violet: #8c78d6;
+      --crimson: #c91834;
+      --crimson-dim: rgba(201, 24, 52, 0.14);
+      --crimson-border: rgba(201, 24, 52, 0.35);
+      --gold: #c89b3c;
+      --line: rgba(255, 255, 255, 0.08);
+      --line-subtle: rgba(255, 255, 255, 0.04);
+      --font-display: 'Orbitron', -apple-system, sans-serif;
+      --font-gothic: 'Cinzel', serif;
+      --font-body: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(ellipse at 80% 10%, rgba(140, 120, 214, 0.04), transparent 50%),
+        radial-gradient(ellipse at 15% 40%, rgba(139, 229, 227, 0.03), transparent 45%),
+        radial-gradient(ellipse at 50% 75%, rgba(201, 24, 52, 0.05), transparent 50%);
+    }
+
+    /* Gritty matte image styling */
+    img {
+      filter: contrast(1.08) brightness(0.92) saturate(0.88);
+      transition: filter 0.35s ease, transform 0.35s ease;
+    }
+    img:hover {
+      filter: contrast(1.1) brightness(0.96) saturate(0.92);
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible {
+      outline: 2px solid var(--crimson);
+      outline-offset: 3px;
+    }
+
+    .wrap {
+      width: min(1200px, calc(100% - 48px));
+      margin: auto;
+    }
+
+    /* Eyebrow & Badges */
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      font-weight: 700;
+      font-family: var(--font-display);
+    }
+    .eyebrow::before {
+      content: "";
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      background: var(--cyan);
+      border-radius: 50%;
+    }
+    .eyebrow.crimson {
+      color: var(--crimson);
+    }
+    .eyebrow.crimson::before {
+      background: var(--crimson);
+    }
+    .eyebrow.gold {
+      color: var(--gold);
+    }
+    .eyebrow.gold::before {
+      background: var(--gold);
+    }
+    .muted { color: var(--muted); }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      padding: 12px 22px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      transition: all 0.22s ease;
+      cursor: pointer;
+      position: relative;
+      font-family: var(--font-body);
+    }
+    .btn.primary {
+      background: #14232c;
+      color: var(--cyan);
+      border-color: rgba(139, 229, 227, 0.4);
+    }
+    .btn.primary:hover {
+      background: #1a303d;
+      border-color: var(--cyan);
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+    .btn.crimson {
+      background: #2a0b12;
+      color: #f7aab3;
+      border-color: rgba(201, 24, 52, 0.55);
+    }
+    .btn.crimson:hover {
+      background: #3e0f1a;
+      border-color: var(--crimson);
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+    .btn.ghost {
+      background: rgba(255, 255, 255, 0.02);
+      color: var(--text);
+      border-color: var(--line);
+    }
+    .btn.ghost:hover {
+      border-color: rgba(255, 255, 255, 0.22);
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+    .btn.ghost-crimson {
+      background: rgba(201, 24, 52, 0.04);
+      color: #cf848e;
+      border-color: rgba(201, 24, 52, 0.25);
+    }
+    .btn.ghost-crimson:hover {
+      border-color: var(--crimson);
+      color: #ffffff;
+      background: rgba(201, 24, 52, 0.12);
+      transform: translateY(-2px);
+    }
+
+    /* Header & Navigation */
+    header {
+      height: 76px;
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(3, 4, 7, 0.94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: opacity 0.2s;
+    }
+    .brand:hover { opacity: 0.85; }
+    .brand-logo-img {
+      height: 32px;
+      width: auto;
+      object-fit: contain;
+    }
+    .navlinks {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: #a6abbc;
+    }
+    .navlinks a {
+      transition: color 0.2s;
+      position: relative;
+    }
+    .navlinks a:hover { color: #ffffff; }
+    .navlinks a.highlight-link {
+      color: #e04b61;
+      font-weight: 700;
+    }
+    .navlinks a.highlight-link:hover { color: #ff7589; }
+    .nav-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .cart-btn {
+      background: rgba(255, 255, 255, 0.03);
+      color: #d1d5e3;
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      padding: 9px 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      transition: 0.2s;
+    }
+    .cart-btn:hover {
+      border-color: rgba(255, 255, 255, 0.25);
+      color: #ffffff;
+    }
+    .cart-count {
+      background: var(--crimson);
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 0.7rem;
+      padding: 1px 6px;
+      border-radius: 8px;
+    }
+    .menu-btn {
+      display: none;
+      background: none;
+      color: white;
+      border: 1px solid var(--line);
+      padding: 8px 12px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+      background: 
+        radial-gradient(circle at 75% 45%, rgba(140, 120, 214, 0.06) 0%, transparent 45%),
+        #030407;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      gap: 48px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+      padding: 68px 0 76px;
+    }
+    .hero-copy h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.6rem, 5.4vw, 4.8rem);
+      line-height: 1.04;
+      letter-spacing: -0.04em;
+      margin: 16px 0 20px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+    .hero-copy h1 .highlight-cyan {
+      color: var(--cyan);
+      display: inline-block;
+    }
+    .hero-copy p {
+      max-width: 490px;
+      color: #9da3b7;
+      font-size: 1.02rem;
+      line-height: 1.65;
+    }
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 44px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
+    }
+    .hero-metric strong {
+      font-family: var(--font-display);
+      font-size: 0.88rem;
+      color: var(--cyan);
+      letter-spacing: 0.05em;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .hero-metric span {
+      font-size: 0.74rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .hero-visual-card {
+      position: relative;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+    }
+    .hero-visual-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      aspect-ratio: 1 / 1;
+    }
+    .hero-badge-top {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(3, 4, 7, 0.88);
+      border: 1px solid var(--line);
+      padding: 5px 12px;
+      border-radius: 2px;
+      font-size: 0.68rem;
+      font-family: var(--font-display);
+      letter-spacing: 0.12em;
+      color: var(--cyan);
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      z-index: 2;
+    }
+    .hero-badge-bottom {
+      position: absolute;
+      bottom: 14px;
+      right: 14px;
+      background: rgba(3, 4, 7, 0.9);
+      border: 1px solid var(--line);
+      padding: 6px 14px;
+      border-radius: 2px;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      color: #c0c4d4;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      z-index: 2;
+    }
+    .hero-badge-bottom span { color: var(--violet); font-weight: 700; }
+
+    /* Ticker */
+    .ticker {
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+      background: #040509;
+      padding: 12px 0;
+      color: #9ea3b5;
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      font-family: var(--font-display);
+    }
+    .ticker-inner {
+      display: inline-block;
+      animation: marquee 32s linear infinite;
+    }
+    .ticker span { color: var(--cyan); padding: 0 16px; }
+    .ticker span.crimson-star { color: var(--crimson); }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Section Global */
+    .section {
+      padding: 90px 0;
+      position: relative;
+    }
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 24px;
+      margin-bottom: 44px;
+    }
+    .section-head h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3.8vw, 3.2rem);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      margin: 10px 0 0;
+      font-weight: 800;
+    }
+    .section-head p {
+      max-width: 440px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin: 0;
+    }
+
+    /* ========================================================
+       SECTION 1: CRIMSON NIGHT GAME EDITIONS (Dark Gritty Style)
+       ======================================================== */
+    .crimson-section {
+      background: #050306;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      position: relative;
+    }
+    .crimson-banner-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .game-logo-wrapper {
+      max-width: 340px;
+      margin-bottom: 16px;
+    }
+    .game-logo-wrapper img {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: contrast(1.1) brightness(0.9);
+    }
+    .crimson-banner-header h2 {
+      font-family: var(--font-gothic);
+      font-size: clamp(2.2rem, 4.2vw, 3.6rem);
+      letter-spacing: 0.05em;
+      color: #ffffff;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .crimson-banner-header p {
+      max-width: 600px;
+      color: #9fa3b2;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    /* Crimson Editions Cards Grid */
+    .editions-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      align-items: stretch;
+    }
+    .edition-card {
+      background: #080509;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 4px;
+      padding: 30px 24px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: all 0.25s ease;
+    }
+    .edition-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(201, 24, 52, 0.6);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+    }
+    .edition-card.popular {
+      background: #0d070e;
+      border-color: rgba(201, 24, 52, 0.45);
+    }
+    .edition-card.ultimate {
+      background: #0e0a0a;
+      border-color: rgba(200, 155, 60, 0.35);
+    }
+    .edition-card.ultimate:hover {
+      border-color: var(--gold);
+    }
+    .edition-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #2b0b12;
+      color: #f7aab3;
+      border: 1px solid var(--crimson);
+      font-size: 0.66rem;
+      font-family: var(--font-display);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 2px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .edition-badge.gold-badge {
+      background: #261b07;
+      color: #e4c27a;
+      border-color: var(--gold);
+    }
+    .edition-header {
+      text-align: center;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 20px;
+    }
+    .edition-tier {
+      font-family: var(--font-display);
+      font-size: 0.74rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--crimson);
+      margin-bottom: 6px;
+    }
+    .edition-card.ultimate .edition-tier {
+      color: var(--gold);
+    }
+    .edition-title {
+      font-family: var(--font-gothic);
+      font-size: 1.55rem;
+      color: #ffffff;
+      margin-bottom: 10px;
+    }
+    .edition-price {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 5px;
+    }
+    .price-currency {
+      font-size: 1.1rem;
+      color: #d1d5e3;
+      font-weight: 700;
+    }
+    .price-val {
+      font-family: var(--font-display);
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1;
+    }
+    .price-period {
+      font-size: 0.76rem;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+    .edition-features {
+      list-style: none;
+      display: grid;
+      gap: 11px;
+      margin-bottom: 26px;
+      flex: 1;
+    }
+    .edition-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.84rem;
+      color: #b1b5c4;
+      line-height: 1.45;
+    }
+    .edition-feature .icon-check {
+      color: var(--crimson);
+      font-weight: 900;
+      font-size: 0.9rem;
+      line-height: 1;
+      margin-top: 2px;
+    }
+    .edition-card.ultimate .edition-feature .icon-check {
+      color: var(--gold);
+    }
+    .edition-feature.highlighted {
+      color: #ffffff;
+      font-weight: 600;
+    }
+    .edition-action .btn {
+      width: 100%;
+    }
+
+    /* ========================================================
+       SECTION 2: HALO X CRIMSON NIGHT COLLABORATION (Dark Matte)
+       ======================================================== */
+    .collab-section {
+      background: #040509;
+      border-bottom: 1px solid var(--line);
+      position: relative;
+      overflow: hidden;
+      padding: 100px 0;
+    }
+    .collab-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.95fr;
+      gap: 54px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+    .collab-poster-wrap {
+      position: relative;
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85);
+      cursor: pointer;
+      background: #000;
+    }
+    .collab-poster-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .collab-tag-float {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(3, 4, 7, 0.88);
+      border: 1px solid var(--line);
+      padding: 5px 12px;
+      border-radius: 2px;
+      font-size: 0.68rem;
+      font-family: var(--font-display);
+      color: #a4abbd;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .collab-tag-float-crimson {
+      position: absolute;
+      bottom: 14px;
+      right: 14px;
+      background: rgba(14, 5, 8, 0.92);
+      border: 1px solid rgba(201, 24, 52, 0.5);
+      padding: 5px 12px;
+      border-radius: 2px;
+      font-size: 0.68rem;
+      font-family: var(--font-display);
+      color: #f7aab3;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .collab-copy h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.1rem, 4.2vw, 3.5rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin: 12px 0 18px;
+      font-weight: 800;
+    }
+    .collab-crossover-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+    }
+    .halo-brand {
+      color: #9ec2d6;
+      font-weight: 800;
+    }
+    .cross-x {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .crimson-brand {
+      color: #df445a;
+      font-weight: 800;
+    }
+    .collab-copy p {
+      color: #9da3b7;
+      font-size: 1.02rem;
+      line-height: 1.65;
+      margin-bottom: 24px;
+    }
+    .collab-perks {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+    .collab-perk {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      background: #080a11;
+      border: 1px solid var(--line);
+      padding: 13px 15px;
+      border-radius: 3px;
+    }
+    .perk-icon {
+      font-size: 1.1rem;
+      line-height: 1;
+      color: #cf848e;
+    }
+    .collab-perk b {
+      color: #ffffff;
+      font-size: 0.88rem;
+      display: block;
+      margin-bottom: 2px;
+    }
+    .collab-perk span {
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    /* Products Section */
+    .products {
+      background: #04060b;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+    .product-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      overflow: hidden;
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(255, 255, 255, 0.22);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+    }
+    .product-img-box {
+      height: 280px;
+      background: #020306;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid var(--line);
+      cursor: pointer;
+    }
+    .product-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .product-tag {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(3, 4, 7, 0.88);
+      border: 1px solid var(--line);
+      padding: 4px 9px;
+      border-radius: 2px;
+      font-size: 0.66rem;
+      font-family: var(--font-display);
+      color: var(--cyan);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      z-index: 2;
+    }
+    .zoom-hint {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background: rgba(3, 4, 7, 0.85);
+      border: 1px solid var(--line);
+      color: #b0b5c7;
+      font-size: 0.7rem;
+      padding: 3px 7px;
+      border-radius: 2px;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      z-index: 2;
+    }
+    .product-card:hover .zoom-hint { opacity: 1; }
+    .product-content {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .product-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--cyan);
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      font-family: var(--font-display);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .product-content h3 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      line-height: 1.25;
+      margin-bottom: 8px;
+      color: #ffffff;
+      font-weight: 700;
+    }
+    .product-content p {
+      color: var(--muted);
+      font-size: 0.86rem;
+      line-height: 1.55;
+      margin-bottom: 16px;
+      flex: 1;
+    }
+    .specs-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 18px;
+    }
+    .spec-pill {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--line);
+      padding: 3px 7px;
+      border-radius: 2px;
+      font-size: 0.68rem;
+      color: #a4abbf;
+    }
+    .product-foot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+    }
+    .price-note {
+      font-size: 0.74rem;
+      color: #9ba0b4;
+      font-weight: 500;
+    }
+    .add-btn {
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--cyan);
+      padding: 8px 12px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .add-btn:hover {
+      background: var(--cyan);
+      color: #030407;
+      border-color: var(--cyan);
+    }
+
+    /* Campaign Banner */
+    .campaign-banner {
+      background: #030408;
+      border-bottom: 1px solid var(--line);
+      padding: 80px 0;
+      position: relative;
+    }
+    .campaign-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.05fr;
+      gap: 50px;
+      align-items: center;
+    }
+    .campaign-copy h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 4.2vw, 3.6rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin: 12px 0 18px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+    .campaign-copy p {
+      color: #9ba1b5;
+      font-size: 1.02rem;
+      line-height: 1.65;
+      margin-bottom: 26px;
+    }
+    .campaign-frame {
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+      cursor: pointer;
+      background: #000;
+    }
+    .campaign-frame img { width: 100%; height: auto; display: block; }
+
+    /* Ecosystem */
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .category {
+      padding: 24px 20px;
+      min-height: 150px;
+      background: #06080e;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.22s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .category:hover {
+      border-color: rgba(255, 255, 255, 0.25);
+      transform: translateY(-3px);
+    }
+    .category::after {
+      content: "↗";
+      position: absolute;
+      right: 18px;
+      bottom: 14px;
+      color: var(--muted);
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+    .category:hover::after {
+      color: var(--cyan);
+    }
+    .category small {
+      color: var(--cyan);
+      font-size: 0.66rem;
+      letter-spacing: 0.12em;
+      font-family: var(--font-display);
+      text-transform: uppercase;
+    }
+    .category h3 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      margin: 10px 0 5px;
+      color: #ffffff;
+    }
+    .category p {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    /* Gallery */
+    .gallery-section {
+      border-top: 1px solid var(--line);
+      background: #030407;
+    }
+    .gallery-filter-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 26px;
+      flex-wrap: wrap;
+    }
+    .filter-tab {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--line);
+      color: #9fa4b8;
+      padding: 7px 14px;
+      border-radius: 3px;
+      font-size: 0.74rem;
+      font-family: var(--font-display);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-tab.active, .filter-tab:hover {
+      background: #141722;
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.3);
+      font-weight: 700;
+    }
+    .gallery-masonry {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .gallery-item {
+      position: relative;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      overflow: hidden;
+      background: #05070c;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+    .gallery-item:hover {
+      border-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-3px);
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      display: block;
+    }
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(3, 4, 7, 0.95) 0%, transparent 55%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 14px;
+    }
+    .gallery-overlay h4 {
+      font-family: var(--font-display);
+      font-size: 0.88rem;
+      color: #ffffff;
+      margin-bottom: 2px;
+    }
+    .gallery-overlay span {
+      font-size: 0.7rem;
+      color: var(--cyan);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* Contact */
+    .contact {
+      background: #040509;
+      border-top: 1px solid var(--line);
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 60px;
+    }
+    .contact h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 4.2vw, 3.6rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin: 12px 0 18px;
+      font-weight: 800;
+    }
+    .contact form {
+      display: grid;
+      gap: 15px;
+      background: #070910;
+      border: 1px solid var(--line);
+      padding: 30px;
+      border-radius: 4px;
+    }
+    .field { display: grid; gap: 7px; }
+    .field label {
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: #b7bccf;
+      letter-spacing: 0.04em;
+    }
+    .field input, .field textarea {
+      width: 100%;
+      padding: 13px 15px;
+      background: #020306;
+      color: white;
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      font-size: 0.88rem;
+      transition: border-color 0.2s;
+    }
+    .field input:focus, .field textarea:focus {
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+    .field textarea { min-height: 110px; resize: vertical; }
+    .form-status {
+      font-size: 0.82rem;
+      color: var(--cyan);
+      min-height: 1.4em;
+      font-weight: 500;
+    }
+    .contact-details {
+      display: grid;
+      gap: 10px;
+      margin-top: 28px;
+      color: #9ba0b4;
+      font-size: 0.9rem;
+    }
+    .contact-details strong { color: var(--text); }
+    .payment-panel {
+      margin-top: 24px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.015);
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .payment-panel strong {
+      color: var(--text);
+      display: block;
+      margin-bottom: 5px;
+      font-size: 0.86rem;
+    }
+
+    /* Footer */
+    footer {
+      padding: 34px 0;
+      border-top: 1px solid var(--line);
+      background: #020305;
+      color: #6e7486;
+      font-size: 0.78rem;
+    }
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .footer-brand img { height: 24px; width: auto; object-fit: contain; }
+
+    /* Cart Drawer */
+    .cart-drawer {
+      position: fixed;
+      z-index: 60;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      display: none;
+      justify-content: flex-end;
+    }
+    .cart-drawer.open { display: flex; }
+    .cart-panel {
+      width: min(450px, 100%);
+      height: 100%;
+      background: #06080e;
+      border-left: 1px solid var(--line);
+      padding: 28px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      box-shadow: -15px 0 50px rgba(0, 0, 0, 0.9);
+      animation: slideIn 0.25s ease-out;
+    }
+    @keyframes slideIn {
+      from { transform: translateX(100%); }
+      to { transform: translateX(0); }
+    }
+    .cart-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+    .cart-top h2 { font-family: var(--font-display); font-size: 1.25rem; margin: 0; }
+    .close-cart {
+      background: none;
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      color: white;
+      padding: 7px 12px;
+      font-size: 0.78rem;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .close-cart:hover { border-color: rgba(255, 255, 255, 0.3); }
+    .cart-items { margin: 24px 0; display: grid; gap: 10px; flex: 1; }
+    .cart-item {
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      padding: 12px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      background: #030408;
+    }
+    .cart-item-name { font-weight: 600; font-size: 0.88rem; color: #ffffff; }
+    .cart-item small { display: block; color: var(--muted); font-size: 0.72rem; margin-top: 2px; }
+    .remove-item {
+      background: none;
+      color: #d16b77;
+      border: 0;
+      cursor: pointer;
+      font-size: 0.74rem;
+      padding: 4px;
+    }
+    .remove-item:hover { color: #ff5768; text-decoration: underline; }
+    .checkout-info { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 10px; }
+    .checkout-info p { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
+    .checkout-info .btn { width: 100%; }
+    .empty { color: var(--muted); font-size: 0.88rem; text-align: center; padding: 30px 0; }
+
+    /* Lightbox Modal */
+    .lightbox-modal {
+      position: fixed;
+      z-index: 70;
+      inset: 0;
+      background: rgba(1, 2, 4, 0.94);
+      backdrop-filter: blur(12px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .lightbox-modal.open { display: flex; }
+    .lightbox-content {
+      max-width: 900px;
+      width: 100%;
+      background: #070910;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.95);
+      position: relative;
+    }
+    .lightbox-img-wrap {
+      background: #010204;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border-right: 1px solid var(--line);
+    }
+    .lightbox-img-wrap img {
+      max-height: 520px;
+      width: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    .lightbox-details {
+      padding: 32px 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: rgba(3, 4, 7, 0.9);
+      border: 1px solid var(--line);
+      color: white;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 0.95rem;
+      z-index: 5;
+    }
+    .lightbox-close:hover { border-color: rgba(255, 255, 255, 0.35); }
+
+    /* Responsive */
+    @media (max-width: 980px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 36px; }
+      .hero-visual-card { max-width: 500px; margin: auto; }
+      .editions-grid { grid-template-columns: 1fr; max-width: 480px; margin: auto; }
+      .collab-grid { grid-template-columns: 1fr; gap: 36px; }
+      .product-grid { grid-template-columns: repeat(2, 1fr); }
+      .campaign-grid { grid-template-columns: 1fr; gap: 36px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 36px; }
+      .category-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-masonry { grid-template-columns: repeat(2, 1fr); }
+      .lightbox-content { grid-template-columns: 1fr; max-height: 90vh; overflow-y: auto; }
+      .lightbox-img-wrap { border-right: none; border-bottom: 1px solid var(--line); }
+    }
+
+    @media (max-width: 768px) {
+      .wrap { width: min(100% - 32px, 540px); }
+      .section { padding: 70px 0; }
+      .navlinks {
+        display: none;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 75px;
+        background: #040508;
+        padding: 18px 22px;
+        border-bottom: 1px solid var(--line);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+      }
+      .navlinks.open { display: flex; }
+      .navlinks a {
+        padding: 12px 0;
+        border-bottom: 1px solid var(--line);
+        font-size: 0.92rem;
+      }
+      .menu-btn { display: block; }
+      .nav-actions .btn { display: none; }
+      .hero-copy h1 { font-size: clamp(2.3rem, 10vw, 3.8rem); }
+      .product-grid { grid-template-columns: 1fr; }
+      .category-grid { grid-template-columns: 1fr; }
+      .gallery-masonry { grid-template-columns: 1fr; }
+      .hero-metrics { grid-template-columns: 1fr; gap: 12px; }
+      .footer-row { flex-direction: column; align-items: flex-start; gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#home" aria-label="NEO Home">
+        <img class="brand-logo-img" src="assets/neo-logo-transparent.png" alt="NEO">
+      </a>
+      
+      <nav class="navlinks" id="navlinks" aria-label="Main Navigation">
+        <a href="#about">About</a>
+        <a href="#products">Hardware</a>
+        <a href="#crimson-night" class="highlight-link">Crimson Night ⚔</a>
+        <a href="#halo-collab" class="highlight-link">Halo Collab ⚡</a>
+        <a href="#campaign">Campaign</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Pre-Order</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="cart-btn" id="open-cart" aria-label="Open Cart">
+          CART <span class="cart-count" id="cart-count">0</span>
+        </button>
+        <a class="btn primary" href="#crimson-night">Order Game ↗</a>
+        <button class="menu-btn" id="menu-btn" aria-label="Toggle Navigation" aria-expanded="false">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">NEO Hardware Series · 2026 Edition</div>
+          <h1>
+            MAKE YOUR<br>
+            <span class="highlight-cyan">OWN CHOICE.</span>
+          </h1>
+          <p>
+            Ergonomic precision, spatial acoustic isolation, and tournament optical tracking. Built for next-generation players and dark fantasy epics.
+          </p>
+
+          <div class="hero-ctas">
+            <a class="btn primary" href="#products">Discover NEO Gear ↘</a>
+            <a class="btn crimson" href="#crimson-night">Explore Crimson Night ⚔</a>
+          </div>
+
+          <div class="hero-metrics">
+            <div class="hero-metric">
+              <strong>DYNAMIC LUMBAR</strong>
+              <span>Ergonomic Precision</span>
+            </div>
+            <div class="hero-metric">
+              <strong>RGB ILLUMINATION</strong>
+              <span>Cyan & Violet Array</span>
+            </div>
+            <div class="hero-metric">
+              <strong>HALO COLLAB</strong>
+              <span>Official Crossover</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual-card">
+          <div class="hero-badge-top">NEO Ambassador · Pro Series</div>
+          <img 
+            src="assets/neo-hero-campaign.png" 
+            alt="Make Your Own Choice — NEO Gaming Series Pro Ambassador seated in tournament chair"
+          >
+          <div class="hero-badge-bottom">
+            <span>ARENA READY</span> · MAKE YOUR OWN CHOICE
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ticker -->
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-inner">
+        CRIMSON NIGHT ACTION RPG <span class="crimson-star">✦</span> PRE-ORDER STANDARD, PREMIUM & ULTIMATE EDITIONS <span class="crimson-star">✦</span> HALO x CRIMSON NIGHT OFFICIAL CROSSOVER <span class="crimson-star">✦</span> THE NEO GAMING SERIES <span>✦</span> ERGONOMIC PRECISION <span>✦</span> MAKE YOUR OWN CHOICE <span>✦</span> CRIMSON NIGHT ACTION RPG <span class="crimson-star">✦</span> PRE-ORDER EDITIONS NOW <span>✦</span> HALO x CRIMSON NIGHT COLLABORATION
+      </div>
+    </div>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+      <div class="wrap" style="display:grid;grid-template-columns:0.9fr 1.1fr;gap:60px;align-items:start">
+        <div>
+          <div class="eyebrow">01 — About NEO</div>
+          <h2 style="font-family:var(--font-display);font-size:clamp(2.1rem,4vw,3.4rem);line-height:1.06;margin:14px 0">
+            Engineered For Focus.<br><span style="color:var(--cyan)">Built For The Arena.</span>
+          </h2>
+        </div>
+        <div>
+          <p style="color:#9da3b7;font-size:1.02rem;line-height:1.68;margin-bottom:18px">
+            NEO delivers competition-grade gaming peripherals designed around ergonomic endurance and acoustic immersion. Built on an obsidian black aesthetic with surgical cyan and violet details, each unit is built for hours of intense execution.
+          </p>
+          <p style="color:#9da3b7;font-size:1.02rem;line-height:1.68">
+            Whether competing in tactical shooters or traversing the brutal gothic landscapes of Crimson Night, NEO hardware provides unwavering stability and tactile feedback.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 1: CRIMSON NIGHT GAME EDITIONS (100% English & Dark Gritty)
+         ======================================================== -->
+    <section class="section crimson-section" id="crimson-night">
+      <div class="wrap">
+        <div class="crimson-banner-header">
+          <div class="game-logo-wrapper">
+            <img src="assets/crimson-night-logo-transparent.png" alt="Crimson Night Game Logo">
+          </div>
+          <div class="eyebrow crimson">Official Game Release · Action RPG</div>
+          <h2>CHOOSE YOUR EDITION</h2>
+          <p>
+            Enter a shattered gothic realm beneath an eclipsed blood moon. Master unforgiving combat, harness forbidden blood relics, and choose your edition below.
+          </p>
+        </div>
+
+        <div class="editions-grid">
+          <!-- Standard Edition -->
+          <div class="edition-card">
+            <div class="edition-header">
+              <div class="edition-tier">Base Game</div>
+              <h3 class="edition-title">Standard Edition</h3>
+              <div class="edition-price">
+                <span class="price-currency">$</span>
+                <span class="price-val">49</span>
+                <span class="price-period">USD</span>
+              </div>
+            </div>
+            <ul class="edition-features">
+              <li class="edition-feature">
+                <span class="icon-check">✓</span>
+                <span>Full base game: <strong>Crimson Night</strong></span>
+              </li>
+              <li class="edition-feature">
+                <span class="icon-check">✓</span>
+                <span>Day-1 Blood Moon Digital Wallpaper Pack</span>
+              </li>
+              <li class="edition-feature">
+                <span class="icon-check">✓</span>
+                <span>Ashen Starter Armament Pack</span>
+              </li>
+              <li class="edition-feature">
+                <span class="icon-check">✓</span>
+                <span>Free lifetime balance & story patches</span>
+              </li>
+            </ul>
+            <div class="edition-action">
+              <button class="btn ghost-crimson" data-product="Crimson Night: Standard Edition ($49)">Pre-Order Standard ⚔</button>
+            </div>
+          </div>
+
+          <!-- Premium Edition -->
+          <div class="edition-card popular">
+            <div class="edition-badge">★ Most Popular</div>
+            <div class="edition-header">
+              <div class="edition-tier">Expanded Experience</div>
+              <h3 class="edition-title">Premium Edition</h3>
+              <div class="edition-price">
+                <span class="price-currency">$</span>
+                <span class="price-val">69</span>
+                <span class="price-period">USD</span>
+              </div>
+            </div>
+            <ul class="edition-features">
+              <li class="edition-feature highlighted">
+                <span class="icon-check">✓</span>
+                <span>Includes all content from <strong>Standard Edition</strong></span>
+              </li>
+              <li class="edition-feature highlighted">
+                <span class="icon-check">✓</span>
+                <span><strong>72-Hour Early Access</strong> prior to global launch</span>
+              </li>
+              <li class="edition-feature">
+                <span class="icon-check">✓</span>
+                <span>Exclusive "Eclipse Knight" dark armor set</span>
+              </li>
+              <li class="edition-feature">
+                <span class="icon-check">✓</span>
+                <span>Signature weapon: "Crimson Runeblade Greatsword"</span>
+              </li>
+              <li class="edition-feature">
+                <span class="icon-check">✓</span>
+                <span>Digital Dark Fantasy Artbook & Original Orchestral OST</span>
+              </li>
+            </ul>
+            <div class="edition-action">
+              <button class="btn crimson" data-product="Crimson Night: Premium Edition ($69)">Pre-Order Premium ⚔</button>
+            </div>
+          </div>
+
+          <!-- Ultimate Edition -->
+          <div class="edition-card ultimate">
+            <div class="edition-badge gold-badge">👑 Collector's Choice</div>
+            <div class="edition-header">
+              <div class="edition-tier">The Definitive Tier</div>
+              <h3 class="edition-title">Ultimate Edition</h3>
+              <div class="edition-price">
+                <span class="price-currency">$</span>
+                <span class="price-val">99</span>
+                <span class="price-period">USD</span>
+              </div>
+            </div>
+            <ul class="edition-features">
+              <li class="edition-feature highlighted">
+                <span class="icon-check">✓</span>
+                <span>Includes all content from <strong>Premium Edition</strong></span>
+              </li>
+              <li class="edition-feature highlighted">
+                <span class="icon-check">✓</span>
+                <span><strong>Year 1 Expansion Pass</strong> (2 major story expansions)</span>
+              </li>
+              <li class="edition-feature highlighted">
+                <span class="icon-check">✓</span>
+                <span>Legendary Mount: "Nightmare Dreadsteed"</span>
+              </li>
+              <li class="edition-feature">
+                <span class="icon-check">✓</span>
+                <span>Exclusive "Blood Eclipse" execution animation</span>
+              </li>
+              <li class="edition-feature">
+                <span class="icon-check">✓</span>
+                <span>20% hardware discount voucher for NEO Gaming series</span>
+              </li>
+            </ul>
+            <div class="edition-action">
+              <button class="btn primary" style="background:#221808;color:#e8c67d;border-color:rgba(200,155,60,0.5)" data-product="Crimson Night: Ultimate Edition ($99)">Pre-Order Ultimate 👑</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 2: HALO X CRIMSON NIGHT COLLABORATION (100% English & Dark Gritty)
+         ======================================================== -->
+    <section class="section collab-section" id="halo-collab">
+      <div class="wrap collab-grid">
+        <div class="collab-poster-wrap" onclick="openLightbox('assets/halo-crimson-collab.jpg', 'HALO x CRIMSON NIGHT: Eclipse of the Damned', 'Official crossover key art featuring Master Chief and the Gothic Knight amidst ruined battlegrounds under the blood moon.')">
+          <div class="collab-tag-float">Official Crossover Event</div>
+          <img src="assets/halo-crimson-collab.jpg" alt="Halo x Crimson Night Collaboration — Master Chief and Gothic Knight">
+          <div class="collab-tag-float-crimson">Limited Time Event</div>
+        </div>
+
+        <div class="collab-copy">
+          <div class="collab-crossover-title">
+            <span class="halo-brand">HALO</span>
+            <span class="cross-x">✕</span>
+            <span class="crimson-brand">CRIMSON NIGHT</span>
+          </div>
+          <div class="eyebrow crimson">Special Collaboration · Eclipse of the Damned</div>
+          <h2>WHEN SCI-FI COLLIDES<br><span style="color:#df445a">WITH DARK FANTASY.</span></h2>
+          <p>
+            Master Chief descends into the gothic underworld of <strong>Crimson Night</strong>. Witness an unprecedented grimdark convergence where advanced Spartan technology clashes against ancient blood magic and cursed cathedrals.
+          </p>
+
+          <div class="collab-perks">
+            <div class="collab-perk">
+              <span class="perk-icon">⚡</span>
+              <div>
+                <b>Spartan Mjolnir "Bloodforged Edition" Armor</b>
+                <span>Weathered Spartan armor forged in black iron gothic battleplates.</span>
+              </div>
+            </div>
+            <div class="collab-perk">
+              <span class="perk-icon">⚔</span>
+              <div>
+                <b>Hybrid Weapon: "Crimson Energy Blade"</b>
+                <span>The iconic plasma sword infused with dark crimson occult runes.</span>
+              </div>
+            </div>
+            <div class="collab-perk">
+              <span class="perk-icon">🌌</span>
+              <div>
+                <b>Exclusive Crossover Dungeon Campaign</b>
+                <span>Infiltrate corrupted Forerunner catacombs beneath the Crimson Citadel.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-ctas">
+            <button class="btn crimson" data-product="Halo x Crimson Night: Collab Expansion Bundle ($29)">Get Collab Bundle ($29) ⚡</button>
+            <button class="btn ghost" onclick="openLightbox('assets/halo-crimson-collab.jpg', 'HALO x CRIMSON NIGHT: Eclipse of the Damned', 'Official crossover key art featuring Master Chief and the Gothic Knight amidst ruined battlegrounds under the blood moon.')">View Key Art HD ↗</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEO Hardware Series Section -->
+    <section class="section products" id="products">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">02 — Hardware Series</div>
+            <h2>Gear For Your<br>Next Session.</h2>
+          </div>
+          <p>
+            Premium NEO gaming series hardware, engineered for ergonomic precision and acoustic immersion, tuned for titles like Crimson Night.
+          </p>
+        </div>
+
+        <div class="product-grid">
+          <!-- Product 1: Chair Series -->
+          <article class="product-card">
+            <div class="product-img-box" onclick="openLightbox('assets/neo-chair-series.png', 'NEO Ergonomic Gaming Chair', 'Ultimate comfort seating featuring dynamic lumbar support, adjustable tech, future-ready materials, and cyan-violet edge lighting.')">
+              <span class="product-tag">Flagship Series</span>
+              <img src="assets/neo-chair-series.png" alt="NEO Ergonomic Gaming Chair Series Poster">
+              <span class="zoom-hint">Quick View 🔍</span>
+            </div>
+            <div class="product-content">
+              <div class="product-meta">
+                <span>Gaming Chair</span>
+                <span>01</span>
+              </div>
+              <h3>NEO Ergonomic Gaming Chair</h3>
+              <p>
+                High-density cold-molded foam, Dynamic Lumbar posture support, and subtle cyan-violet perimeter illumination.
+              </p>
+              <div class="specs-pills">
+                <span class="spec-pill">Dynamic Lumbar</span>
+                <span class="spec-pill">Perimeter Accent</span>
+                <span class="spec-pill">Cold-Molded Foam</span>
+              </div>
+              <div class="product-foot">
+                <span class="price-note">Price on enquiry</span>
+                <button class="add-btn" data-product="NEO Ergonomic Gaming Chair">＋ Add to enquiry</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 2: Mouse -->
+          <article class="product-card">
+            <div class="product-img-box" onclick="openLightbox('assets/neo-mouse.png', 'NEO Precision Gaming Mouse', 'Tournament-grade optical mouse with illuminated glowing NEO emblem, cyan underglow perimeter, and ergonomic contour grip.')">
+              <span class="product-tag">Optical Class</span>
+              <img src="assets/neo-mouse.png" alt="NEO Precision Gaming Mouse on desk">
+              <span class="zoom-hint">Quick View 🔍</span>
+            </div>
+            <div class="product-content">
+              <div class="product-meta">
+                <span>Precision Input</span>
+                <span>02</span>
+              </div>
+              <h3>NEO Precision Gaming Mouse</h3>
+              <p>
+                Competition optical tracking, sculpted matte shell, illuminated emblem, and low-friction glide skates.
+              </p>
+              <div class="specs-pills">
+                <span class="spec-pill">NEO Emblem</span>
+                <span class="spec-pill">Base Underglow</span>
+                <span class="spec-pill">Ergonomic Fit</span>
+              </div>
+              <div class="product-foot">
+                <span class="price-note">Price on enquiry</span>
+                <button class="add-btn" data-product="NEO Precision Gaming Mouse">＋ Add to enquiry</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 3: Headset -->
+          <article class="product-card">
+            <div class="product-img-box" onclick="openLightbox('assets/neo-headset.png', 'NEO Pro Gaming Headset', 'High-fidelity spatial audio headset with glowing NEO emblem, illuminated ear cup halo rings, and memory-foam ear cushions.')">
+              <span class="product-tag">Spatial Audio</span>
+              <img src="assets/neo-headset.png" alt="NEO Pro Gaming Headset with glowing logo">
+              <span class="zoom-hint">Quick View 🔍</span>
+            </div>
+            <div class="product-content">
+              <div class="product-meta">
+                <span>Acoustic Audio</span>
+                <span>03</span>
+              </div>
+              <h3>NEO Pro Gaming Headset</h3>
+              <p>
+                Studio-grade spatial drivers, plush memory foam earcups, halo accent rings, and low-latency braided 3.5mm jack.
+              </p>
+              <div class="specs-pills">
+                <span class="spec-pill">Illuminated Halo</span>
+                <span class="spec-pill">Spatial Acoustic</span>
+                <span class="spec-pill">Braided Cable</span>
+              </div>
+              <div class="product-foot">
+                <span class="price-note">Price on enquiry</span>
+                <button class="add-btn" data-product="NEO Pro Gaming Headset">＋ Add to enquiry</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Campaign Section -->
+    <section class="campaign-banner" id="campaign">
+      <div class="wrap campaign-grid">
+        <div class="campaign-copy">
+          <div class="eyebrow">Official Campaign</div>
+          <h2>MAKE YOUR<br><span style="color:var(--violet)">OWN CHOICE.</span></h2>
+          <p>
+            Every decision defines your playstyle. The NEO "Make Your Own Choice" campaign celebrates players who forge their own identity with zero compromises on posture, sound, and precision.
+          </p>
+          <div class="hero-ctas">
+            <button class="btn primary" onclick="openLightbox('assets/neo-hero-campaign.png', 'NEO Ambassador Campaign — Make Your Own Choice', 'Official tournament stage campaign visual showcasing the NEO Pro Series Chair in action.')">
+              Enlarge Campaign Poster ↗
+            </button>
+            <a class="btn ghost" href="#contact">Request Ambassador Edition</a>
+          </div>
+        </div>
+
+        <div class="campaign-frame" onclick="openLightbox('assets/neo-hero-campaign.png', 'NEO Ambassador Campaign — Make Your Own Choice', 'Official tournament stage campaign visual showcasing the NEO Pro Series Chair in action.')">
+          <img src="assets/neo-hero-campaign.png" alt="Make Your Own Choice — NEO Gaming Series Pro Ambassador">
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="section gallery-section" id="gallery">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Media Gallery</div>
+            <h2>Concept & Product<br>Showcase.</h2>
+          </div>
+          <p>Click any media item to inspect full-resolution artwork and gear photography in the lightbox viewer.</p>
+        </div>
+
+        <div class="gallery-filter-tabs">
+          <button class="filter-tab active" data-filter="all">All Media</button>
+          <button class="filter-tab" data-filter="game">Crimson Night & Collab</button>
+          <button class="filter-tab" data-filter="hardware">Hardware</button>
+          <button class="filter-tab" data-filter="campaign">Campaign</button>
+        </div>
+
+        <div class="gallery-masonry" id="gallery-grid">
+          <!-- Item 1: Halo Collab -->
+          <div class="gallery-item" data-category="game" onclick="openLightbox('assets/halo-crimson-collab.jpg', 'HALO x CRIMSON NIGHT Crossover', 'Master Chief & Gothic Knight official crossover artwork.')">
+            <img src="assets/halo-crimson-collab.jpg" alt="Halo x Crimson Night">
+            <div class="gallery-overlay">
+              <h4>Halo x Crimson Night</h4>
+              <span style="color:#df445a">Official Crossover Art</span>
+            </div>
+          </div>
+
+          <!-- Item 2: Crimson Night Art -->
+          <div class="gallery-item" data-category="game" onclick="openLightbox('assets/crimson-night-art.jpg', 'Crimson Night: Dark Fantasy RPG', 'Key art showing the weathered dark knight under the storm and blood moon.')">
+            <img src="assets/crimson-night-art.jpg" alt="Crimson Night Key Art">
+            <div class="gallery-overlay">
+              <h4>Crimson Night: Key Art</h4>
+              <span style="color:#df445a">Official Dark Fantasy Art</span>
+            </div>
+          </div>
+
+          <!-- Item 3: Campaign -->
+          <div class="gallery-item" data-category="campaign" onclick="openLightbox('assets/neo-hero-campaign.png', 'Make Your Own Choice', 'Esports arena campaign poster.')">
+            <img src="assets/neo-hero-campaign.png" alt="Make Your Own Choice">
+            <div class="gallery-overlay">
+              <h4>Make Your Own Choice</h4>
+              <span>Esports Arena</span>
+            </div>
+          </div>
+
+          <!-- Item 4: Chair -->
+          <div class="gallery-item" data-category="hardware" onclick="openLightbox('assets/neo-chair-series.png', 'NEO Gaming Chair Series', 'Ergonomic seating specification poster.')">
+            <img src="assets/neo-chair-series.png" alt="NEO Chair">
+            <div class="gallery-overlay">
+              <h4>NEO Gaming Chair</h4>
+              <span>Hardware</span>
+            </div>
+          </div>
+
+          <!-- Item 5: Mouse -->
+          <div class="gallery-item" data-category="hardware" onclick="openLightbox('assets/neo-mouse.png', 'NEO Precision Mouse', 'Tournament optical gaming mouse.')">
+            <img src="assets/neo-mouse.png" alt="NEO Mouse">
+            <div class="gallery-overlay">
+              <h4>NEO Precision Mouse</h4>
+              <span>Hardware</span>
+            </div>
+          </div>
+
+          <!-- Item 6: Headset -->
+          <div class="gallery-item" data-category="hardware" onclick="openLightbox('assets/neo-headset.png', 'NEO Pro Headset', 'Spatial audio pro gaming headset.')">
+            <img src="assets/neo-headset.png" alt="NEO Headset">
+            <div class="gallery-overlay">
+              <h4>NEO Pro Headset</h4>
+              <span>Hardware</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact & Checkout -->
+    <section class="section contact" id="contact">
+      <div class="wrap contact-grid">
+        <div>
+          <div class="eyebrow">Pre-Order & Enquiry</div>
+          <h2>Place Your Order Or<br><span style="color:var(--cyan)">Send An Enquiry.</span></h2>
+          <p class="muted">
+            Pre-order any edition of <strong>Crimson Night</strong> or submit an enquiry for <strong>NEO Series</strong> hardware gear.
+          </p>
+
+          <div class="contact-details">
+            <div>Support Email: <strong>contact@crimsonnight-game.com</strong></div>
+            <div>Publishing Partners: <strong>NEO Interactive & Crimson Studios</strong></div>
+            <div>Status: <strong>Pre-Order Beta Live</strong></div>
+          </div>
+
+          <div class="payment-panel">
+            <strong>Prototype Enquiry Workflow</strong>
+            Any game editions or hardware added to your cart will automatically populate into your order message below.
+          </div>
+        </div>
+
+        <form id="contact-form">
+          <div class="field">
+            <label for="name">Your Name</label>
+            <input id="name" name="name" autocomplete="name" placeholder="John Doe" required>
+          </div>
+          <div class="field">
+            <label for="email">Email Address</label>
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="gamer@domain.com" required>
+          </div>
+          <div class="field">
+            <label for="message">Selected Editions or Hardware</label>
+            <textarea id="message" name="message" placeholder="e.g., Pre-ordering Crimson Night Ultimate Edition and NEO Pro Gaming Headset…" required></textarea>
+          </div>
+          <button class="btn crimson" type="submit">Submit Order Enquiry ↗</button>
+          <div class="form-status" id="form-status" role="status"></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="wrap footer-row">
+      <div class="footer-brand">
+        <img src="assets/neo-logo-transparent.png" alt="NEO">
+        <span style="color:var(--line)">|</span>
+        <img src="assets/crimson-night-logo-transparent.png" alt="Crimson Night" style="height:22px">
+      </div>
+      <div>NEO Gaming Series ✕ Crimson Night ✕ HALO Official Crossover</div>
+      <div>© <span id="year"></span> NEO Gaming & Crimson Studios. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <!-- Cart Drawer -->
+  <div class="cart-drawer" id="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="cart-title">
+    <div class="cart-panel">
+      <div class="cart-top">
+        <h2 id="cart-title">Your Order Cart</h2>
+        <button class="close-cart" id="close-cart">Close ✕</button>
+      </div>
+      <div class="cart-items" id="cart-items">
+        <p class="empty">Your cart is empty. Select a game edition or hardware item.</p>
+      </div>
+      <div class="checkout-info">
+        <strong>Confirm Order Details</strong>
+        <p>Selected items will be transferred directly to the enquiry form below.</p>
+        <button class="btn crimson" id="checkout-btn">Proceed With Order ↗</button>
+        <p id="checkout-status" role="status"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lightbox Modal -->
+  <div class="lightbox-modal" id="lightbox-modal" role="dialog" aria-modal="true" aria-label="Media Preview">
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="lightbox-close" aria-label="Close Preview">✕</button>
+      <div class="lightbox-img-wrap">
+        <img id="lightbox-img" src="" alt="">
+      </div>
+      <div class="lightbox-details">
+        <div>
+          <div class="eyebrow" id="lightbox-eyebrow">Crimson Night Universe</div>
+          <h3 id="lightbox-title" style="font-family:var(--font-display);font-size:1.35rem;margin:12px 0 16px;color:#fff">Title</h3>
+          <p id="lightbox-desc" style="color:var(--muted);font-size:0.9rem;line-height:1.6">Description</p>
+        </div>
+        <div style="margin-top:22px;display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn crimson" id="lightbox-add-btn">Add To Cart ＋</button>
+          <button class="btn ghost" onclick="closeLightbox()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Cart Logic
+    const cart = [];
+    const drawer = document.getElementById('cart-drawer');
+    const items = document.getElementById('cart-items');
+    const count = document.getElementById('cart-count');
+
+    function renderCart() {
+      count.textContent = cart.length;
+      items.innerHTML = '';
+      if (!cart.length) {
+        items.innerHTML = '<p class="empty">Your cart is empty. Select a game edition or hardware item.</p>';
+        return;
+      }
+      cart.forEach((name, i) => {
+        const row = document.createElement('div');
+        row.className = 'cart-item';
+        
+        const label = document.createElement('div');
+        const title = document.createElement('div');
+        title.className = 'cart-item-name';
+        title.textContent = name;
+        const small = document.createElement('small');
+        small.textContent = 'Selected for pre-order / enquiry';
+        label.append(title, small);
+
+        const remove = document.createElement('button');
+        remove.className = 'remove-item';
+        remove.textContent = 'Remove ✕';
+        remove.setAttribute('aria-label', 'Remove ' + name);
+        remove.onclick = () => {
+          cart.splice(i, 1);
+          renderCart();
+        };
+
+        row.append(label, remove);
+        items.appendChild(row);
+      });
+    }
+
+    document.querySelectorAll('[data-product]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        cart.push(btn.dataset.product);
+        renderCart();
+        drawer.classList.add('open');
+        document.getElementById('checkout-status').textContent = '';
+      });
+    });
+
+    document.getElementById('open-cart').onclick = () => drawer.classList.add('open');
+    document.getElementById('close-cart').onclick = () => drawer.classList.remove('open');
+    drawer.addEventListener('click', e => {
+      if (e.target === drawer) drawer.classList.remove('open');
+    });
+
+    document.getElementById('checkout-btn').onclick = () => {
+      const statusEl = document.getElementById('checkout-status');
+      if (!cart.length) {
+        statusEl.textContent = 'Please select at least one item first.';
+        return;
+      }
+      drawer.classList.remove('open');
+      document.getElementById('message').value = 'Hello, I would like to order/enquire about: ' + cart.join(', ') + '.';
+      document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('name').focus();
+    };
+
+    // Mobile Navigation Toggle
+    const menuBtn = document.getElementById('menu-btn');
+    const navlinks = document.getElementById('navlinks');
+    menuBtn.onclick = () => {
+      const opened = navlinks.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(opened));
+    };
+    document.querySelectorAll('.navlinks a').forEach(a => {
+      a.addEventListener('click', () => {
+        navlinks.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Contact Form Logic
+    document.getElementById('contact-form').addEventListener('submit', e => {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const status = document.getElementById('form-status');
+      status.textContent = 'Thank you, ' + name + '! Your order enquiry has been compiled successfully.';
+      e.target.reset();
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Lightbox Modal Logic
+    const lightboxModal = document.getElementById('lightbox-modal');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxTitle = document.getElementById('lightbox-title');
+    const lightboxDesc = document.getElementById('lightbox-desc');
+    const lightboxAddBtn = document.getElementById('lightbox-add-btn');
+
+    let currentLightboxTitle = '';
+
+    function openLightbox(src, title, desc) {
+      currentLightboxTitle = title;
+      lightboxImg.src = src;
+      lightboxImg.alt = title;
+      lightboxTitle.textContent = title;
+      lightboxDesc.textContent = desc;
+      lightboxModal.classList.add('open');
+    }
+
+    function closeLightbox() {
+      lightboxModal.classList.remove('open');
+    }
+
+    document.getElementById('lightbox-close').onclick = closeLightbox;
+    lightboxModal.addEventListener('click', e => {
+      if (e.target === lightboxModal) closeLightbox();
+    });
+
+    lightboxAddBtn.onclick = () => {
+      if (currentLightboxTitle) {
+        cart.push(currentLightboxTitle);
+        renderCart();
+        closeLightbox();
+        drawer.classList.add('open');
+      }
+    };
+
+    // Gallery Filter Logic
+    const filterTabs = document.querySelectorAll('.filter-tab');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+
+    filterTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        filterTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const filter = tab.dataset.filter;
+
+        galleryItems.forEach(item => {
+          if (filter === 'all' || item.dataset.category === filter) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
