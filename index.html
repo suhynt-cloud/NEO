@@ -254,6 +254,123 @@
       cursor: pointer;
     }
 
+    /* ========================================================
+       CHROME WATERMARK SUITE (Y2K / Liquid Metal Aesthetic)
+       ======================================================== */
+    .chrome-watermark {
+      position: absolute;
+      pointer-events: none;
+      user-select: none;
+      z-index: 1;
+      opacity: 0.065;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      filter: contrast(1.15) brightness(1.05);
+    }
+    .chrome-watermark svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* Hero Watermark: Star with Orbit Ring */
+    .hero-chrome-wm {
+      width: min(540px, 85vw);
+      height: min(540px, 85vw);
+      left: -60px;
+      bottom: -60px;
+      animation: floatSubtle 14s ease-in-out infinite alternate;
+    }
+
+    /* About Watermark: Double Stars & Liquid Wave */
+    .about-chrome-wm {
+      width: min(500px, 80vw);
+      height: min(500px, 80vw);
+      right: -50px;
+      top: -30px;
+      animation: floatSubtleAlt 16s ease-in-out infinite alternate;
+    }
+
+    /* Halo Collab Watermark: Chromatic Halo Ring */
+    .collab-chrome-wm {
+      width: min(620px, 92vw);
+      height: min(400px, 60vw);
+      right: -80px;
+      bottom: -40px;
+      opacity: 0.075;
+      animation: floatSubtle 15s ease-in-out infinite alternate;
+    }
+
+    /* Products Watermark: Needle Star & Chrome Drip */
+    .products-chrome-wm {
+      width: min(560px, 85vw);
+      height: min(560px, 85vw);
+      right: -80px;
+      top: 40px;
+      opacity: 0.06;
+      animation: floatSubtleAlt 18s ease-in-out infinite alternate;
+    }
+
+    /* Campaign Watermark: Cyber Butterfly & Neo-Acid Flower */
+    .campaign-chrome-wm {
+      width: min(500px, 80vw);
+      height: min(500px, 80vw);
+      left: -60px;
+      top: -40px;
+      opacity: 0.07;
+      animation: floatSubtle 13s ease-in-out infinite alternate;
+    }
+
+    /* Gallery Watermark: Chrome Chain Link & Starburst */
+    .gallery-chrome-wm {
+      width: min(580px, 88vw);
+      height: min(380px, 60vw);
+      right: -60px;
+      top: 10px;
+      opacity: 0.055;
+      animation: floatSubtleAlt 15s ease-in-out infinite alternate;
+    }
+
+    /* Contact Watermark: Orbit Ring & Starburst */
+    .contact-chrome-wm {
+      width: min(520px, 82vw);
+      height: min(520px, 82vw);
+      left: -70px;
+      bottom: -60px;
+      opacity: 0.065;
+      animation: floatSubtle 16s ease-in-out infinite alternate;
+    }
+
+    @keyframes floatSubtle {
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(-10px) rotate(1.5deg); }
+    }
+    @keyframes floatSubtleAlt {
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(10px) rotate(-1.5deg); }
+    }
+
+    /* Ensure parent containers clip overflow & wraps stay in front */
+    .hero,
+    #about,
+    .collab-section,
+    .products,
+    .campaign-banner,
+    .gallery-section,
+    .contact {
+      position: relative;
+      overflow: hidden;
+    }
+    .hero .wrap,
+    #about .wrap,
+    .collab-section .wrap,
+    .products .wrap,
+    .campaign-banner .wrap,
+    .gallery-section .wrap,
+    .contact .wrap {
+      position: relative;
+      z-index: 2;
+    }
+
     /* Hero Section */
     .hero {
       position: relative;
@@ -1614,6 +1731,56 @@
   <main>
     <!-- Hero Section -->
     <section class="hero" id="home">
+      <!-- Chrome Watermark: Star with Inclined Orbital Ring -->
+      <div class="chrome-watermark hero-chrome-wm" aria-hidden="true">
+        <svg viewBox="0 0 550 550" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="chromeGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#141824"/>
+              <stop offset="25%" stop-color="#8a96ac"/>
+              <stop offset="48%" stop-color="#ffffff"/>
+              <stop offset="54%" stop-color="#3c4456"/>
+              <stop offset="78%" stop-color="#d0dcf2"/>
+              <stop offset="100%" stop-color="#1c202c"/>
+            </linearGradient>
+            <linearGradient id="chromeCyan1" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#101820"/>
+              <stop offset="35%" stop-color="#8be5e3"/>
+              <stop offset="50%" stop-color="#ffffff"/>
+              <stop offset="65%" stop-color="#4a7682"/>
+              <stop offset="100%" stop-color="#101820"/>
+            </linearGradient>
+            <linearGradient id="ringGrad1" x1="0%" y1="0%" x2="100%" y2="50%">
+              <stop offset="0%" stop-color="#1b2230"/>
+              <stop offset="30%" stop-color="#ffffff"/>
+              <stop offset="50%" stop-color="#4e586e"/>
+              <stop offset="70%" stop-color="#8be5e3"/>
+              <stop offset="85%" stop-color="#ffffff"/>
+              <stop offset="100%" stop-color="#1b2230"/>
+            </linearGradient>
+          </defs>
+          <g transform="rotate(-22 275 275)">
+            <ellipse cx="275" cy="275" rx="240" ry="65" fill="none" stroke="url(#ringGrad1)" stroke-width="12" stroke-linecap="round"/>
+            <ellipse cx="275" cy="275" rx="240" ry="65" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.8"/>
+            <ellipse cx="275" cy="276" rx="236" ry="62" fill="none" stroke="#0a0d14" stroke-width="3" opacity="0.6"/>
+          </g>
+          <g transform="translate(275, 275)">
+            <path d="M0,0 L0,-190 Q-25,-30 -190,0 Z" fill="url(#chromeCyan1)"/>
+            <path d="M0,0 L0,-190 Q25,-30 190,0 Z" fill="url(#chromeGrad1)"/>
+            <path d="M0,0 L0,190 Q-25,30 -190,0 Z" fill="url(#chromeGrad1)"/>
+            <path d="M0,0 L0,190 Q25,30 190,0 Z" fill="url(#chromeCyan1)"/>
+            <circle cx="0" cy="0" r="14" fill="#ffffff" filter="drop-shadow(0 0 10px #8be5e3)"/>
+            <circle cx="0" cy="0" r="5" fill="#ffffff"/>
+          </g>
+          <g transform="translate(440, 110) scale(0.35)">
+            <path d="M0,0 L0,-160 Q-20,-25 -160,0 Z" fill="url(#chromeGrad1)"/>
+            <path d="M0,0 L0,-160 Q20,-25 160,0 Z" fill="url(#chromeCyan1)"/>
+            <path d="M0,0 L0,160 Q-20,25 -160,0 Z" fill="url(#chromeCyan1)"/>
+            <path d="M0,0 L0,160 Q20,25 160,0 Z" fill="url(#chromeGrad1)"/>
+          </g>
+        </svg>
+      </div>
+
       <div class="wrap hero-grid">
         <div class="hero-copy">
           <div class="eyebrow">NEO Hardware Series · 2026 Edition</div>
@@ -1668,6 +1835,53 @@
 
     <!-- About Section -->
     <section class="section" id="about">
+      <!-- Chrome Watermark: Double Staggered Stars & Molten Fluid Wave -->
+      <div class="chrome-watermark about-chrome-wm" aria-hidden="true">
+        <svg viewBox="0 0 520 520" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="chromeGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#141824"/>
+              <stop offset="28%" stop-color="#8c78d6"/>
+              <stop offset="48%" stop-color="#ffffff"/>
+              <stop offset="55%" stop-color="#3c4456"/>
+              <stop offset="78%" stop-color="#d8dff0"/>
+              <stop offset="100%" stop-color="#181c26"/>
+            </linearGradient>
+            <linearGradient id="blobGrad" x1="0%" y1="0%" x2="100%" y2="80%">
+              <stop offset="0%" stop-color="#1c202d"/>
+              <stop offset="25%" stop-color="#ffffff"/>
+              <stop offset="45%" stop-color="#8a94a8"/>
+              <stop offset="65%" stop-color="#8c78d6"/>
+              <stop offset="85%" stop-color="#ffffff"/>
+              <stop offset="100%" stop-color="#161822"/>
+            </linearGradient>
+          </defs>
+          <g transform="translate(30, 260)">
+            <path d="M40,140 C80,60 140,60 170,120 C200,180 250,180 280,110 C310,40 370,50 400,120 C420,170 450,180 470,150" fill="none" stroke="url(#blobGrad)" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M40,140 C80,60 140,60 170,120 C200,180 250,180 280,110 C310,40 370,50 400,120 C420,170 450,180 470,150" fill="none" stroke="#ffffff" stroke-width="4" opacity="0.7" stroke-linecap="round"/>
+            <circle cx="40" cy="140" r="18" fill="url(#blobGrad)"/>
+            <circle cx="470" cy="150" r="16" fill="url(#blobGrad)"/>
+            <circle cx="280" cy="110" r="12" fill="#ffffff" opacity="0.6"/>
+          </g>
+          <g transform="translate(240, 150) scale(0.75, 1.05)">
+            <path d="M0,0 L0,-170 Q-18,-25 -110,0 Z" fill="url(#chromeGrad2)"/>
+            <path d="M0,0 L0,-170 Q18,-25 110,0 Z" fill="#ffffff" opacity="0.9"/>
+            <path d="M0,0 L0,170 Q-18,25 -110,0 Z" fill="#2a303e"/>
+            <path d="M0,0 L0,170 Q18,25 110,0 Z" fill="url(#chromeGrad2)"/>
+            <line x1="0" y1="-170" x2="0" y2="170" stroke="#ffffff" stroke-width="2"/>
+            <line x1="-110" y1="0" x2="110" y2="0" stroke="#ffffff" stroke-width="2"/>
+          </g>
+          <g transform="translate(320, 230) scale(0.65, 0.95)">
+            <path d="M0,0 L0,-170 Q-18,-25 -110,0 Z" fill="url(#chromeGrad2)"/>
+            <path d="M0,0 L0,-170 Q18,-25 110,0 Z" fill="#ffffff" opacity="0.9"/>
+            <path d="M0,0 L0,170 Q-18,25 -110,0 Z" fill="#2a303e"/>
+            <path d="M0,0 L0,170 Q18,25 110,0 Z" fill="url(#chromeGrad2)"/>
+            <line x1="0" y1="-170" x2="0" y2="170" stroke="#ffffff" stroke-width="2"/>
+            <line x1="-110" y1="0" x2="110" y2="0" stroke="#ffffff" stroke-width="2"/>
+          </g>
+        </svg>
+      </div>
+
       <div class="wrap" style="display:grid;grid-template-columns:0.9fr 1.1fr;gap:60px;align-items:start">
         <div>
           <div class="eyebrow">01 — About NEO</div>
@@ -2034,6 +2248,52 @@
          SECTION 2: HALO X CRIMSON NIGHT COLLABORATION (100% English & Dark Gritty)
          ======================================================== -->
     <section class="section collab-section" id="halo-collab">
+      <!-- Chrome Watermark: Chromatic Iridescent Halo Orbital Ring -->
+      <div class="chrome-watermark collab-chrome-wm" aria-hidden="true">
+        <svg viewBox="0 0 600 380" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="iridescentRing" x1="0%" y1="0%" x2="100%" y2="80%">
+              <stop offset="0%" stop-color="#df445a"/>
+              <stop offset="20%" stop-color="#e8a0bf"/>
+              <stop offset="38%" stop-color="#ffffff"/>
+              <stop offset="50%" stop-color="#8c78d6"/>
+              <stop offset="70%" stop-color="#8be5e3"/>
+              <stop offset="85%" stop-color="#ffffff"/>
+              <stop offset="100%" stop-color="#df445a"/>
+            </linearGradient>
+            <linearGradient id="sparkleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#ffffff"/>
+              <stop offset="50%" stop-color="#8be5e3"/>
+              <stop offset="100%" stop-color="#141824"/>
+            </linearGradient>
+          </defs>
+          <g transform="rotate(-18 300 190)">
+            <ellipse cx="300" cy="190" rx="255" ry="85" fill="none" stroke="#080b12" stroke-width="22"/>
+            <ellipse cx="300" cy="190" rx="255" ry="85" fill="none" stroke="url(#iridescentRing)" stroke-width="16" stroke-linecap="round"/>
+            <ellipse cx="300" cy="189" rx="255" ry="84" fill="none" stroke="#ffffff" stroke-width="2.5" opacity="0.85"/>
+            <ellipse cx="300" cy="190" rx="243" ry="76" fill="none" stroke="#df445a" stroke-width="1.5" opacity="0.4"/>
+            <g transform="translate(90, 160) scale(0.32)">
+              <path d="M0,0 L0,-120 Q-15,-20 -120,0 Z" fill="url(#sparkleGrad)"/>
+              <path d="M0,0 L0,-120 Q15,-20 120,0 Z" fill="#fff"/>
+              <path d="M0,0 L0,120 Q-15,20 -120,0 Z" fill="#fff"/>
+              <path d="M0,0 L0,120 Q15,20 120,0 Z" fill="url(#sparkleGrad)"/>
+            </g>
+            <g transform="translate(130, 135) scale(0.2)">
+              <path d="M0,0 L0,-120 Q-15,-20 -120,0 Z" fill="#fff"/>
+              <path d="M0,0 L0,-120 Q15,-20 120,0 Z" fill="url(#sparkleGrad)"/>
+              <path d="M0,0 L0,120 Q-15,20 -120,0 Z" fill="url(#sparkleGrad)"/>
+              <path d="M0,0 L0,120 Q15,20 120,0 Z" fill="#fff"/>
+            </g>
+            <g transform="translate(480, 220) scale(0.28)">
+              <path d="M0,0 L0,-120 Q-15,-20 -120,0 Z" fill="url(#sparkleGrad)"/>
+              <path d="M0,0 L0,-120 Q15,-20 120,0 Z" fill="#fff"/>
+              <path d="M0,0 L0,120 Q-15,20 -120,0 Z" fill="#fff"/>
+              <path d="M0,0 L0,120 Q15,20 120,0 Z" fill="url(#sparkleGrad)"/>
+            </g>
+          </g>
+        </svg>
+      </div>
+
       <div class="wrap collab-grid">
         <div class="collab-poster-wrap" onclick="openLightbox('assets/halo-crimson-collab.jpg', 'HALO x CRIMSON NIGHT: Eclipse of the Damned', 'Official crossover key art featuring Master Chief and the Gothic Knight amidst ruined battlegrounds under the blood moon.')">
           <div class="collab-tag-float">Official Crossover Event</div>
@@ -2087,6 +2347,45 @@
 
     <!-- NEO Hardware Series Section -->
     <section class="section products" id="products">
+      <!-- Chrome Watermark: Needle Cross Star & Melting Drip -->
+      <div class="chrome-watermark products-chrome-wm" aria-hidden="true">
+        <svg viewBox="0 0 540 540" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="chromeDripGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#ffffff"/>
+              <stop offset="25%" stop-color="#8a96ac"/>
+              <stop offset="50%" stop-color="#1e2432"/>
+              <stop offset="75%" stop-color="#8be5e3"/>
+              <stop offset="90%" stop-color="#ffffff"/>
+              <stop offset="100%" stop-color="#141822"/>
+            </linearGradient>
+            <linearGradient id="elongatedGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#141822"/>
+              <stop offset="35%" stop-color="#8a96ac"/>
+              <stop offset="50%" stop-color="#ffffff"/>
+              <stop offset="65%" stop-color="#2a3242"/>
+              <stop offset="85%" stop-color="#c4d2ea"/>
+              <stop offset="100%" stop-color="#141822"/>
+            </linearGradient>
+          </defs>
+          <g transform="translate(180, 20)">
+            <path d="M0,20 L320,20 C320,20 320,45 305,45 C295,45 292,85 280,85 C270,85 266,45 255,45 C245,45 240,110 225,110 C212,110 208,45 195,45 C185,45 180,75 170,75 C160,75 155,45 140,45 C130,45 125,130 108,130 C92,130 88,45 75,45 C65,45 60,95 48,95 C36,95 32,45 20,45 C10,45 0,20 0,20 Z" fill="url(#chromeDripGrad)"/>
+            <path d="M5,22 L315,22" stroke="#ffffff" stroke-width="3" opacity="0.8"/>
+            <circle cx="108" cy="122" r="5" fill="#ffffff" opacity="0.8"/>
+            <circle cx="225" cy="103" r="4" fill="#ffffff" opacity="0.8"/>
+          </g>
+          <g transform="translate(240, 290)">
+            <path d="M0,0 L0,-130 Q-15,-20 -95,0 Z" fill="url(#elongatedGrad1)"/>
+            <path d="M0,0 L0,-130 Q15,-20 95,0 Z" fill="#ffffff" opacity="0.85"/>
+            <path d="M0,0 L0,230 Q-15,35 -95,0 Z" fill="#181e2b"/>
+            <path d="M0,0 L0,230 Q15,35 95,0 Z" fill="url(#elongatedGrad1)"/>
+            <line x1="0" y1="-130" x2="0" y2="230" stroke="#ffffff" stroke-width="2.5"/>
+            <line x1="-95" y1="0" x2="95" y2="0" stroke="#ffffff" stroke-width="2"/>
+            <circle cx="0" cy="0" r="7" fill="#ffffff" filter="drop-shadow(0 0 6px #8be5e3)"/>
+          </g>
+        </svg>
+      </div>
+
       <div class="wrap">
         <div class="section-head">
           <div>
@@ -2188,6 +2487,45 @@
 
     <!-- Campaign Section -->
     <section class="campaign-banner" id="campaign">
+      <!-- Chrome Watermark: Cyber Butterfly & Neo-Acid Flower -->
+      <div class="chrome-watermark campaign-chrome-wm" aria-hidden="true">
+        <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="butterflyWing" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#12151e"/>
+              <stop offset="25%" stop-color="#8c78d6"/>
+              <stop offset="45%" stop-color="#ffffff"/>
+              <stop offset="60%" stop-color="#3c4456"/>
+              <stop offset="80%" stop-color="#c6d4ea"/>
+              <stop offset="100%" stop-color="#141822"/>
+            </linearGradient>
+            <linearGradient id="butterflyGlow" x1="100%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#ffffff"/>
+              <stop offset="50%" stop-color="#8c78d6"/>
+              <stop offset="100%" stop-color="#10131c"/>
+            </linearGradient>
+          </defs>
+          <g transform="translate(250, 250) rotate(-14)">
+            <ellipse cx="0" cy="15" rx="7" ry="45" fill="url(#butterflyWing)"/>
+            <circle cx="0" cy="-35" r="9" fill="#ffffff"/>
+            <path d="M-3,-42 Q-25,-85 -55,-80" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+            <path d="M3,-42 Q25,-85 55,-80" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="-55" cy="-80" r="3" fill="#8c78d6"/>
+            <circle cx="55" cy="-80" r="3" fill="#8c78d6"/>
+            <path d="M-6,-20 C-60,-130 -160,-160 -210,-110 C-240,-80 -210,10 -150,50 C-100,75 -40,30 -6,10 Z" fill="url(#butterflyWing)" stroke="#ffffff" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M-15,-10 C-80,-60 -150,-80 -185,-65 M-25,5 C-90,0 -140,15 -170,30 M-20,-15 C-60,-90 -110,-120 -150,-110" fill="none" stroke="#8c78d6" stroke-width="2" opacity="0.8"/>
+            <path d="M6,-20 C60,-130 160,-160 210,-110 C240,-80 210,10 150,50 C100,75 40,30 6,10 Z" fill="url(#butterflyGlow)" stroke="#ffffff" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M15,-10 C80,-60 150,-80 185,-65 M25,5 C90,0 140,15 170,30 M20,-15 C60,-90 110,-120 150,-110" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.8"/>
+            <path d="M-6,20 C-60,50 -140,80 -150,140 C-155,175 -100,195 -60,170 C-25,145 -10,80 -4,35 Z" fill="url(#butterflyGlow)" stroke="#ffffff" stroke-width="1.8"/>
+            <path d="M6,20 C60,50 140,80 150,140 C155,175 100,195 60,170 C25,145 10,80 4,35 Z" fill="url(#butterflyWing)" stroke="#ffffff" stroke-width="1.8"/>
+          </g>
+          <g transform="translate(410, 390) scale(0.35) rotate(25)">
+            <path d="M0,-120 C40,-120 50,-40 85,-85 C120,-130 160,-70 115,-35 C70,0 130,40 85,85 C40,130 -20,70 -35,115 C-50,160 -130,120 -85,85 C-40,50 -120,40 -120,0 C-120,-40 -50,-40 -85,-85 C-120,-130 -40,-120 0,-120 Z" fill="none" stroke="url(#butterflyWing)" stroke-width="24" stroke-linecap="round"/>
+            <path d="M0,-120 C40,-120 50,-40 85,-85 C120,-130 160,-70 115,-35 C70,0 130,40 85,85 C40,130 -20,70 -35,115 C-50,160 -130,120 -85,85 C-40,50 -120,40 -120,0 C-120,-40 -50,-40 -85,-85 C-120,-130 -40,-120 0,-120 Z" fill="none" stroke="#ffffff" stroke-width="3" opacity="0.8"/>
+          </g>
+        </svg>
+      </div>
+
       <div class="wrap campaign-grid">
         <div class="campaign-copy">
           <div class="eyebrow">Official Campaign</div>
@@ -2211,6 +2549,50 @@
 
     <!-- Gallery Section -->
     <section class="section gallery-section" id="gallery">
+      <!-- Chrome Watermark: Heavy Chain Link & Starburst -->
+      <div class="chrome-watermark gallery-chrome-wm" aria-hidden="true">
+        <svg viewBox="0 0 580 360" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="chainGrad" x1="0%" y1="0%" x2="100%" y2="80%">
+              <stop offset="0%" stop-color="#141822"/>
+              <stop offset="25%" stop-color="#8a96ac"/>
+              <stop offset="48%" stop-color="#ffffff"/>
+              <stop offset="55%" stop-color="#3c4456"/>
+              <stop offset="78%" stop-color="#d0dcf2"/>
+              <stop offset="100%" stop-color="#1c202c"/>
+            </linearGradient>
+          </defs>
+          <g transform="translate(60, 60) rotate(-12)">
+            <g transform="translate(360, 180) rotate(35)">
+              <rect x="-45" y="-70" width="90" height="140" rx="45" fill="none" stroke="url(#chainGrad)" stroke-width="24"/>
+              <rect x="-45" y="-70" width="90" height="140" rx="45" fill="none" stroke="#ffffff" stroke-width="3" opacity="0.8"/>
+            </g>
+            <g transform="translate(290, 140) rotate(-10)">
+              <rect x="-35" y="-60" width="70" height="120" rx="35" fill="none" stroke="url(#chainGrad)" stroke-width="20"/>
+              <rect x="-35" y="-60" width="70" height="120" rx="35" fill="none" stroke="#ffffff" stroke-width="2.5" opacity="0.8"/>
+            </g>
+            <g transform="translate(225, 105) rotate(40)">
+              <rect x="-30" y="-50" width="60" height="100" rx="30" fill="none" stroke="url(#chainGrad)" stroke-width="18"/>
+              <rect x="-30" y="-50" width="60" height="100" rx="30" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.8"/>
+            </g>
+            <g transform="translate(165, 80) rotate(-15)">
+              <rect x="-24" y="-42" width="48" height="84" rx="24" fill="none" stroke="url(#chainGrad)" stroke-width="15"/>
+            </g>
+            <g transform="translate(115, 60) rotate(35)">
+              <rect x="-18" y="-32" width="36" height="64" rx="18" fill="none" stroke="url(#chainGrad)" stroke-width="12"/>
+            </g>
+            <path d="M95,50 Q40,35 0,30" fill="none" stroke="url(#chainGrad)" stroke-width="7" stroke-dasharray="4 6"/>
+          </g>
+          <g transform="translate(480, 100) scale(0.45)">
+            <path d="M0,0 L0,-160 Q-20,-25 -160,0 Z" fill="url(#chainGrad)"/>
+            <path d="M0,0 L0,-160 Q20,-25 160,0 Z" fill="#ffffff" opacity="0.9"/>
+            <path d="M0,0 L0,160 Q-20,25 -160,0 Z" fill="#202432"/>
+            <path d="M0,0 L0,160 Q20,25 160,0 Z" fill="url(#chainGrad)"/>
+            <circle cx="0" cy="0" r="12" fill="#ffffff"/>
+          </g>
+        </svg>
+      </div>
+
       <div class="wrap">
         <div class="section-head">
           <div>
@@ -2287,6 +2669,46 @@
 
     <!-- Contact & Checkout -->
     <section class="section contact" id="contact">
+      <!-- Chrome Watermark: Orbit Ring & Starburst -->
+      <div class="chrome-watermark contact-chrome-wm" aria-hidden="true">
+        <svg viewBox="0 0 520 520" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="contactChrome" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#141824"/>
+              <stop offset="30%" stop-color="#8be5e3"/>
+              <stop offset="48%" stop-color="#ffffff"/>
+              <stop offset="55%" stop-color="#3c4456"/>
+              <stop offset="80%" stop-color="#c4d2ea"/>
+              <stop offset="100%" stop-color="#161a24"/>
+            </linearGradient>
+          </defs>
+          <g transform="translate(260, 260) rotate(-28)">
+            <ellipse cx="0" cy="0" rx="220" ry="70" fill="none" stroke="url(#contactChrome)" stroke-width="14" stroke-linecap="round"/>
+            <ellipse cx="0" cy="0" rx="220" ry="70" fill="none" stroke="#ffffff" stroke-width="2.5" opacity="0.85"/>
+            <ellipse cx="0" cy="2" rx="216" ry="67" fill="none" stroke="#0e121c" stroke-width="3" opacity="0.5"/>
+            <g transform="translate(-160, -45) scale(0.28)">
+              <path d="M0,0 L0,-140 Q-18,-20 -140,0 Z" fill="#ffffff"/>
+              <path d="M0,0 L0,-140 Q18,-20 140,0 Z" fill="url(#contactChrome)"/>
+              <path d="M0,0 L0,140 Q-18,20 -140,0 Z" fill="url(#contactChrome)"/>
+              <path d="M0,0 L0,140 Q18,20 140,0 Z" fill="#ffffff"/>
+            </g>
+            <g transform="translate(-125, -58) scale(0.18)">
+              <path d="M0,0 L0,-140 Q-18,-20 -140,0 Z" fill="#ffffff"/>
+              <path d="M0,0 L0,-140 Q18,-20 140,0 Z" fill="url(#contactChrome)"/>
+              <path d="M0,0 L0,140 Q-18,20 -140,0 Z" fill="url(#contactChrome)"/>
+              <path d="M0,0 L0,140 Q18,20 140,0 Z" fill="#ffffff"/>
+            </g>
+          </g>
+          <g transform="translate(260, 260)">
+            <path d="M0,0 L0,-160 Q-22,-25 -160,0 Z" fill="url(#contactChrome)"/>
+            <path d="M0,0 L0,-160 Q22,-25 160,0 Z" fill="#ffffff" opacity="0.9"/>
+            <path d="M0,0 L0,160 Q-22,25 -160,0 Z" fill="#202432"/>
+            <path d="M0,0 L0,160 Q22,25 160,0 Z" fill="url(#contactChrome)"/>
+            <circle cx="0" cy="0" r="10" fill="#ffffff" filter="drop-shadow(0 0 8px #8be5e3)"/>
+          </g>
+        </svg>
+      </div>
+
       <div class="wrap contact-grid">
         <div>
           <div class="eyebrow">Pre-Order & Enquiry</div>
