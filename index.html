@@ -434,79 +434,250 @@
     }
 
     /* ========================================================
-       SECTION 1: CRIMSON NIGHT GAME EDITIONS (Dark Gritty Style)
+       SECTION 1: CRIMSON NIGHT GAME EDITIONS (Dark Gothic Watermark Aesthetic)
        ======================================================== */
     .crimson-section {
-      background: #050306;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
+      background-color: #060307;
+      background-image: 
+        radial-gradient(ellipse 75% 55% at 50% 20%, rgba(201, 24, 52, 0.16) 0%, rgba(6, 3, 7, 0) 72%),
+        radial-gradient(circle at 12% 82%, rgba(140, 20, 40, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 88% 82%, rgba(200, 155, 60, 0.05) 0%, transparent 45%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cpath d='M40 0 L40 80 M0 40 L80 40' stroke='rgba(201,24,52,0.035)' stroke-width='1'/%3E%3Cpath d='M40 8 C48 24 56 32 72 40 C56 48 48 56 40 72 C32 56 24 48 8 40 C24 32 32 24 40 8 Z' fill='none' stroke='rgba(201,24,52,0.06)' stroke-width='1'/%3E%3Ccircle cx='40' cy='40' r='14' fill='none' stroke='rgba(255,255,255,0.02)' stroke-width='1'/%3E%3Ccircle cx='40' cy='40' r='4' fill='rgba(201,24,52,0.08)'/%3E%3Cpath d='M0 0 L12 12 M80 0 L68 12 M0 80 L12 68 M80 80 L68 68' stroke='rgba(255,255,255,0.025)' stroke-width='1'/%3E%3C/svg%3E");
+      background-size: 100% 100%, 100% 100%, 100% 100%, 80px 80px;
+      border-top: 1px solid rgba(201, 24, 52, 0.35);
+      border-bottom: 1px solid rgba(201, 24, 52, 0.35);
       position: relative;
+      overflow: hidden;
+      padding: 100px 0 110px;
     }
+
+    /* Top & bottom ornamental battlements trim */
+    .crimson-trim-bar {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 16px;
+      background-repeat: repeat-x;
+      background-size: 40px 16px;
+      z-index: 2;
+      pointer-events: none;
+      opacity: 0.65;
+    }
+    .crimson-trim-bar.top {
+      top: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='16' viewBox='0 0 40 16'%3E%3Cpath d='M0,0 L40,0 L32,10 L20,4 L8,10 Z' fill='%23060307' stroke='rgba(201,24,52,0.5)' stroke-width='1'/%3E%3Ccircle cx='20' cy='7' r='2' fill='%23c91834'/%3E%3C/svg%3E");
+    }
+    .crimson-trim-bar.bottom {
+      bottom: 0;
+      transform: rotate(180deg);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='16' viewBox='0 0 40 16'%3E%3Cpath d='M0,0 L40,0 L32,10 L20,4 L8,10 Z' fill='%23060307' stroke='rgba(201,24,52,0.5)' stroke-width='1'/%3E%3Ccircle cx='20' cy='7' r='2' fill='%23c91834'/%3E%3C/svg%3E");
+    }
+
+    /* Occult Sigil Watermark Background */
+    .crimson-sigil-bg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -46%);
+      width: min(880px, 94vw);
+      height: min(880px, 94vw);
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.055;
+      animation: sigilPulse 14s ease-in-out infinite alternate;
+    }
+    @keyframes sigilPulse {
+      0% { transform: translate(-50%, -46%) scale(0.98); opacity: 0.045; }
+      100% { transform: translate(-50%, -46%) scale(1.02); opacity: 0.075; }
+    }
+    .crimson-sigil-svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .crimson-section .wrap {
+      position: relative;
+      z-index: 3;
+    }
+
+    /* Header & Chant */
     .crimson-banner-header {
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
-      margin-bottom: 48px;
+      margin-bottom: 52px;
+      position: relative;
+    }
+    .crimson-chant-watermark {
+      font-family: var(--font-gothic);
+      font-size: 0.72rem;
+      letter-spacing: 0.32em;
+      color: var(--crimson);
+      opacity: 0.55;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      user-select: none;
+      text-shadow: 0 0 12px rgba(201, 24, 52, 0.4);
     }
     .game-logo-wrapper {
       max-width: 340px;
       margin-bottom: 16px;
+      filter: drop-shadow(0 0 25px rgba(201, 24, 52, 0.35));
     }
     .game-logo-wrapper img {
       width: 100%;
       height: auto;
       display: block;
-      filter: contrast(1.1) brightness(0.9);
+      filter: contrast(1.1) brightness(0.92);
     }
     .crimson-banner-header h2 {
       font-family: var(--font-gothic);
-      font-size: clamp(2.2rem, 4.2vw, 3.6rem);
-      letter-spacing: 0.05em;
+      font-size: clamp(2.3rem, 4.4vw, 3.8rem);
+      letter-spacing: 0.06em;
       color: #ffffff;
       text-transform: uppercase;
-      margin-bottom: 10px;
+      margin: 10px 0 6px;
+      text-shadow: 0 0 25px rgba(201, 24, 52, 0.45);
+    }
+    .gothic-header-divider {
+      width: 280px;
+      height: 26px;
+      margin: 8px auto 14px;
+      opacity: 0.85;
+    }
+    .gothic-header-divider svg {
+      width: 100%;
+      height: 100%;
+      display: block;
     }
     .crimson-banner-header p {
-      max-width: 600px;
+      max-width: 620px;
       color: #9fa3b2;
       font-size: 1rem;
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
     /* Crimson Editions Cards Grid */
     .editions-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
+      gap: 24px;
       align-items: stretch;
     }
     .edition-card {
-      background: #080509;
+      background: #08050a;
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 4px;
-      padding: 30px 24px;
+      padding: 34px 24px 26px;
       display: flex;
       flex-direction: column;
       position: relative;
-      transition: all 0.25s ease;
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.65);
+    }
+    .edition-card > *:not(.card-watermark):not(.card-corner) {
+      position: relative;
+      z-index: 2;
     }
     .edition-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(201, 24, 52, 0.6);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+      transform: translateY(-6px);
+      border-color: rgba(201, 24, 52, 0.65);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.85), 0 0 30px rgba(201, 24, 52, 0.2);
     }
     .edition-card.popular {
-      background: #0d070e;
+      background: #0d070f;
       border-color: rgba(201, 24, 52, 0.45);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.75), 0 0 25px rgba(201, 24, 52, 0.15);
+    }
+    .edition-card.popular:hover {
+      border-color: var(--crimson);
+      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.9), 0 0 35px rgba(201, 24, 52, 0.3);
     }
     .edition-card.ultimate {
       background: #0e0a0a;
-      border-color: rgba(200, 155, 60, 0.35);
+      border-color: rgba(200, 155, 60, 0.38);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.75), 0 0 25px rgba(200, 155, 60, 0.12);
     }
     .edition-card.ultimate:hover {
       border-color: var(--gold);
+      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.9), 0 0 35px rgba(200, 155, 60, 0.3);
     }
+
+    /* Metallic Gothic Corner Brackets */
+    .card-corner {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      pointer-events: none;
+      z-index: 3;
+      opacity: 0.4;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+    .card-corner svg {
+      width: 100%;
+      height: 100%;
+      fill: #7e8596;
+      display: block;
+    }
+    .edition-card:hover .card-corner {
+      opacity: 0.95;
+    }
+    .edition-card.popular .card-corner svg {
+      fill: var(--crimson);
+    }
+    .edition-card.ultimate .card-corner svg {
+      fill: var(--gold);
+    }
+    .corner-tl { top: 6px; left: 6px; }
+    .corner-tr { top: 6px; right: 6px; }
+    .corner-bl { bottom: 6px; left: 6px; }
+    .corner-br { bottom: 6px; right: 6px; }
+
+    /* Card Watermark Emblems (Họa tiết chìm) */
+    .card-watermark {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 270px;
+      height: 310px;
+      pointer-events: none;
+      z-index: 1;
+      transition: opacity 0.35s ease, transform 0.35s ease, filter 0.35s ease;
+    }
+    .card-watermark-svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .edition-card.tier-standard .card-watermark {
+      opacity: 0.055;
+    }
+    .edition-card.tier-standard:hover .card-watermark {
+      opacity: 0.13;
+      transform: translate(-50%, -50%) scale(1.05);
+      filter: drop-shadow(0 0 12px rgba(138, 146, 166, 0.4));
+    }
+    .edition-card.popular .card-watermark {
+      opacity: 0.075;
+    }
+    .edition-card.popular:hover .card-watermark {
+      opacity: 0.16;
+      transform: translate(-50%, -50%) scale(1.06);
+      filter: drop-shadow(0 0 20px rgba(201, 24, 52, 0.6));
+    }
+    .edition-card.ultimate .card-watermark {
+      opacity: 0.085;
+    }
+    .edition-card.ultimate:hover .card-watermark {
+      opacity: 0.18;
+      transform: translate(-50%, -50%) scale(1.06);
+      filter: drop-shadow(0 0 20px rgba(200, 155, 60, 0.6));
+    }
+
+    /* Badges */
     .edition-badge {
       position: absolute;
       top: -12px;
@@ -523,17 +694,20 @@
       border-radius: 2px;
       font-weight: 700;
       white-space: nowrap;
+      z-index: 4;
+      box-shadow: 0 4px 14px rgba(201, 24, 52, 0.4);
     }
     .edition-badge.gold-badge {
       background: #261b07;
       color: #e4c27a;
       border-color: var(--gold);
+      box-shadow: 0 4px 14px rgba(200, 155, 60, 0.35);
     }
+
+    /* Card Header */
     .edition-header {
       text-align: center;
-      padding-bottom: 20px;
-      border-bottom: 1px solid var(--line);
-      margin-bottom: 20px;
+      position: relative;
     }
     .edition-tier {
       font-family: var(--font-display);
@@ -565,21 +739,55 @@
     }
     .price-val {
       font-family: var(--font-display);
-      font-size: 2.4rem;
+      font-size: 2.45rem;
       font-weight: 900;
       color: #ffffff;
       line-height: 1;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
     }
     .price-period {
       font-size: 0.76rem;
       color: var(--muted);
       text-transform: uppercase;
     }
+
+    /* Ornate Divider inside card */
+    .edition-separator {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin: 18px 0 20px;
+    }
+    .edition-separator .sep-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
+    }
+    .edition-card.popular .edition-separator .sep-line {
+      background: linear-gradient(90deg, transparent, rgba(201, 24, 52, 0.45), transparent);
+    }
+    .edition-card.ultimate .edition-separator .sep-line {
+      background: linear-gradient(90deg, transparent, rgba(200, 155, 60, 0.45), transparent);
+    }
+    .edition-separator .sep-glyph {
+      font-size: 0.75rem;
+      color: var(--muted);
+      line-height: 1;
+    }
+    .edition-card.popular .edition-separator .sep-glyph {
+      color: var(--crimson);
+    }
+    .edition-card.ultimate .edition-separator .sep-glyph {
+      color: var(--gold);
+    }
+
+    /* Features List */
     .edition-features {
       list-style: none;
       display: grid;
       gap: 11px;
-      margin-bottom: 26px;
+      margin-bottom: 24px;
       flex: 1;
     }
     .edition-feature {
@@ -593,12 +801,14 @@
     .edition-feature .icon-check {
       color: var(--crimson);
       font-weight: 900;
-      font-size: 0.9rem;
-      line-height: 1;
-      margin-top: 2px;
+      font-size: 0.85rem;
+      line-height: 1.2;
+      flex-shrink: 0;
+      text-shadow: 0 0 8px rgba(201, 24, 52, 0.5);
     }
     .edition-card.ultimate .edition-feature .icon-check {
       color: var(--gold);
+      text-shadow: 0 0 8px rgba(200, 155, 60, 0.5);
     }
     .edition-feature.highlighted {
       color: #ffffff;
@@ -606,6 +816,45 @@
     }
     .edition-action .btn {
       width: 100%;
+    }
+
+    /* Bottom License Seal Stamp */
+    .edition-seal-stamp {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      margin-top: 15px;
+      padding-top: 13px;
+      border-top: 1px dashed rgba(255, 255, 255, 0.08);
+      font-size: 0.65rem;
+      font-family: var(--font-display);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #727787;
+      opacity: 0.75;
+      transition: opacity 0.2s ease, color 0.2s ease;
+      user-select: none;
+    }
+    .edition-seal-stamp .seal-icon {
+      font-size: 0.72rem;
+      line-height: 1;
+    }
+    .edition-card:hover .edition-seal-stamp {
+      opacity: 1;
+      color: #b0b5c4;
+    }
+    .edition-card.popular .edition-seal-stamp {
+      border-top-color: rgba(201, 24, 52, 0.22);
+    }
+    .edition-card.popular:hover .edition-seal-stamp {
+      color: #f7aab3;
+    }
+    .edition-card.ultimate .edition-seal-stamp {
+      border-top-color: rgba(200, 155, 60, 0.22);
+    }
+    .edition-card.ultimate:hover .edition-seal-stamp {
+      color: #e4c27a;
     }
 
     /* ========================================================
@@ -1438,16 +1687,101 @@
     </section>
 
     <!-- ========================================================
-         SECTION 1: CRIMSON NIGHT GAME EDITIONS (100% English & Dark Gritty)
+         SECTION 1: CRIMSON NIGHT GAME EDITIONS (Dark Gothic Watermark Aesthetic)
          ======================================================== -->
     <section class="section crimson-section" id="crimson-night">
+      <!-- Top & Bottom Ornamental Battlements Trim -->
+      <div class="crimson-trim-bar top" aria-hidden="true"></div>
+      <div class="crimson-trim-bar bottom" aria-hidden="true"></div>
+
+      <!-- Giant Occult Blood Moon / Runic Seal Watermark in Section Background -->
+      <div class="crimson-sigil-bg" aria-hidden="true">
+        <svg class="crimson-sigil-svg" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="sigilGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#c91834" stop-opacity="0.28"/>
+              <stop offset="50%" stop-color="#7a0a1a" stop-opacity="0.1"/>
+              <stop offset="100%" stop-color="#050306" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <circle cx="400" cy="400" r="390" fill="url(#sigilGlow)"/>
+          <circle cx="400" cy="400" r="380" fill="none" stroke="#c91834" stroke-width="1.5" stroke-dasharray="6 14"/>
+          <circle cx="400" cy="400" r="365" fill="none" stroke="#c91834" stroke-width="1" stroke-opacity="0.6"/>
+          <circle cx="400" cy="400" r="340" fill="none" stroke="#ffffff" stroke-width="0.8" stroke-opacity="0.3"/>
+          <g stroke="#c91834" stroke-width="1.2" stroke-opacity="0.7">
+            <line x1="400" y1="20" x2="400" y2="45"/>
+            <line x1="400" y1="755" x2="400" y2="780"/>
+            <line x1="20" y1="400" x2="45" y2="400"/>
+            <line x1="755" y1="400" x2="780" y2="400"/>
+            <line x1="131" y1="131" x2="149" y2="149"/>
+            <line x1="651" y1="651" x2="669" y2="669"/>
+            <line x1="669" y1="131" x2="651" y2="149"/>
+            <line x1="149" y1="651" x2="131" y2="669"/>
+          </g>
+          <g fill="#c91834" fill-opacity="0.6">
+            <circle cx="400" cy="35" r="4"/><circle cx="400" cy="765" r="4"/>
+            <circle cx="35" cy="400" r="4"/><circle cx="765" cy="400" r="4"/>
+            <circle cx="140" cy="140" r="3.5"/><circle cx="660" cy="660" r="3.5"/>
+            <circle cx="660" cy="140" r="3.5"/><circle cx="140" cy="660" r="3.5"/>
+            <circle cx="215" cy="68" r="3"/><circle cx="585" cy="732" r="3"/>
+            <circle cx="585" cy="68" r="3"/><circle cx="215" cy="732" r="3"/>
+            <circle cx="68" cy="215" r="3"/><circle cx="732" cy="585" r="3"/>
+            <circle cx="732" cy="215" r="3"/><circle cx="68" cy="585" r="3"/>
+          </g>
+          <circle cx="400" cy="400" r="310" fill="none" stroke="#c91834" stroke-width="2" stroke-opacity="0.8"/>
+          <circle cx="400" cy="400" r="285" fill="none" stroke="#c91834" stroke-width="1" stroke-dasharray="4 8" stroke-opacity="0.5"/>
+          <polygon points="400,105 695,400 400,695 105,400" fill="none" stroke="#c91834" stroke-width="1.8" stroke-opacity="0.75"/>
+          <polygon points="608,192 608,608 192,608 192,192" fill="none" stroke="#c91834" stroke-width="1.8" stroke-opacity="0.75"/>
+          <circle cx="400" cy="400" r="225" fill="none" stroke="#ffffff" stroke-width="1.2" stroke-opacity="0.35"/>
+          <circle cx="400" cy="400" r="190" fill="none" stroke="#c91834" stroke-width="2" stroke-opacity="0.85"/>
+          <g fill="#c91834" fill-opacity="0.3">
+            <polygon points="400,160 393,190 407,190"/>
+            <polygon points="400,640 393,610 407,610"/>
+            <polygon points="160,400 190,393 190,407"/>
+            <polygon points="640,400 610,393 610,407"/>
+            <polygon points="230,230 252,248 245,257"/>
+            <polygon points="570,570 548,552 555,543"/>
+            <polygon points="570,230 552,252 543,245"/>
+            <polygon points="230,570 248,548 257,555"/>
+          </g>
+          <circle cx="400" cy="400" r="145" fill="none" stroke="#c91834" stroke-width="1.5" stroke-dasharray="3 5" stroke-opacity="0.7"/>
+          <path d="M400,285 C463,285 515,337 515,400 C515,463 463,515 400,515 C442,475 442,325 400,285 Z" fill="#c91834" fill-opacity="0.45"/>
+          <path d="M400,295 C350,325 320,360 320,400 C320,440 350,475 400,505 C370,470 355,435 355,400 C355,365 370,330 400,295 Z" fill="#ffffff" fill-opacity="0.15"/>
+          <circle cx="400" cy="275" r="9" fill="none" stroke="#c91834" stroke-width="2" stroke-opacity="0.9"/>
+          <line x1="400" y1="284" x2="400" y2="330" stroke="#c91834" stroke-width="4" stroke-opacity="0.8"/>
+          <path d="M355,332 C375,335 390,328 400,328 C410,328 425,335 445,332 C447,337 435,340 400,338 C365,340 353,337 355,332 Z" fill="#c91834" fill-opacity="0.9"/>
+          <polygon points="392,340 400,535 408,340 400,344" fill="#c91834" fill-opacity="0.7"/>
+          <line x1="400" y1="344" x2="400" y2="520" stroke="#ffffff" stroke-width="1.2" stroke-opacity="0.5"/>
+        </svg>
+      </div>
+
       <div class="wrap">
         <div class="crimson-banner-header">
+          <div class="crimson-chant-watermark" aria-hidden="true">✦ SANGUINE ECLIPSE ✦ NOX IMPERIUM ✦ IN TENEBRIS RENASCITUR ✦ CRUOR VINCIT ✦</div>
           <div class="game-logo-wrapper">
             <img src="assets/crimson-night-logo-transparent.png" alt="Crimson Night Game Logo">
           </div>
           <div class="eyebrow crimson">Official Game Release · Action RPG</div>
           <h2>CHOOSE YOUR EDITION</h2>
+
+          <!-- Ornate Gothic Filigree Divider -->
+          <div class="gothic-header-divider" aria-hidden="true">
+            <svg viewBox="0 0 320 28" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10,14 L110,14 C120,14 125,10 135,14" stroke="#c91834" stroke-width="1.2" fill="none" opacity="0.6"/>
+              <polygon points="0,14 10,11 10,17" fill="#c91834" opacity="0.7"/>
+              <circle cx="65" cy="14" r="2" fill="#c91834" opacity="0.6"/>
+              <path d="M85,14 C90,8 100,8 105,14" stroke="#c91834" stroke-width="1" fill="none" opacity="0.5"/>
+              <circle cx="160" cy="14" r="10" fill="none" stroke="#c91834" stroke-width="1.5" stroke-dasharray="2 3"/>
+              <polygon points="160,2 170,14 160,26 150,14" fill="#2a070f" stroke="#c91834" stroke-width="1.8"/>
+              <polygon points="160,7 166,14 160,21 154,14" fill="#c91834"/>
+              <circle cx="160" cy="14" r="2.5" fill="#ffffff"/>
+              <path d="M310,14 L210,14 C200,14 195,10 185,14" stroke="#c91834" stroke-width="1.2" fill="none" opacity="0.6"/>
+              <polygon points="320,14 310,11 310,17" fill="#c91834" opacity="0.7"/>
+              <circle cx="255" cy="14" r="2" fill="#c91834" opacity="0.6"/>
+              <path d="M235,14 C230,8 220,8 215,14" stroke="#c91834" stroke-width="1" fill="none" opacity="0.5"/>
+            </svg>
+          </div>
+
           <p>
             Enter a shattered gothic realm beneath an eclipsed blood moon. Master unforgiving combat, harness forbidden blood relics, and choose your edition below.
           </p>
@@ -1455,9 +1789,35 @@
 
         <div class="editions-grid">
           <!-- Standard Edition -->
-          <div class="edition-card">
+          <div class="edition-card tier-standard">
+            <!-- 4 Corner Ornaments -->
+            <div class="card-corner corner-tl" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M0,24 L0,0 L24,0 L24,4 L4,4 L4,24 Z M6,6 L14,6 L6,14 Z"/></svg></div>
+            <div class="card-corner corner-tr" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M24,24 L24,0 L0,0 L0,4 L20,4 L20,24 Z M18,6 L10,6 L18,14 Z"/></svg></div>
+            <div class="card-corner corner-bl" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M0,0 L0,24 L24,24 L24,20 L4,20 L4,0 Z M6,18 L14,18 L6,10 Z"/></svg></div>
+            <div class="card-corner corner-br" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M24,0 L24,24 L0,24 L0,20 L20,20 L20,0 Z M18,18 L10,18 L18,10 Z"/></svg></div>
+
+            <!-- Subtle Knight Shield Watermark -->
+            <div class="card-watermark standard-watermark" aria-hidden="true">
+              <svg class="card-watermark-svg" viewBox="0 0 280 320" xmlns="http://www.w3.org/2000/svg">
+                <g fill="none" stroke="#8a92a6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="140" cy="150" r="105" stroke="#c91834" stroke-width="1" stroke-dasharray="4 6" opacity="0.6"/>
+                  <circle cx="140" cy="150" r="85" stroke="#8a92a6" stroke-width="0.8" opacity="0.3"/>
+                  <line x1="50" y1="45" x2="230" y2="255" stroke="#8a92a6" stroke-width="2.5" opacity="0.7"/>
+                  <line x1="44" y1="38" x2="38" y2="32" stroke="#8a92a6" stroke-width="4"/>
+                  <line x1="38" y1="58" x2="62" y2="34" stroke="#c91834" stroke-width="3"/>
+                  <line x1="230" y1="45" x2="50" y2="255" stroke="#8a92a6" stroke-width="2.5" opacity="0.7"/>
+                  <line x1="236" y1="38" x2="242" y2="32" stroke="#8a92a6" stroke-width="4"/>
+                  <line x1="218" y1="34" x2="242" y2="58" stroke="#c91834" stroke-width="3"/>
+                  <path d="M85,85 L195,85 C195,85 200,165 140,225 C80,165 85,85 85,85 Z" fill="#080509" fill-opacity="0.85" stroke="#8a92a6" stroke-width="2" opacity="0.9"/>
+                  <path d="M93,93 L187,93 C187,93 191,160 140,212 C89,160 93,93 93,93 Z" stroke="#c91834" stroke-width="1.2" opacity="0.7"/>
+                  <path d="M136,105 L144,105 L144,136 L175,136 L175,144 L144,144 L144,188 L136,188 L136,144 L105,144 L105,136 L136,136 Z" fill="#c91834" fill-opacity="0.6" stroke="#c91834" stroke-width="1"/>
+                  <polygon points="140,132 148,140 140,148 132,140" fill="#ffffff" fill-opacity="0.8"/>
+                </g>
+              </svg>
+            </div>
+
             <div class="edition-header">
-              <div class="edition-tier">Base Game</div>
+              <div class="edition-tier">Base Game · Ashen Knight</div>
               <h3 class="edition-title">Standard Edition</h3>
               <div class="edition-price">
                 <span class="price-currency">$</span>
@@ -1465,34 +1825,77 @@
                 <span class="price-period">USD</span>
               </div>
             </div>
+
+            <!-- Ornate Divider -->
+            <div class="edition-separator" aria-hidden="true">
+              <span class="sep-line"></span>
+              <span class="sep-glyph">❖</span>
+              <span class="sep-line"></span>
+            </div>
+
             <ul class="edition-features">
               <li class="edition-feature">
-                <span class="icon-check">✓</span>
+                <span class="icon-check">✦</span>
                 <span>Full base game: <strong>Crimson Night</strong></span>
               </li>
               <li class="edition-feature">
-                <span class="icon-check">✓</span>
+                <span class="icon-check">✦</span>
                 <span>Day-1 Blood Moon Digital Wallpaper Pack</span>
               </li>
               <li class="edition-feature">
-                <span class="icon-check">✓</span>
+                <span class="icon-check">✦</span>
                 <span>Ashen Starter Armament Pack</span>
               </li>
               <li class="edition-feature">
-                <span class="icon-check">✓</span>
+                <span class="icon-check">✦</span>
                 <span>Free lifetime balance & story patches</span>
               </li>
             </ul>
+
             <div class="edition-action">
               <button class="btn ghost-crimson" data-product="Crimson Night: Standard Edition ($49)">Pre-Order Standard ⚔</button>
+            </div>
+
+            <div class="edition-seal-stamp" aria-hidden="true">
+              <span class="seal-icon">⚔</span>
+              <span>Authentic Ashen License</span>
             </div>
           </div>
 
           <!-- Premium Edition -->
-          <div class="edition-card popular">
+          <div class="edition-card popular tier-premium">
             <div class="edition-badge">★ Most Popular</div>
+
+            <!-- 4 Corner Ornaments -->
+            <div class="card-corner corner-tl" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M0,24 L0,0 L24,0 L24,4 L4,4 L4,24 Z M6,6 L14,6 L6,14 Z"/></svg></div>
+            <div class="card-corner corner-tr" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M24,24 L24,0 L0,0 L0,4 L20,4 L20,24 Z M18,6 L10,6 L18,14 Z"/></svg></div>
+            <div class="card-corner corner-bl" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M0,0 L0,24 L24,24 L24,20 L4,20 L4,0 Z M6,18 L14,18 L6,10 Z"/></svg></div>
+            <div class="card-corner corner-br" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M24,0 L24,24 L0,24 L0,20 L20,20 L20,0 Z M18,18 L10,18 L18,10 Z"/></svg></div>
+
+            <!-- Subtle Eclipse Runeblade Watermark -->
+            <div class="card-watermark premium-watermark" aria-hidden="true">
+              <svg class="card-watermark-svg" viewBox="0 0 280 320" xmlns="http://www.w3.org/2000/svg">
+                <g fill="none" stroke="#c91834" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="140" cy="150" r="115" stroke="#c91834" stroke-width="1" stroke-dasharray="3 7" opacity="0.6"/>
+                  <circle cx="140" cy="150" r="95" stroke="#ff4760" stroke-width="1.2" opacity="0.5"/>
+                  <circle cx="140" cy="150" r="70" stroke="#c91834" stroke-width="1.8" opacity="0.8"/>
+                  <path d="M140,30 L140,55 M140,245 L140,270 M20,150 L45,150 M235,150 L260,150 M55,65 L73,83 M207,217 L225,235 M225,65 L207,83 M55,235 L73,217" stroke="#ff4760" stroke-width="2" opacity="0.75"/>
+                  <polygon points="140,78 198,180 82,180" stroke="#c91834" stroke-width="1.2" opacity="0.65"/>
+                  <polygon points="140,222 198,120 82,120" stroke="#c91834" stroke-width="1.2" opacity="0.65"/>
+                  <path d="M140,90 C173,90 200,117 200,150 C200,183 173,210 140,210 C162,190 162,110 140,90 Z" fill="#c91834" fill-opacity="0.45" stroke="#ff4760" stroke-width="1.5"/>
+                  <circle cx="140" cy="22" r="8" fill="#2b070f" stroke="#ff4760" stroke-width="2"/>
+                  <circle cx="140" cy="22" r="3" fill="#ff4760"/>
+                  <line x1="140" y1="30" x2="140" y2="68" stroke="#ff7589" stroke-width="4.5"/>
+                  <path d="M102,72 C120,76 132,68 140,68 C148,68 160,76 178,72 C181,77 170,81 140,79 C110,81 99,77 102,72 Z" fill="#ff4760" stroke="#c91834" stroke-width="1.5"/>
+                  <polygon points="132,80 140,285 148,80 140,86" fill="#c91834" fill-opacity="0.75" stroke="#ff4760" stroke-width="1.5"/>
+                  <line x1="140" y1="88" x2="140" y2="255" stroke="#ffffff" stroke-width="1.2" opacity="0.8"/>
+                  <path d="M136,115 L144,118 M144,145 L136,148 M136,175 L144,178 M144,205 L136,208" stroke="#ffffff" stroke-width="1.2" opacity="0.7"/>
+                </g>
+              </svg>
+            </div>
+
             <div class="edition-header">
-              <div class="edition-tier">Expanded Experience</div>
+              <div class="edition-tier">Expanded Experience · Eclipse Knight</div>
               <h3 class="edition-title">Premium Edition</h3>
               <div class="edition-price">
                 <span class="price-currency">$</span>
@@ -1500,38 +1903,82 @@
                 <span class="price-period">USD</span>
               </div>
             </div>
+
+            <!-- Ornate Divider -->
+            <div class="edition-separator" aria-hidden="true">
+              <span class="sep-line"></span>
+              <span class="sep-glyph">❖</span>
+              <span class="sep-line"></span>
+            </div>
+
             <ul class="edition-features">
               <li class="edition-feature highlighted">
-                <span class="icon-check">✓</span>
+                <span class="icon-check">✦</span>
                 <span>Includes all content from <strong>Standard Edition</strong></span>
               </li>
               <li class="edition-feature highlighted">
-                <span class="icon-check">✓</span>
+                <span class="icon-check">✦</span>
                 <span><strong>72-Hour Early Access</strong> prior to global launch</span>
               </li>
               <li class="edition-feature">
-                <span class="icon-check">✓</span>
+                <span class="icon-check">✦</span>
                 <span>Exclusive "Eclipse Knight" dark armor set</span>
               </li>
               <li class="edition-feature">
-                <span class="icon-check">✓</span>
+                <span class="icon-check">✦</span>
                 <span>Signature weapon: "Crimson Runeblade Greatsword"</span>
               </li>
               <li class="edition-feature">
-                <span class="icon-check">✓</span>
+                <span class="icon-check">✦</span>
                 <span>Digital Dark Fantasy Artbook & Original Orchestral OST</span>
               </li>
             </ul>
+
             <div class="edition-action">
               <button class="btn crimson" data-product="Crimson Night: Premium Edition ($69)">Pre-Order Premium ⚔</button>
+            </div>
+
+            <div class="edition-seal-stamp" aria-hidden="true">
+              <span class="seal-icon">✦</span>
+              <span>Eclipse Covenant · 72H Early Access</span>
             </div>
           </div>
 
           <!-- Ultimate Edition -->
-          <div class="edition-card ultimate">
+          <div class="edition-card ultimate tier-ultimate">
             <div class="edition-badge gold-badge">👑 Collector's Choice</div>
+
+            <!-- 4 Corner Ornaments -->
+            <div class="card-corner corner-tl" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M0,24 L0,0 L24,0 L24,4 L4,4 L4,24 Z M6,6 L14,6 L6,14 Z"/></svg></div>
+            <div class="card-corner corner-tr" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M24,24 L24,0 L0,0 L0,4 L20,4 L20,24 Z M18,6 L10,6 L18,14 Z"/></svg></div>
+            <div class="card-corner corner-bl" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M0,0 L0,24 L24,24 L24,20 L4,20 L4,0 Z M6,18 L14,18 L6,10 Z"/></svg></div>
+            <div class="card-corner corner-br" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M24,0 L24,24 L0,24 L0,20 L20,20 L20,0 Z M18,18 L10,18 L18,10 Z"/></svg></div>
+
+            <!-- Subtle Dragon Crown & Blood Chalice Watermark -->
+            <div class="card-watermark ultimate-watermark" aria-hidden="true">
+              <svg class="card-watermark-svg" viewBox="0 0 280 320" xmlns="http://www.w3.org/2000/svg">
+                <g fill="none" stroke="#c89b3c" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="140" cy="155" r="115" stroke="#c89b3c" stroke-width="1.2" stroke-dasharray="4 8" opacity="0.7"/>
+                  <circle cx="140" cy="155" r="95" stroke="#e6c373" stroke-width="1" opacity="0.5"/>
+                  <path d="M92,75 L98,42 L116,62 L140,32 L164,62 L182,42 L188,75 Z" fill="#261b07" fill-opacity="0.7" stroke="#e6c373" stroke-width="2"/>
+                  <circle cx="98" cy="40" r="3" fill="#c91834" stroke="#e6c373" stroke-width="1"/>
+                  <circle cx="140" cy="30" r="4.5" fill="#c91834" stroke="#e6c373" stroke-width="1"/>
+                  <circle cx="182" cy="40" r="3" fill="#c91834" stroke="#e6c373" stroke-width="1"/>
+                  <rect x="92" y="75" width="96" height="12" rx="2" fill="#c89b3c" fill-opacity="0.3" stroke="#e6c373" stroke-width="1.5"/>
+                  <circle cx="110" cy="81" r="2" fill="#ffffff"/><circle cx="140" cy="81" r="2.5" fill="#c91834"/><circle cx="170" cy="81" r="2" fill="#ffffff"/>
+                  <path d="M95,115 C70,105 45,120 35,145 C50,140 68,148 78,165 C62,170 52,185 50,202 C68,190 90,195 102,210" stroke="#e6c373" stroke-width="1.6" opacity="0.75"/>
+                  <path d="M185,115 C210,105 235,120 245,145 C230,140 212,148 202,165 C218,170 228,185 230,202 C212,190 190,195 178,210" stroke="#e6c373" stroke-width="1.6" opacity="0.75"/>
+                  <ellipse cx="140" cy="115" rx="36" ry="8" fill="#302008" stroke="#e6c373" stroke-width="2"/>
+                  <ellipse cx="140" cy="115" rx="30" ry="5" fill="#c91834" fill-opacity="0.8"/>
+                  <path d="M104,115 C106,155 125,178 136,182 L136,220 L120,225 L115,245 L165,245 L160,225 L144,220 L144,182 C155,178 174,155 176,115 Z" fill="#221607" fill-opacity="0.65" stroke="#e6c373" stroke-width="2"/>
+                  <circle cx="140" cy="200" r="7" fill="#c91834" stroke="#e6c373" stroke-width="1.5"/>
+                  <path d="M140,95 C146,105 148,110 140,113 C132,110 134,105 140,95 Z" fill="#ff3355" stroke="#ffffff" stroke-width="1"/>
+                </g>
+              </svg>
+            </div>
+
             <div class="edition-header">
-              <div class="edition-tier">The Definitive Tier</div>
+              <div class="edition-tier">The Definitive Tier · Blood Sovereign</div>
               <h3 class="edition-title">Ultimate Edition</h3>
               <div class="edition-price">
                 <span class="price-currency">$</span>
@@ -1539,30 +1986,44 @@
                 <span class="price-period">USD</span>
               </div>
             </div>
+
+            <!-- Ornate Divider -->
+            <div class="edition-separator" aria-hidden="true">
+              <span class="sep-line"></span>
+              <span class="sep-glyph">❖</span>
+              <span class="sep-line"></span>
+            </div>
+
             <ul class="edition-features">
               <li class="edition-feature highlighted">
-                <span class="icon-check">✓</span>
+                <span class="icon-check">✦</span>
                 <span>Includes all content from <strong>Premium Edition</strong></span>
               </li>
               <li class="edition-feature highlighted">
-                <span class="icon-check">✓</span>
+                <span class="icon-check">✦</span>
                 <span><strong>Year 1 Expansion Pass</strong> (2 major story expansions)</span>
               </li>
               <li class="edition-feature highlighted">
-                <span class="icon-check">✓</span>
+                <span class="icon-check">✦</span>
                 <span>Legendary Mount: "Nightmare Dreadsteed"</span>
               </li>
               <li class="edition-feature">
-                <span class="icon-check">✓</span>
+                <span class="icon-check">✦</span>
                 <span>Exclusive "Blood Eclipse" execution animation</span>
               </li>
               <li class="edition-feature">
-                <span class="icon-check">✓</span>
+                <span class="icon-check">✦</span>
                 <span>20% hardware discount voucher for NEO Gaming series</span>
               </li>
             </ul>
+
             <div class="edition-action">
               <button class="btn primary" style="background:#221808;color:#e8c67d;border-color:rgba(200,155,60,0.5)" data-product="Crimson Night: Ultimate Edition ($99)">Pre-Order Ultimate 👑</button>
+            </div>
+
+            <div class="edition-seal-stamp" aria-hidden="true">
+              <span class="seal-icon">👑</span>
+              <span>Imperial Sovereign Order · All Expansions</span>
             </div>
           </div>
         </div>
