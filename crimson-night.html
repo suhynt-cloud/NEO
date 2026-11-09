@@ -4299,24 +4299,9 @@
          ======================================================== -->
     <section class="section collab-section" id="halo-collab">
       <div class="wrap collab-grid">
-        <div class="collab-poster-wrap" onclick="openLightbox('assets/crimson-night-official-logo.png', 'HALO x CRIMSON NIGHT: Eclipse of the Damned', 'Official crossover key art featuring Master Chief and the Gothic Knight amidst ruined battlegrounds under the blood moon.')">
+        <div class="collab-poster-wrap" onclick="openLightbox('assets/trailer-scene-4-halo-crossover.jpg', 'HALO x CRIMSON NIGHT: Eclipse of the Damned', 'Official crossover key art featuring Master Chief and the Gothic Knight amidst ruined battlegrounds under the blood moon.')">
           <div class="collab-tag-float">Official Crossover Event</div>
-          <svg viewBox="0 0 540 380" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block">
-            <defs>
-              <linearGradient id="collabBg" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#0a141d"/>
-                <stop offset="50%" stop-color="#14070e"/>
-                <stop offset="100%" stop-color="#040205"/>
-              </linearGradient>
-            </defs>
-            <rect width="540" height="380" fill="url(#collabBg)"/>
-            <circle cx="270" cy="160" r="110" fill="#c91834" fill-opacity="0.25"/>
-            <circle cx="270" cy="160" r="80" fill="#040205"/>
-            <path d="M220,120 L270,70 L320,120 L270,260 Z" fill="none" stroke="#8be5e3" stroke-width="2.5" opacity="0.8"/>
-            <path d="M270,90 L270,230" stroke="#c91834" stroke-width="3"/>
-            <text x="270" y="320" font-family="'Orbitron', sans-serif" font-size="15" fill="#ffffff" text-anchor="middle" font-weight="800" letter-spacing="4">HALO ✕ CRIMSON NIGHT</text>
-            <text x="270" y="345" font-family="'Orbitron', sans-serif" font-size="9" fill="#8be5e3" text-anchor="middle" letter-spacing="2">ECLIPSE OF THE DAMNED · FALL 2026</text>
-          </svg>
+          <img src="assets/trailer-scene-4-halo-crossover.jpg" alt="Halo x Crimson Night Collaboration — Master Chief and Kaelen" style="width:100%;height:100%;object-fit:cover;display:block">
           <div class="collab-tag-float-crimson">Limited Time Event</div>
         </div>
 
@@ -4358,7 +4343,7 @@
 
           <div class="hero-ctas">
             <button class="btn crimson" data-product="Halo x Crimson Night: Collab Expansion Bundle ($29)">Get Collab Bundle ($29) ⚡</button>
-            <button class="btn ghost" onclick="openLightbox('assets/crimson-night-official-logo.png', 'HALO x CRIMSON NIGHT: Eclipse of the Damned', 'Official crossover key art featuring Master Chief and the Gothic Knight amidst ruined battlegrounds under the blood moon.')">View Key Art HD ↗</button>
+            <button class="btn ghost" onclick="openLightbox('assets/trailer-scene-4-halo-crossover.jpg', 'HALO x CRIMSON NIGHT: Eclipse of the Damned', 'Official crossover key art featuring Master Chief and the Gothic Knight amidst ruined battlegrounds under the blood moon.')">View Key Art HD ↗</button>
           </div>
         </div>
       </div>
@@ -4423,7 +4408,25 @@
             </div>
           </div>
 
-          <!-- Item 5: Official Game Logo -->
+          <!-- Item 5: Kaelen Blood Moon Keyframe -->
+          <div class="gallery-item" data-category="concept" onclick="openLightbox('assets/trailer-kaelen-bloodmoon.jpg', 'Sir Kaelen Vane — Blood Moon Keyframe', 'Cinematic keyframe of Kaelen under the boiling blood eclipse with black eyepatch and Valdorian War Spear.')">
+            <img src="assets/trailer-kaelen-bloodmoon.jpg" alt="Sir Kaelen Vane Blood Moon Keyframe">
+            <div class="gallery-overlay">
+              <h4>Sir Kaelen: Blood Eclipse</h4>
+              <span>Cinematic Trailer Keyframe</span>
+            </div>
+          </div>
+
+          <!-- Item 6: Halo x Crimson Night Crossover -->
+          <div class="gallery-item" data-category="collab" onclick="openLightbox('assets/trailer-scene-4-halo-crossover.jpg', 'HALO x CRIMSON NIGHT: Eclipse of the Damned', 'Master Chief and Sir Kaelen Vane back-to-back beneath the blood moon.')">
+            <img src="assets/trailer-scene-4-halo-crossover.jpg" alt="Halo x Crimson Night Crossover">
+            <div class="gallery-overlay">
+              <h4>Halo ✕ Crimson Night</h4>
+              <span>Official Crossover Key Art</span>
+            </div>
+          </div>
+
+          <!-- Item 7: Official Game Logo -->
           <div class="gallery-item" data-category="logo" onclick="openLightbox('assets/crimson-night-official-logo.png', 'Crimson Night — Official Game Logo', 'Official high-contrast brand emblem with cursive red initial and fractured eclipse crest.')">
             <img src="assets/crimson-night-official-logo.png" alt="Crimson Night Official Game Logo">
             <div class="gallery-overlay">
@@ -4432,7 +4435,7 @@
             </div>
           </div>
 
-          <!-- Item 6: NEO Official Logo -->
+          <!-- Item 8: NEO Official Logo -->
           <div class="gallery-item" data-category="hardware" onclick="openLightbox('assets/neo-official-logo.png', 'NEO Official Hardware Partner Logo', 'Official co-engineering partner branding.')">
             <img src="assets/neo-official-logo.png" alt="NEO Official Partner Logo">
             <div class="gallery-overlay">
@@ -4992,7 +4995,15 @@
     function reloadMinigameIframe() {
       const frame = document.getElementById('minigame-iframe');
       if (frame) {
-        frame.src = frame.src;
+        if (frame.srcdoc && frame.srcdoc.length > 500) {
+          const doc = frame.srcdoc;
+          frame.srcdoc = '';
+          setTimeout(() => { frame.srcdoc = doc; }, 60);
+        } else if (window.GRIM_CHESS_HTML) {
+          frame.srcdoc = window.GRIM_CHESS_HTML;
+        } else {
+          frame.src = frame.src;
+        }
       }
     }
 
@@ -5944,13 +5955,304 @@
       });
     }
 
+    // Multi-path candidates for each soundtrack on GitHub Pages or local storage
+    const OST_FILE_CANDIDATES = [
+      [
+        'assets/soundtracks/track-1-crimson-night.mp3',
+        'assets/track-1-crimson-night.mp3',
+        'assets/track1-crimson-moon-pyre.mp3',
+        'track-1-crimson-night.mp3',
+        'track1-crimson-moon-pyre.mp3'
+      ],
+      [
+        'assets/soundtracks/track-2-kyrie-eleison.mp3',
+        'assets/track-2-kyrie-eleison.mp3',
+        'assets/track2-kyrie-eleison-requiem.mp3',
+        'track-2-kyrie-eleison.mp3',
+        'track2-kyrie-eleison-requiem.mp3'
+      ],
+      [
+        'assets/soundtracks/track-3-burning-heavens.mp3',
+        'assets/track-3-burning-heavens.mp3',
+        'assets/track3-fading-embers-lament.mp3',
+        'track-3-burning-heavens.mp3',
+        'track3-fading-embers-lament.mp3'
+      ],
+      [
+        'assets/soundtracks/track-4-weeping-archon.mp3',
+        'assets/track-4-weeping-archon.mp3',
+        'assets/track4-choral-crescendo.mp3',
+        'track-4-weeping-archon.mp3',
+        'track4-choral-crescendo.mp3'
+      ],
+      [
+        'assets/soundtracks/track-5-blood-eclipse.mp3',
+        'assets/track-5-blood-eclipse.mp3',
+        'assets/track5-valdorian-overture.mp3',
+        'track-5-blood-eclipse.mp3',
+        'track5-valdorian-overture.mp3'
+      ]
+    ];
+    let ostCandidateIdx = 0;
+
+    // ========================================================
+    // PROCEDURAL WEB AUDIO GOTHIC SYMPHONY ENGINE (100% RELIABLE ZERO-404 FALLBACK)
+    // ========================================================
+    let ostSynthCtx = null;
+    let isSynthOstActive = false;
+    let synthOstTimer = null;
+    let synthTicker = null;
+    let synthElapsedSec = 0;
+    let synthTotalDurationSec = 208;
+    let synthMasterGain = null;
+    let synthStep = 0;
+
+    const SYNTH_TRACK_PROFILES = [
+      {
+        dur: 208,
+        modeName: 'GOTHIC METAL / CHORAL ANTHEM',
+        tempoMs: 240,
+        chords: [[146.83, 220.00, 293.66], [116.54, 174.61, 233.08], [98.00, 146.83, 196.00], [110.00, 164.81, 220.00]],
+        leadNotes: [293.66, 349.23, 392.00, 440.00, 349.23, 329.63, 293.66, 261.63],
+        wave: 'sawtooth',
+        bell: true,
+        bass: 73.42
+      },
+      {
+        dur: 199,
+        modeName: 'CATHEDRAL REQUIEM PIPE ORGAN',
+        tempoMs: 380,
+        chords: [[146.83, 220.00, 293.66, 349.23], [130.81, 196.00, 261.63, 329.63], [116.54, 174.61, 233.08, 293.66], [110.00, 164.81, 220.00, 277.18]],
+        leadNotes: [440.00, 392.00, 349.23, 329.63, 293.66, 277.18, 293.66, 220.00],
+        wave: 'sine',
+        organHarmonics: true,
+        bass: 55.00
+      },
+      {
+        dur: 228,
+        modeName: 'MELANCHOLIC CELLO & SANCTUARY LAMENT',
+        tempoMs: 340,
+        chords: [[110.00, 164.81, 220.00], [130.81, 196.00, 261.63], [98.00, 146.83, 196.00], [82.41, 123.47, 164.81]],
+        leadNotes: [220.00, 261.63, 293.66, 329.63, 293.66, 261.63, 246.94, 220.00],
+        wave: 'triangle',
+        vibrato: true,
+        bass: 55.00
+      },
+      {
+        dur: 221,
+        modeName: 'TITAN BOSS DIRGE & DRUM PULSE',
+        tempoMs: 280,
+        chords: [[73.42, 110.00, 155.56], [65.41, 98.00, 138.59], [58.27, 87.31, 123.47], [55.00, 82.41, 116.54]],
+        leadNotes: [155.56, 146.83, 138.59, 130.81, 123.47, 116.54, 110.00, 73.42],
+        wave: 'sawtooth',
+        warDrums: true,
+        bass: 46.25
+      },
+      {
+        dur: 227,
+        modeName: 'HIGH-OCTANE FAST GOTHIC BATTLE',
+        tempoMs: 160,
+        chords: [[82.41, 123.47, 164.81], [98.00, 146.83, 196.00], [110.00, 164.81, 220.00], [73.42, 110.00, 146.83]],
+        leadNotes: [329.63, 392.00, 440.00, 493.88, 523.25, 493.88, 440.00, 392.00],
+        wave: 'sawtooth',
+        fastPulse: true,
+        bass: 82.41
+      }
+    ];
+
+    function initOstSynthContext() {
+      if (!ostSynthCtx) {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (AudioCtx) {
+          ostSynthCtx = new AudioCtx();
+          synthMasterGain = ostSynthCtx.createGain();
+          synthMasterGain.gain.setValueAtTime((ostAudio ? ostAudio.volume : 0.85), ostSynthCtx.currentTime);
+          synthMasterGain.connect(ostSynthCtx.destination);
+        }
+      }
+      if (ostSynthCtx && ostSynthCtx.state === 'suspended') {
+        ostSynthCtx.resume().catch(() => {});
+      }
+    }
+
+    function startSynthOst() {
+      initOstSynthContext();
+      if (!ostSynthCtx) return;
+      isSynthOstActive = true;
+      isOstPlaying = true;
+
+      const profile = SYNTH_TRACK_PROFILES[currentOstIndex] || SYNTH_TRACK_PROFILES[0];
+      synthTotalDurationSec = profile.dur;
+
+      ostMasterIcon.textContent = '❚❚';
+      ostStatusDot.classList.add('playing');
+      ostStatusText.textContent = 'VALDORIA CATHEDRAL SYNTH • 96kHz LOSSLESS';
+      ostDisc.classList.add('spinning');
+      ostTonearm.classList.add('active');
+
+      const activeRow = document.getElementById('ost-track-row-' + currentOstIndex);
+      if (activeRow) activeRow.classList.add('playing');
+      const activeBtn = document.getElementById('ost-play-btn-' + currentOstIndex);
+      if (activeBtn) activeBtn.textContent = '❚❚';
+
+      clearInterval(synthOstTimer);
+      clearInterval(synthTicker);
+
+      // Play musical note sequence on tempo
+      synthOstTimer = setInterval(() => {
+        if (!isOstPlaying || !isSynthOstActive || !ostSynthCtx) return;
+        playSynthOstStep(profile);
+      }, profile.tempoMs);
+
+      // Update progress bar & timeline counter every 200ms
+      synthTicker = setInterval(() => {
+        if (!isOstPlaying || !isSynthOstActive) return;
+        synthElapsedSec += 0.2;
+        if (synthElapsedSec >= synthTotalDurationSec) {
+          synthElapsedSec = 0;
+          if (ostLoopMode === 'one') {
+            // Repeat track
+          } else if (ostLoopMode === 'all') {
+            nextOstTrack();
+          } else {
+            pauseOst();
+          }
+          return;
+        }
+
+        const pct = Math.min(100, (synthElapsedSec / synthTotalDurationSec) * 100);
+        ostProgressFill.style.width = pct + '%';
+        ostProgressHandle.style.left = pct + '%';
+
+        const curMin = Math.floor(synthElapsedSec / 60);
+        const curSec = Math.floor(synthElapsedSec % 60).toString().padStart(2, '0');
+        ostCurrentTimeEl.textContent = curMin + ':' + curSec;
+      }, 200);
+    }
+
+    function playSynthOstStep(profile) {
+      if (!ostSynthCtx || ostSynthCtx.state !== 'running') return;
+      const t = ostSynthCtx.currentTime;
+      synthStep = (synthStep + 1) % 32;
+
+      // 1. Play Chord Pad
+      const chordIdx = Math.floor(synthStep / 8) % profile.chords.length;
+      const chordFreqs = profile.chords[chordIdx];
+      if (synthStep % 8 === 0) {
+        chordFreqs.forEach(f => {
+          const osc = ostSynthCtx.createOscillator();
+          const g = ostSynthCtx.createGain();
+          const flt = ostSynthCtx.createBiquadFilter();
+
+          osc.type = profile.wave;
+          osc.frequency.setValueAtTime(f, t);
+
+          flt.type = 'lowpass';
+          flt.frequency.setValueAtTime(profile.organHarmonics ? 1800 : 950, t);
+
+          const dur = (profile.tempoMs * 8) / 1000;
+          g.gain.setValueAtTime(0.001, t);
+          g.gain.linearRampToValueAtTime(profile.organHarmonics ? 0.05 : 0.035, t + 0.15);
+          g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+
+          osc.connect(flt);
+          flt.connect(g);
+          g.connect(synthMasterGain);
+
+          osc.start(t);
+          osc.stop(t + dur);
+        });
+      }
+
+      // 2. Play Gothic Bassline
+      if (synthStep % 2 === 0) {
+        const bassOsc = ostSynthCtx.createOscillator();
+        const bassGain = ostSynthCtx.createGain();
+        bassOsc.type = 'triangle';
+        bassOsc.frequency.setValueAtTime(profile.bass, t);
+
+        const bDur = (profile.tempoMs * 1.8) / 1000;
+        bassGain.gain.setValueAtTime(0.09, t);
+        bassGain.gain.exponentialRampToValueAtTime(0.001, t + bDur);
+
+        bassOsc.connect(bassGain);
+        bassGain.connect(synthMasterGain);
+        bassOsc.start(t);
+        bassOsc.stop(t + bDur);
+      }
+
+      // 3. Play Melody Lead Note
+      const leadIdx = synthStep % profile.leadNotes.length;
+      const leadNote = profile.leadNotes[leadIdx];
+      const leadOsc = ostSynthCtx.createOscillator();
+      const leadGain = ostSynthCtx.createGain();
+
+      leadOsc.type = profile.wave;
+      leadOsc.frequency.setValueAtTime(leadNote, t);
+      if (profile.vibrato) {
+        leadOsc.frequency.linearRampToValueAtTime(leadNote * 1.015, t + 0.12);
+        leadOsc.frequency.linearRampToValueAtTime(leadNote * 0.99, t + 0.22);
+      }
+
+      const lDur = (profile.tempoMs * 1.6) / 1000;
+      leadGain.gain.setValueAtTime(0.04, t);
+      leadGain.gain.exponentialRampToValueAtTime(0.001, t + lDur);
+
+      leadOsc.connect(leadGain);
+      leadGain.connect(synthMasterGain);
+      leadOsc.start(t);
+      leadOsc.stop(t + lDur);
+
+      // 4. Church Bell / War Drum Accent
+      if (profile.bell && synthStep % 16 === 0) {
+        const bellOsc = ostSynthCtx.createOscillator();
+        const bellGain = ostSynthCtx.createGain();
+        bellOsc.type = 'sine';
+        bellOsc.frequency.setValueAtTime(880, t);
+        bellGain.gain.setValueAtTime(0.08, t);
+        bellGain.gain.exponentialRampToValueAtTime(0.0001, t + 1.8);
+        bellOsc.connect(bellGain);
+        bellGain.connect(synthMasterGain);
+        bellOsc.start(t);
+        bellOsc.stop(t + 1.8);
+      }
+    }
+
+    function pauseSynthOst() {
+      isOstPlaying = false;
+      clearInterval(synthOstTimer);
+      clearInterval(synthTicker);
+      ostMasterIcon.textContent = '▶';
+      ostStatusDot.classList.remove('playing');
+      ostStatusText.textContent = 'PAUSED • STANDBY';
+      ostDisc.classList.remove('spinning');
+      ostTonearm.classList.remove('active');
+
+      const activeRow = document.getElementById('ost-track-row-' + currentOstIndex);
+      if (activeRow) activeRow.classList.remove('playing');
+      const activeBtn = document.getElementById('ost-play-btn-' + currentOstIndex);
+      if (activeBtn) activeBtn.textContent = '▶';
+    }
+
+    function stopSynthOst() {
+      pauseSynthOst();
+      isSynthOstActive = false;
+      synthElapsedSec = 0;
+      synthStep = 0;
+    }
+
     // Load track metadata into the player UI
     function loadOstTrack(idx, autoPlay = false) {
       if (idx < 0 || idx >= OST_TRACKS.length) return;
       currentOstIndex = idx;
       const track = OST_TRACKS[idx];
+      ostCandidateIdx = 0;
 
-      ostAudio.src = track.file;
+      stopSynthOst();
+
+      const candidates = OST_FILE_CANDIDATES[idx] || [track.file];
+      ostAudio.src = candidates[0];
+
       ostNowTitle.textContent = track.title;
       ostNowDesc.textContent = track.subtitle;
       ostNowGenre.textContent = track.genre;
@@ -5980,6 +6282,23 @@
       }
     }
 
+    // Audio error event: automatically try fallback candidate paths or switch to procedural synth
+    ostAudio.addEventListener('error', () => {
+      ostCandidateIdx++;
+      const candidates = OST_FILE_CANDIDATES[currentOstIndex] || [];
+      if (ostCandidateIdx < candidates.length) {
+        ostAudio.src = candidates[ostCandidateIdx];
+        if (isOstPlaying) {
+          ostAudio.play().catch(() => {});
+        }
+      } else {
+        // All static MP3 files unavailable on host/GitHub -> start Synth Engine seamlessly
+        if (isOstPlaying) {
+          startSynthOst();
+        }
+      }
+    });
+
     // Playback control functions
     function toggleOstPlayback() {
       if (isOstPlaying) {
@@ -5998,8 +6317,14 @@
         if (typeof toggleTrailerPlayback === 'function') toggleTrailerPlayback();
       }
 
+      if (isSynthOstActive) {
+        startSynthOst();
+        return;
+      }
+
       ostAudio.play().then(() => {
         isOstPlaying = true;
+        isSynthOstActive = false;
         ostMasterIcon.textContent = '❚❚';
         ostStatusDot.classList.add('playing');
         ostStatusText.textContent = 'STREAMING • 96kHz LOSSLESS';
@@ -6012,11 +6337,23 @@
         const activeBtn = document.getElementById('ost-play-btn-' + currentOstIndex);
         if (activeBtn) activeBtn.textContent = '❚❚';
       }).catch(err => {
-        console.warn('Playback error or blocked by policy:', err);
+        ostCandidateIdx++;
+        const candidates = OST_FILE_CANDIDATES[currentOstIndex] || [];
+        if (ostCandidateIdx < candidates.length) {
+          ostAudio.src = candidates[ostCandidateIdx];
+          ostAudio.play().catch(() => startSynthOst());
+        } else {
+          startSynthOst();
+        }
       });
     }
 
     function pauseOst() {
+      if (isSynthOstActive) {
+        pauseSynthOst();
+        return;
+      }
+
       ostAudio.pause();
       isOstPlaying = false;
       ostMasterIcon.textContent = '▶';
@@ -6052,8 +6389,12 @@
     }
 
     function prevOstTrack() {
-      // If played more than 3 seconds, restart current track
-      if (ostAudio.currentTime > 3) {
+      if (isSynthOstActive) {
+        if (synthElapsedSec > 3) {
+          synthElapsedSec = 0;
+          return;
+        }
+      } else if (ostAudio.currentTime > 3) {
         ostAudio.currentTime = 0;
         return;
       }
@@ -6095,7 +6436,7 @@
 
     // Audio progress & timeline events
     ostAudio.addEventListener('timeupdate', () => {
-      if (!ostAudio.duration) return;
+      if (isSynthOstActive || !ostAudio.duration) return;
       const cur = ostAudio.currentTime;
       const dur = ostAudio.duration;
       const pct = (cur / dur) * 100;
@@ -6137,7 +6478,11 @@
       const rect = bar.getBoundingClientRect();
       const clickX = e.clientX - rect.left;
       const pct = Math.max(0, Math.min(1, clickX / rect.width));
-      if (ostAudio.duration) {
+      if (isSynthOstActive) {
+        synthElapsedSec = pct * synthTotalDurationSec;
+        ostProgressFill.style.width = (pct * 100) + '%';
+        ostProgressHandle.style.left = (pct * 100) + '%';
+      } else if (ostAudio.duration) {
         ostAudio.currentTime = pct * ostAudio.duration;
       }
     }
@@ -6145,7 +6490,10 @@
     // Volume & Mute Controls
     function setOstVolume(val) {
       const v = val / 100;
-      ostAudio.volume = v;
+      if (ostAudio) ostAudio.volume = v;
+      if (synthMasterGain && ostSynthCtx) {
+        synthMasterGain.gain.setValueAtTime(v, ostSynthCtx.currentTime);
+      }
       document.getElementById('ost-volume-pct').textContent = Math.round(val) + '%';
       if (v > 0 && isOstMuted) {
         isOstMuted = false;
@@ -6161,14 +6509,20 @@
       const icon = document.getElementById('ost-mute-icon');
       if (isOstMuted) {
         isOstMuted = false;
-        ostAudio.volume = previousVolume;
+        if (ostAudio) ostAudio.volume = previousVolume;
+        if (synthMasterGain && ostSynthCtx) {
+          synthMasterGain.gain.setValueAtTime(previousVolume, ostSynthCtx.currentTime);
+        }
         range.value = Math.round(previousVolume * 100);
         document.getElementById('ost-volume-pct').textContent = Math.round(previousVolume * 100) + '%';
         icon.textContent = '🔊';
       } else {
-        previousVolume = ostAudio.volume || 0.85;
+        previousVolume = (ostAudio && ostAudio.volume) ? ostAudio.volume : 0.85;
         isOstMuted = true;
-        ostAudio.volume = 0;
+        if (ostAudio) ostAudio.volume = 0;
+        if (synthMasterGain && ostSynthCtx) {
+          synthMasterGain.gain.setValueAtTime(0, ostSynthCtx.currentTime);
+        }
         range.value = 0;
         document.getElementById('ost-volume-pct').textContent = '0%';
         icon.textContent = '🔇';
@@ -6210,7 +6564,8 @@
           // Dynamic harmonic motion combined with noise formula
           const freqMultiplier = Math.sin(ostAnimPhase * 2 + i * 0.45) * 0.35 + 0.65;
           const bassBoost = (i < 8) ? (Math.cos(ostAnimPhase * 3 + i) * 0.4 + 0.6) : 0.4;
-          const targetHeight = (freqMultiplier * 0.7 + bassBoost * 0.3) * (h - 10) * (ostAudio.volume || 0.8);
+          const vol = (isSynthOstActive ? (previousVolume || 0.85) : (ostAudio.volume || 0.8));
+          const targetHeight = (freqMultiplier * 0.7 + bassBoost * 0.3) * (h - 10) * vol;
           barHeight = Math.max(5, targetHeight);
         } else {
           // Sleeping state
@@ -6253,5 +6608,8 @@
 
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+  <!-- Supplementary Image Asset Bundle for GitHub Pages & Local Viewing -->
+  <script src="crimson-night-images.js"></script>
+  <script src="assets/crimson-night-images.js"></script>
 </body>
 </html>
