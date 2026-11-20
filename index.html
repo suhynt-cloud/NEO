@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -3098,49 +3098,49 @@
        ======================================================== -->
     <style id="portal-transition-styles">
     /* ========================================================
-       1. LIVING LOGO & CINEMA ART POLISH (NON-MONOTONOUS MOTION)
+       1. LIVING LOGO & CINEMA ART POLISH (FRAMELESS & ENLARGED)
        ======================================================== */
     .brand, .game-brand, .neo-cobrand, .hero-official-logo-wrap, .game-logo-wrapper {
       position: relative;
-      overflow: hidden;
+      overflow: visible !important;
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      padding: 0 !important;
       isolation: isolate;
       transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1), filter 0.42s ease;
       will-change: transform, filter;
     }
-    .brand::after, .game-brand::after, .neo-cobrand::after,
-    .hero-official-logo-wrap::after, .game-logo-wrapper::after {
-      content: "";
-      position: absolute;
-      inset: -20% -60%;
-      background: linear-gradient(112deg, transparent 36%, rgba(255, 255, 255, 0.24) 48%, rgba(139, 229, 227, 0.26) 52%, transparent 64%);
-      transform: translateX(-120%) skewX(-18deg);
-      pointer-events: none;
-      animation: logoSpecularSweep 6.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    .brand-logo-img {
+      height: 44px !important;
+      width: auto !important;
+      filter: drop-shadow(0 0 14px rgba(139, 229, 227, 0.45)) drop-shadow(0 0 28px rgba(167, 139, 250, 0.28)) !important;
+      animation: neoLogoGlow 4.6s ease-in-out infinite !important;
     }
-    .hero-official-logo-wrap::after, .game-brand::after {
-      background: linear-gradient(112deg, transparent 36%, rgba(255, 215, 220, 0.28) 48%, rgba(255, 42, 75, 0.30) 52%, transparent 64%);
+    .game-logo-wrapper {
+      max-width: 460px !important;
+      margin: 0 auto 22px !important;
+    }
+    .game-logo-wrapper img {
+      width: 100% !important;
+      height: auto !important;
+      filter: drop-shadow(0 0 18px rgba(235, 11, 42, 0.55)) drop-shadow(0 8px 26px rgba(0, 0, 0, 0.85)) !important;
+      animation: cnLogoGlow 4.8s ease-in-out infinite !important;
     }
     .brand:hover, .game-brand:hover, .neo-cobrand:hover {
-      transform: translateY(-1px) scale(1.03);
+      transform: translateY(-1px) scale(1.06);
     }
-    .hero-official-logo-img, .brand-logo-img, .game-brand-logo-img, .neo-cobrand-logo-img {
-      animation: logoAmbientBreath 5.2s ease-in-out infinite;
+    .portal-center-emblem {
+      width: 56% !important;
+      max-width: 235px !important;
     }
-    .hero-official-logo-wrap {
-      animation: heroLogoEntrance 1.1s cubic-bezier(0.22, 1, 0.36, 1) both;
+    @keyframes neoLogoGlow {
+      0%, 100% { filter: drop-shadow(0 0 12px rgba(139, 229, 227, 0.42)) drop-shadow(0 0 24px rgba(167, 139, 250, 0.22)); }
+      50%      { filter: drop-shadow(0 0 22px rgba(139, 229, 227, 0.78)) drop-shadow(0 0 38px rgba(167, 139, 250, 0.48)) brightness(1.08); }
     }
-    @keyframes logoSpecularSweep {
-      0%, 62% { transform: translateX(-130%) skewX(-18deg); opacity: 0; }
-      72%     { opacity: 1; }
-      100%    { transform: translateX(130%) skewX(-18deg); opacity: 0; }
-    }
-    @keyframes logoAmbientBreath {
-      0%, 100% { filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.14)); }
-      50%      { filter: drop-shadow(0 0 22px rgba(235, 11, 42, 0.38)) brightness(1.06); }
-    }
-    @keyframes heroLogoEntrance {
-      0%   { opacity: 0; transform: translateY(16px) scale(0.95); filter: blur(8px); }
-      100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0px); }
+    @keyframes cnLogoGlow {
+      0%, 100% { filter: drop-shadow(0 0 16px rgba(235, 11, 42, 0.48)) drop-shadow(0 8px 24px rgba(0, 0, 0, 0.8)); }
+      50%      { filter: drop-shadow(0 0 30px rgba(255, 42, 75, 0.82)) drop-shadow(0 0 54px rgba(201, 24, 52, 0.42)) brightness(1.07); }
     }
 
     /* ========================================================
@@ -3370,7 +3370,7 @@
 
   <script>
     (function initAaaPortalAndLogoEngine() {
-      const SITE_ROLE = 'neo'; // 'neo' or 'crimson'
+      const SITE_ROLE = 'neo';
 
       // 1. Subtle 3D Magnetic Tilt on Hero Logos for tactile luxury feel
       document.querySelectorAll('.hero-official-logo-wrap, .game-logo-wrapper').forEach(wrap => {
@@ -3378,14 +3378,14 @@
           const r = wrap.getBoundingClientRect();
           const dx = (e.clientX - (r.left + r.width / 2)) / (r.width / 2);
           const dy = (e.clientY - (r.top + r.height / 2)) / (r.height / 2);
-          wrap.style.transform = perspective(700px) rotateX(deg) rotateY(deg) scale(1.025);
+          wrap.style.transform = `perspective(700px) rotateX(${(-dy * 7).toFixed(2)}deg) rotateY(${(dx * 9).toFixed(2)}deg) scale(1.025)`;
         });
         wrap.addEventListener('mouseleave', () => {
           wrap.style.transform = '';
         });
       });
 
-      const CRIMSON_SVG = 
+      const CRIMSON_SVG = `
         <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <defs>
             <radialGradient id="pcGlowX" cx="50%" cy="50%" r="50%">
@@ -3424,9 +3424,9 @@
             <circle cx="300" cy="300" r="76" fill="none" stroke="#ffd166" stroke-width="1.2" stroke-dasharray="4 6" opacity="0.72"/>
           </g>
         </svg>
-      ;
+      `;
 
-      const COSMIC_DIAMOND_SVG = 
+      const COSMIC_DIAMOND_SVG = `
         <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <defs>
             <radialGradient id="pnNebulaX" cx="50%" cy="50%" r="50%">
@@ -3473,7 +3473,7 @@
             <path d="M300,114 L306,131 L323,137 L306,143 L300,160 L294,143 L277,137 L294,131 Z" fill="#ffffff"/>
           </g>
         </svg>
-      ;
+      `;
 
       function startPortalCanvas(canvas, mode) {
         const ctx = canvas.getContext('2d');
@@ -3533,8 +3533,8 @@
               ctx.beginPath();
               ctx.arc(x, y, p.size, 0, Math.PI * 2);
               ctx.fillStyle = p.gold
-                ? gba(255, 209, 102, )
-                : gba(255, 42, 75, );
+                ? `rgba(255, 209, 102, ${p.alpha})`
+                : `rgba(255, 42, 75, ${p.alpha})`;
               ctx.shadowBlur = 12;
               ctx.shadowColor = p.gold ? '#ffd166' : '#eb0b2a';
               ctx.fill();
@@ -3588,25 +3588,25 @@
         el.setAttribute('aria-hidden', 'true');
 
         const isCrimson = (mode === 'crimson');
-        el.innerHTML = 
+        el.innerHTML = `
           <canvas class="portal-fx-canvas"></canvas>
           <div class="portal-stage">
             <div class="portal-shockwave"></div>
             <div class="portal-shockwave" style="animation-delay: 1.1s;"></div>
-            
+            ${isCrimson ? CRIMSON_SVG : COSMIC_DIAMOND_SVG}
             <div class="portal-center-emblem">
-              <img src="" alt="">
+              <img src="${getLogoSrc(mode)}" alt="${isCrimson ? 'Crimson Night' : 'NEO'}">
             </div>
           </div>
           <div class="portal-meta">
-            <div class="portal-title"></div>
+            <div class="portal-title">${isCrimson ? 'CRIMSON NIGHT' : 'N E O'}</div>
             <div class="portal-sub-row">
-              <span class="portal-phase-text"></span>
+              <span class="portal-phase-text">${isCrimson ? 'AWAKENING THE BLOOD ECLIPSE...' : 'CALIBRATING COSMIC PRISMS...'}</span>
               <span class="portal-pct">00%</span>
             </div>
             <div class="portal-bar-track"><div class="portal-bar-fill"></div></div>
           </div>
-        ;
+        `;
         document.body.appendChild(el);
         el._stopCanvas = startPortalCanvas(el.querySelector('.portal-fx-canvas'), mode);
         return el;
@@ -4123,6 +4123,815 @@
         };
         lbDetails.appendChild(dlBtn);
       }
+    })();
+  </script>
+  <!-- ========================================================
+       AAA OFFICIAL COMMERCE, MANDATORY AUTH GATE & PAYMENT GATEWAY
+       (Visa · Credit Card · PayPal + Corporate Trust Compliance Strip)
+       ======================================================== -->
+  <style id="aaa-commerce-styles">
+    /* Corporate & Publisher Trust Strip above Footer */
+    .trust-compliance-bar {
+      position: relative;
+      z-index: 2;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: linear-gradient(180deg, rgba(8, 10, 18, 0.92), rgba(4, 5, 10, 0.98));
+      padding: 36px 0;
+    }
+    .trust-compliance-bar.theme-crimson {
+      background: linear-gradient(180deg, rgba(16, 5, 10, 0.94), rgba(6, 2, 6, 0.98));
+      border-top-color: rgba(201, 24, 52, 0.28);
+    }
+    .trust-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 1fr 1fr;
+      gap: 28px;
+      align-items: center;
+    }
+    .trust-col h4 {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #8be5e3;
+      margin-bottom: 10px;
+    }
+    .theme-crimson .trust-col h4 { color: #e5b85c; }
+    .trust-col p {
+      font-size: 0.78rem;
+      color: #9ca3b8;
+      line-height: 1.65;
+    }
+    .trust-badges-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-top: 10px;
+    }
+    .trust-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #dce4f2;
+    }
+    .esrb-box {
+      display: inline-flex;
+      align-items: stretch;
+      border: 1.5px solid rgba(255, 255, 255, 0.75);
+      border-radius: 3px;
+      overflow: hidden;
+      background: #0b0b0f;
+      font-family: 'Inter', sans-serif;
+    }
+    .esrb-letter {
+      background: #ffffff;
+      color: #050507;
+      font-weight: 900;
+      font-size: 1.45rem;
+      padding: 6px 11px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+    .esrb-letter small { font-size: 0.5rem; letter-spacing: 0.08em; margin-top: 2px; }
+    .esrb-desc {
+      padding: 6px 10px;
+      font-size: 0.62rem;
+      line-height: 1.35;
+      color: #d6dbe6;
+      max-width: 155px;
+    }
+
+    /* Checkout Gateway Modal */
+    .pay-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 98000;
+      background: rgba(2, 4, 10, 0.88);
+      backdrop-filter: blur(18px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.3s ease, visibility 0.3s;
+    }
+    .pay-backdrop.open { opacity: 1; visibility: visible; pointer-events: all; }
+
+    .pay-modal {
+      width: min(880px, 100%);
+      max-height: 92vh;
+      overflow-y: auto;
+      border-radius: 14px;
+      background: linear-gradient(160deg, #0b1020 0%, #050812 100%);
+      border: 1px solid rgba(139, 229, 227, 0.3);
+      box-shadow: 0 36px 96px rgba(0, 0, 0, 0.92), 0 0 50px rgba(56, 189, 248, 0.12);
+      color: #eef4ff;
+      position: relative;
+      transform: translateY(16px) scale(0.97);
+      transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .pay-backdrop.theme-crimson .pay-modal {
+      background: linear-gradient(160deg, #14070e 0%, #070206 100%);
+      border-color: rgba(201, 24, 52, 0.48);
+      box-shadow: 0 36px 96px rgba(0, 0, 0, 0.94), 0 0 54px rgba(201, 24, 52, 0.22);
+    }
+    .pay-backdrop.open .pay-modal { transform: translateY(0) scale(1); }
+
+    .pay-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 24px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .pay-header-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .pay-lock-badge {
+      font-size: 0.66rem;
+      padding: 3px 8px;
+      border-radius: 99px;
+      background: rgba(52, 211, 153, 0.14);
+      border: 1px solid rgba(52, 211, 153, 0.45);
+      color: #6ee7b7;
+      letter-spacing: 0.08em;
+    }
+    .pay-close {
+      width: 32px; height: 32px; border-radius: 6px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: #cbd5e1; cursor: pointer; font-size: 0.95rem;
+      display: grid; place-items: center; transition: all 0.2s;
+    }
+    .pay-close:hover { background: rgba(235, 11, 42, 0.25); color: #fff; }
+
+    .pay-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.95fr;
+      gap: 0;
+    }
+    .pay-left { padding: 24px; border-right: 1px solid rgba(255, 255, 255, 0.08); }
+    .pay-right { padding: 24px; background: rgba(0, 0, 0, 0.28); display: flex; flex-direction: column; }
+
+    .pay-method-tabs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+    .pay-method-btn {
+      padding: 11px 10px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1.5px solid rgba(255, 255, 255, 0.12);
+      color: #cbd5e1;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      transition: all 0.2s;
+    }
+    .pay-method-btn:hover { border-color: rgba(255, 255, 255, 0.32); color: #fff; }
+    .pay-method-btn.active {
+      background: rgba(139, 229, 227, 0.12);
+      border-color: #8be5e3;
+      color: #ffffff;
+      box-shadow: 0 0 20px rgba(139, 229, 227, 0.18);
+    }
+    .theme-crimson .pay-method-btn.active {
+      background: rgba(201, 24, 52, 0.18);
+      border-color: #ff4763;
+      box-shadow: 0 0 20px rgba(201, 24, 52, 0.25);
+    }
+
+    /* Live 3D Virtual Card Preview */
+    .virtual-card {
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin-bottom: 16px;
+      position: relative;
+      overflow: hidden;
+      min-height: 152px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.55);
+      transition: background 0.35s ease;
+    }
+    .virtual-card.mode-visa {
+      background: linear-gradient(135deg, #102a71 0%, #1d4ed8 48%, #0f172a 100%);
+    }
+    .virtual-card.mode-card {
+      background: linear-gradient(135deg, #27272a 0%, #18181b 52%, #3f1d28 100%);
+    }
+    .virtual-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 85% 18%, rgba(255, 255, 255, 0.22), transparent 55%);
+      pointer-events: none;
+    }
+    .vc-top { display: flex; justify-content: space-between; align-items: center; }
+    .vc-chip {
+      width: 38px; height: 28px; border-radius: 5px;
+      background: linear-gradient(135deg, #f6d365, #fda085, #d4a017);
+      border: 1px solid rgba(0, 0, 0, 0.35);
+    }
+    .vc-brand { font-weight: 900; font-size: 1.15rem; font-style: italic; letter-spacing: 0.08em; color: #fff; }
+    .vc-num {
+      font-family: 'Courier New', monospace;
+      font-size: 1.12rem;
+      letter-spacing: 0.18em;
+      color: #f8fafc;
+      margin: 12px 0;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    .vc-bottom { display: flex; justify-content: space-between; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: #e2e8f0; }
+
+    .pay-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .pay-field { margin-bottom: 11px; }
+    .pay-field label {
+      display: block; font-size: 0.68rem; color: #94a3b8;
+      letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 4px;
+    }
+    .pay-field input, .pay-field select {
+      width: 100%; padding: 9px 11px; border-radius: 7px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: #fff; font-size: 0.84rem; outline: none; transition: border-color 0.2s;
+    }
+    .pay-field input:focus { border-color: #8be5e3; }
+    .theme-crimson .pay-field input:focus { border-color: #ff4763; }
+
+    .paypal-box {
+      padding: 20px; border-radius: 10px; text-align: center;
+      background: linear-gradient(145deg, rgba(0, 48, 135, 0.32), rgba(0, 156, 222, 0.16));
+      border: 1px solid rgba(0, 156, 222, 0.42);
+      margin-bottom: 14px;
+    }
+    .paypal-logo-text { font-size: 1.45rem; font-weight: 900; font-style: italic; letter-spacing: 0.02em; margin-bottom: 8px; }
+    .paypal-logo-text span:first-child { color: #60a5fa; }
+    .paypal-logo-text span:last-child { color: #38bdf8; }
+
+    .pay-summary-items {
+      display: flex; flex-direction: column; gap: 8px;
+      max-height: 185px; overflow-y: auto; margin-bottom: 14px;
+      padding-right: 4px;
+    }
+    .pay-summary-row {
+      display: flex; justify-content: space-between; gap: 10px;
+      font-size: 0.8rem; color: #dbe4f3;
+      padding: 8px 10px; border-radius: 6px; background: rgba(255, 255, 255, 0.03);
+    }
+    .pay-promo-row { display: flex; gap: 8px; margin-bottom: 14px; }
+    .pay-promo-row input {
+      flex: 1; padding: 8px 10px; border-radius: 6px;
+      background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.14);
+      color: #fff; font-size: 0.78rem; text-transform: uppercase;
+    }
+    .pay-promo-row button {
+      padding: 8px 12px; border-radius: 6px; border: 1px solid rgba(255, 255, 255, 0.22);
+      background: rgba(255, 255, 255, 0.08); color: #fff; font-size: 0.74rem; font-weight: 700; cursor: pointer;
+    }
+    .pay-totals {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 12px; margin-top: auto;
+      display: flex; flex-direction: column; gap: 7px; font-size: 0.8rem;
+    }
+    .pay-total-line { display: flex; justify-content: space-between; color: #94a3b8; }
+    .pay-total-grand {
+      display: flex; justify-content: space-between; font-size: 1.08rem; font-weight: 800;
+      color: #ffffff; padding-top: 8px; border-top: 1px dashed rgba(255, 255, 255, 0.15);
+    }
+    .pay-submit-btn {
+      width: 100%; padding: 13px; border: none; border-radius: 8px; margin-top: 14px;
+      background: linear-gradient(90deg, #38bdf8, #8be5e3, #a78bfa);
+      color: #040712; font-weight: 800; font-size: 0.86rem; letter-spacing: 0.08em; text-transform: uppercase;
+      cursor: pointer; transition: filter 0.2s, transform 0.15s;
+    }
+    .theme-crimson .pay-submit-btn {
+      background: linear-gradient(90deg, #9b1126, #eb0b2a, #ff4763);
+      color: #fff; box-shadow: 0 10px 28px rgba(201, 24, 52, 0.42);
+    }
+    .pay-submit-btn:hover { filter: brightness(1.1); transform: translateY(-1px); }
+
+    .pay-autofill-btn {
+      background: transparent; border: 1px dashed rgba(255, 255, 255, 0.28);
+      color: #94a3b8; font-size: 0.72rem; padding: 6px 10px; border-radius: 6px;
+      cursor: pointer; margin-bottom: 12px; transition: all 0.2s;
+    }
+    .pay-autofill-btn:hover { color: #fff; border-color: #8be5e3; }
+
+    .pay-status-stage {
+      padding: 46px 28px; text-align: center;
+    }
+    .pay-spinner {
+      width: 54px; height: 54px; border-radius: 50%; margin: 0 auto 18px;
+      border: 3px solid rgba(255, 255, 255, 0.12);
+      border-top-color: #8be5e3;
+      animation: pSpinCW 0.85s linear infinite;
+    }
+    .theme-crimson .pay-spinner { border-top-color: #ff2a4b; }
+    .pay-receipt-box {
+      max-width: 520px; margin: 18px auto 0; padding: 18px; border-radius: 10px;
+      background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(52, 211, 153, 0.35);
+      text-align: left; font-size: 0.8rem; display: grid; gap: 8px;
+    }
+    .pay-key-pill {
+      display: flex; align-items: center; justify-content: space-between; gap: 10px;
+      padding: 10px 12px; border-radius: 6px; background: rgba(0, 0, 0, 0.45);
+      border: 1px dashed rgba(139, 229, 227, 0.45); font-family: monospace; font-size: 0.9rem; color: #8be5e3;
+    }
+    .theme-crimson .pay-key-pill { border-color: rgba(229, 184, 92, 0.55); color: #ffd166; }
+
+    .auth-required-toast {
+      padding: 9px 12px; border-radius: 6px; margin-bottom: 12px; font-size: 0.76rem;
+      background: rgba(245, 158, 11, 0.14); border: 1px solid rgba(245, 158, 11, 0.45); color: #fde68a;
+    }
+
+    @media (max-width: 780px) {
+      .pay-grid, .trust-grid { grid-template-columns: 1fr; }
+      .pay-left { border-right: none; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+    }
+  </style>
+  <script>
+    (function initAaaCommerceAndAuthGate() {
+      const ROLE = 'neo';
+      const IS_CN = (ROLE === 'crimson');
+      const AUTH_KEY = IS_CN ? 'cn_sanctum_session_v1' : 'neo_corp_session_v1';
+      const ORDERS_KEY = IS_CN ? 'cn_sanctum_orders_v1' : 'neo_corp_orders_v1';
+      const AUTH_TRIGGER_ID = IS_CN ? 'cn-auth-trigger' : 'neo-auth-trigger';
+      const AUTH_MODAL_ID = IS_CN ? 'cn-auth-modal' : 'neo-auth-modal';
+      const AUTH_BODY_ID = IS_CN ? 'cn-auth-body' : 'neo-auth-body';
+
+      function getUser() {
+        try { return JSON.parse(localStorage.getItem(AUTH_KEY) || 'null'); } catch (_) { return null; }
+      }
+      function saveOrder(ord) {
+        try {
+          const list = JSON.parse(localStorage.getItem(ORDERS_KEY) || '[]');
+          list.unshift(ord);
+          localStorage.setItem(ORDERS_KEY, JSON.stringify(list.slice(0, 10)));
+        } catch (_) {}
+      }
+
+      // 1. Inject Professional Corporate / Publisher Trust & Compliance Strip above Footer
+      const footer = document.querySelector('footer');
+      if (footer && !document.getElementById('trust-compliance-bar')) {
+        const bar = document.createElement('section');
+        bar.id = 'trust-compliance-bar';
+        bar.className = 'trust-compliance-bar' + (IS_CN ? ' theme-crimson' : '');
+        bar.innerHTML = IS_CN ? `
+          <div class="wrap trust-grid">
+            <div class="trust-col">
+              <h4>OFFICIAL PUBLISHER & COMPLIANCE</h4>
+              <p><strong>Crimson Studios Interactive</strong> in strategic co-engineering partnership with <strong>NEO Hardware Inc.</strong> Verified Unreal Engine 5.5 Lumen/Nanite build. All pre-orders include instant digital entitlement & 30-day unconditional refund protection prior to launch.</p>
+              <div class="trust-badges-row">
+                <span class="trust-pill">UNREAL ENGINE 5.5</span>
+                <span class="trust-pill">STEAM · PS5 · XBOX · PC</span>
+                <span class="trust-pill">NEO SPATIAL 96KHZ</span>
+              </div>
+            </div>
+            <div class="trust-col">
+              <h4>CONTENT RATING & CLASSIFICATION</h4>
+              <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+                <div class="esrb-box">
+                  <div class="esrb-letter">M<small>17+</small></div>
+                  <div class="esrb-desc">Blood and Gore<br>Intense Violence<br>Cosmic Horror Themes</div>
+                </div>
+                <span class="trust-pill" style="background:#b91c1c;border-color:#ef4444;color:#fff;padding:8px 10px">PEGI 18</span>
+              </div>
+            </div>
+            <div class="trust-col">
+              <h4>VERIFIED PRE-ORDER PAYMENTS</h4>
+              <p>256-Bit TLS 1.3 encrypted storefront checkout. Instant Sanctum Key delivery upon confirmation.</p>
+              <div class="trust-badges-row">
+                <span class="trust-pill">VISA</span>
+                <span class="trust-pill">MASTERCARD</span>
+                <span class="trust-pill">PAYPAL</span>
+                <span class="trust-pill">PCI-DSS L1</span>
+              </div>
+            </div>
+          </div>
+        ` : `
+          <div class="wrap trust-grid">
+            <div class="trust-col">
+              <h4>NEO INTERACTIVE TECHNOLOGIES INC.</h4>
+              <p>Global Precision Gaming Hardware & Spatial Audio Engineering. Flagship R&D Centers in <strong>Tokyo · San Francisco · Munich</strong>. Every NEO Series device ships with an individual serialized calibration certificate and <strong>2-Year Global Express Warranty</strong>.</p>
+              <div class="trust-badges-row">
+                <span class="trust-pill">ISO-9001 CERTIFIED</span>
+                <span class="trust-pill">2-YEAR WARRANTY</span>
+                <span class="trust-pill">24/7 CONCIERGE</span>
+              </div>
+            </div>
+            <div class="trust-col">
+              <h4>GLOBAL LOGISTICS & AUTHENTICITY</h4>
+              <p>Direct insured air courier to 64 countries. Zero-pixel-defect guarantee & encrypted NEO Member ID ownership registration.</p>
+              <div class="trust-badges-row">
+                <span class="trust-pill">DHL EXPRESS</span>
+                <span class="trust-pill">TLS 1.3 VERIFIED</span>
+              </div>
+            </div>
+            <div class="trust-col">
+              <h4>ACCEPTED PAYMENT NETWORKS</h4>
+              <p>Protected global checkout with real-time fraud screening & zero hidden digital processing fees.</p>
+              <div class="trust-badges-row">
+                <span class="trust-pill">VISA</span>
+                <span class="trust-pill">MASTERCARD</span>
+                <span class="trust-pill">AMEX</span>
+                <span class="trust-pill">PAYPAL</span>
+              </div>
+            </div>
+          </div>
+        `;
+        footer.parentNode.insertBefore(bar, footer);
+      }
+
+      // 2. Mandatory Login Gate with Automatic Resume
+      let pendingAction = null;
+      function requireLoginFor(reasonText, resumeFn) {
+        if (getUser()) {
+          resumeFn();
+          return;
+        }
+        pendingAction = resumeFn;
+        const trigger = document.getElementById(AUTH_TRIGGER_ID);
+        if (trigger) trigger.click();
+        setTimeout(() => {
+          const body = document.getElementById(AUTH_BODY_ID);
+          if (body && !body.querySelector('.auth-required-toast')) {
+            const note = document.createElement('div');
+            note.className = 'auth-required-toast';
+            note.textContent = '🔒 ' + reasonText;
+            body.insertBefore(note, body.firstChild);
+          }
+        }, 30);
+      }
+
+      const authModalEl = document.getElementById(AUTH_MODAL_ID);
+      if (authModalEl) {
+        const obs = new MutationObserver(() => {
+          if (!authModalEl.classList.contains('open') && pendingAction && getUser()) {
+            const fn = pendingAction;
+            pendingAction = null;
+            setTimeout(fn, 180);
+          }
+        });
+        obs.observe(authModalEl, { attributes: true, attributeFilter: ['class'] });
+      }
+
+      // Enforce Login on every [data-product] Pre-Order button & #checkout-btn BEFORE any document listener
+      window.addEventListener('click', (e) => {
+        const btn = e.target.closest('[data-product]');
+        if (btn && !getUser()) {
+          e.preventDefault();
+          e.stopImmediatePropagation();
+          requireLoginFor(
+            IS_CN
+              ? 'Please sign in to your Ashen Sanctum account before pre-ordering.'
+              : 'Please sign in to your NEO Member ID before placing a pre-order.',
+            () => btn.click()
+          );
+          return;
+        }
+        const coBtn = e.target.closest('#checkout-btn');
+        if (coBtn) {
+          e.preventDefault();
+          e.stopImmediatePropagation();
+          currentCartItems = parseCartFromDOM();
+          if (!currentCartItems.length) {
+            const st = document.getElementById('checkout-status');
+            if (st) st.textContent = 'Your cart is empty. Please add an item first.';
+            return;
+          }
+          requireLoginFor(
+            IS_CN
+              ? 'Authentication required: Sign in to your Ashen Sanctum account to complete payment.'
+              : 'Authentication required: Sign in to your NEO Member ID to complete checkout.',
+            () => {
+              const drawer = document.getElementById('cart-drawer');
+              if (drawer) drawer.classList.remove('open');
+              promoDiscount = 0;
+              renderPaymentModal();
+              payBackdrop.classList.add('open');
+            }
+          );
+        }
+      }, true);
+
+      // 3. AAA Payment & Checkout Terminal Modal (Visa · Credit Card · PayPal)
+      const payBackdrop = document.createElement('div');
+      payBackdrop.id = 'aaa-pay-backdrop';
+      payBackdrop.className = 'pay-backdrop' + (IS_CN ? ' theme-crimson' : '');
+      payBackdrop.innerHTML = `<div class="pay-modal" id="aaa-pay-modal" role="dialog" aria-modal="true" aria-label="Official Checkout"></div>`;
+      document.body.appendChild(payBackdrop);
+
+      let activeMethod = 'visa';
+      let promoDiscount = 0;
+      let currentCartItems = [];
+
+      function parseCartFromDOM() {
+        const rows = document.querySelectorAll('#cart-items .cart-item, #cart-items .cart-item-row');
+        const list = [];
+        rows.forEach(row => {
+          const nameEl = row.querySelector('.cart-item-name') || row.querySelector('span');
+          const raw = nameEl ? nameEl.textContent.trim() : row.textContent.replace(/Remove.*$/i, '').trim();
+          if (!raw) return;
+          const m = raw.match(/\$\s*([0-9]+(?:\.[0-9]{1,2})?)/);
+          const price = m ? parseFloat(m[1]) : (IS_CN ? 59.99 : 199.00);
+          list.push({ name: raw, price });
+        });
+        return list;
+      }
+
+      function clearOriginalCart() {
+        for (let guard = 0; guard < 30; guard++) {
+          const btn = document.querySelector('#cart-items .cart-item button, #cart-items .cart-item-row button');
+          if (!btn) break;
+          btn.click();
+        }
+      }
+
+      function genKey() {
+        const seg = () => Math.random().toString(36).substring(2, 6).toUpperCase();
+        return (IS_CN ? 'CN26-' : 'NEO-') + seg() + '-' + seg() + '-' + seg();
+      }
+
+      function renderPaymentModal() {
+        const modal = document.getElementById('aaa-pay-modal');
+        const user = getUser() || { name: 'Member', email: 'member@portal.io' };
+        const subtotal = currentCartItems.reduce((s, it) => s + it.price, 0);
+        const discountAmt = subtotal * promoDiscount;
+        const total = Math.max(0, subtotal - discountAmt);
+
+        const isPaypal = (activeMethod === 'paypal');
+        const cardBrandLabel = (activeMethod === 'visa') ? 'VISA' : 'MASTERCARD';
+
+        modal.innerHTML = `
+          <div class="pay-header">
+            <div class="pay-header-brand">
+              <span>${IS_CN ? 'CRIMSON NIGHT OFFICIAL CHECKOUT' : 'NEO HARDWARE GLOBAL CHECKOUT'}</span>
+              <span class="pay-lock-badge">🔒 TLS 1.3 ENCRYPTED</span>
+            </div>
+            <button type="button" class="pay-close" id="pay-close-btn" aria-label="Close">✕</button>
+          </div>
+          <div class="pay-grid">
+            <div class="pay-left">
+              <div style="font-size:0.74rem;color:#94a3b8;margin-bottom:12px">
+                Authenticated as <strong style="color:#fff">${user.name}</strong> (${user.email})
+              </div>
+              <div class="pay-method-tabs">
+                <button type="button" class="pay-method-btn ${activeMethod === 'visa' ? 'active' : ''}" data-pm="visa">
+                  <span style="font-size:1.05rem;font-style:italic;font-weight:900;color:#60a5fa">VISA</span>
+                  <span>Visa Card</span>
+                </button>
+                <button type="button" class="pay-method-btn ${activeMethod === 'card' ? 'active' : ''}" data-pm="card">
+                  <span style="font-size:1.05rem">💳</span>
+                  <span>Credit Card</span>
+                </button>
+                <button type="button" class="pay-method-btn ${activeMethod === 'paypal' ? 'active' : ''}" data-pm="paypal">
+                  <span style="font-size:1.05rem;font-style:italic;font-weight:900;color:#38bdf8">PayPal</span>
+                  <span>PayPal Express</span>
+                </button>
+              </div>
+
+              ${isPaypal ? `
+                <div class="paypal-box">
+                  <div class="paypal-logo-text"><span>Pay</span><span>Pal</span></div>
+                  <p style="font-size:0.78rem;color:#cfe7ff;margin-bottom:12px">Fast, encrypted 1-click checkout with PayPal Buyer Protection. No card details shared with storefront.</p>
+                  <div class="pay-field" style="text-align:left;margin-bottom:0">
+                    <label>PayPal Account Email</label>
+                    <input type="email" id="pay-pp-email" value="${user.email}" required>
+                  </div>
+                </div>
+              ` : `
+                <div class="virtual-card mode-${activeMethod}">
+                  <div class="vc-top">
+                    <div class="vc-chip"></div>
+                    <div class="vc-brand">${cardBrandLabel}</div>
+                  </div>
+                  <div class="vc-num" id="vc-preview-num">•••• •••• •••• ••••</div>
+                  <div class="vc-bottom">
+                    <span id="vc-preview-name">${user.name.toUpperCase()}</span>
+                    <span id="vc-preview-exp">MM / YY</span>
+                  </div>
+                </div>
+                <button type="button" class="pay-autofill-btn" id="pay-autofill-btn">✦ Auto-Fill Demo ${cardBrandLabel} Details (Sandbox)</button>
+                <form id="pay-card-form">
+                  <div class="pay-field">
+                    <label>Cardholder Name</label>
+                    <input type="text" id="pay-name" value="${user.name.toUpperCase()}" placeholder="FULL NAME ON CARD" required>
+                  </div>
+                  <div class="pay-field">
+                    <label>Card Number</label>
+                    <input type="text" id="pay-number" maxlength="19" placeholder="${activeMethod === 'visa' ? '4532 8810 4920 4242' : '5412 7534 8901 6628'}" required>
+                  </div>
+                  <div class="pay-row-2">
+                    <div class="pay-field">
+                      <label>Expiry Date</label>
+                      <input type="text" id="pay-exp" maxlength="5" placeholder="08/29" required>
+                    </div>
+                    <div class="pay-field">
+                      <label>Security Code (CVV)</label>
+                      <input type="password" id="pay-cvv" maxlength="4" placeholder="•••" required>
+                    </div>
+                  </div>
+                  <div class="pay-row-2">
+                    <div class="pay-field">
+                      <label>Billing Country</label>
+                      <select id="pay-country">
+                        <option>Vietnam</option>
+                        <option>United States</option>
+                        <option>Japan</option>
+                        <option>United Kingdom</option>
+                        <option>Germany</option>
+                      </select>
+                    </div>
+                    <div class="pay-field">
+                      <label>Postal / ZIP Code</label>
+                      <input type="text" id="pay-zip" placeholder="700000" value="700000">
+                    </div>
+                  </div>
+                </form>
+              `}
+              <div style="font-size:0.68rem;color:#64748b;margin-top:6px">
+                Simulation Mode: No real funds are charged. Instant digital confirmation & license key generated locally.
+              </div>
+            </div>
+
+            <div class="pay-right">
+              <div style="font-size:0.74rem;letter-spacing:0.16em;text-transform:uppercase;color:#94a3b8;margin-bottom:10px;font-weight:700">
+                Order Summary (${currentCartItems.length} item${currentCartItems.length > 1 ? 's' : ''})
+              </div>
+              <div class="pay-summary-items">
+                ${currentCartItems.map(it => `
+                  <div class="pay-summary-row">
+                    <span>${it.name}</span>
+                    <strong>$${it.price.toFixed(2)}</strong>
+                  </div>
+                `).join('')}
+              </div>
+
+              <div class="pay-promo-row">
+                <input type="text" id="pay-promo-input" placeholder="Promo: NEO2026 or BLOODMOON">
+                <button type="button" id="pay-promo-apply">Apply</button>
+              </div>
+
+              <div class="pay-totals">
+                <div class="pay-total-line"><span>Subtotal</span><span>$${subtotal.toFixed(2)}</span></div>
+                ${promoDiscount > 0 ? `<div class="pay-total-line" style="color:#6ee7b7"><span>Member Promo (-10%)</span><span>-$${discountAmt.toFixed(2)}</span></div>` : ''}
+                <div class="pay-total-line"><span>Priority Delivery / Digital Key</span><span style="color:#6ee7b7">FREE</span></div>
+                <div class="pay-total-line"><span>Estimated Tax</span><span>$0.00</span></div>
+                <div class="pay-total-grand"><span>Total Due</span><span>$${total.toFixed(2)}</span></div>
+              </div>
+
+              <button type="button" class="pay-submit-btn" id="pay-confirm-btn">
+                ${isPaypal ? `Authorize $${total.toFixed(2)} with PayPal` : `Pay $${total.toFixed(2)} with ${cardBrandLabel}`}
+              </button>
+            </div>
+          </div>
+        `;
+
+        document.getElementById('pay-close-btn').onclick = () => payBackdrop.classList.remove('open');
+        modal.querySelectorAll('.pay-method-btn').forEach(b => {
+          b.onclick = () => { activeMethod = b.dataset.pm; renderPaymentModal(); };
+        });
+
+        const numIn = document.getElementById('pay-number');
+        const nameIn = document.getElementById('pay-name');
+        const expIn = document.getElementById('pay-exp');
+        const cvvIn = document.getElementById('pay-cvv');
+        if (numIn) {
+          numIn.addEventListener('input', () => {
+            const digits = numIn.value.replace(/\D/g, '').slice(0, 16);
+            numIn.value = digits.replace(/(.{4})/g, '$1 ').trim();
+            document.getElementById('vc-preview-num').textContent = numIn.value || '•••• •••• •••• ••••';
+          });
+        }
+        if (nameIn) {
+          nameIn.addEventListener('input', () => {
+            document.getElementById('vc-preview-name').textContent = (nameIn.value || user.name).toUpperCase();
+          });
+        }
+        if (expIn) {
+          expIn.addEventListener('input', () => {
+            const d = expIn.value.replace(/\D/g, '').slice(0, 4);
+            expIn.value = d.length > 2 ? d.slice(0, 2) + '/' + d.slice(2) : d;
+            document.getElementById('vc-preview-exp').textContent = expIn.value || 'MM / YY';
+          });
+        }
+        const autoBtn = document.getElementById('pay-autofill-btn');
+        if (autoBtn) {
+          autoBtn.onclick = () => {
+            numIn.value = (activeMethod === 'visa') ? '4532 8810 4920 4242' : '5412 7534 8901 6628';
+            expIn.value = '09/29';
+            cvvIn.value = '842';
+            document.getElementById('vc-preview-num').textContent = numIn.value;
+            document.getElementById('vc-preview-exp').textContent = expIn.value;
+          };
+        }
+
+        document.getElementById('pay-promo-apply').onclick = () => {
+          const code = (document.getElementById('pay-promo-input').value || '').trim().toUpperCase();
+          if (code === 'NEO2026' || code === 'BLOODMOON' || code === 'CRIMSON10') {
+            promoDiscount = 0.10;
+            renderPaymentModal();
+          } else {
+            document.getElementById('pay-promo-input').style.borderColor = '#ef4444';
+          }
+        };
+
+        document.getElementById('pay-confirm-btn').onclick = () => {
+          let maskedMethod = 'PayPal Express';
+          if (!isPaypal) {
+            const rawDigits = (numIn.value || '').replace(/\D/g, '');
+            if (rawDigits.length < 12) {
+              numIn.style.borderColor = '#ef4444';
+              numIn.focus();
+              return;
+            }
+            maskedMethod = `${cardBrandLabel} ending in ${rawDigits.slice(-4)}`;
+          }
+
+          modal.innerHTML = `
+            <div class="pay-status-stage">
+              <div class="pay-spinner"></div>
+              <div style="font-size:1.15rem;font-weight:700;margin-bottom:8px" id="pay-proc-title">Encrypting Payment Token...</div>
+              <div style="font-size:0.8rem;color:#94a3b8" id="pay-proc-sub">Establishing TLS 1.3 handshake with ${maskedMethod}</div>
+            </div>
+          `;
+          setTimeout(() => {
+            const tEl = document.getElementById('pay-proc-title');
+            const sEl = document.getElementById('pay-proc-sub');
+            if (tEl) tEl.textContent = 'Authorizing Pre-Order Entitlement...';
+            if (sEl) sEl.textContent = 'Issuing Official Order Reference & Early Access License Key';
+          }, 700);
+
+          setTimeout(() => {
+            const orderId = (IS_CN ? 'CN-VAL-' : 'NEO-2026-') + Math.floor(10000 + Math.random() * 89999);
+            const licenseKey = genKey();
+            saveOrder({ orderId, total: total.toFixed(2), method: maskedMethod, items: currentCartItems.length, key: licenseKey, date: new Date().toLocaleDateString() });
+            clearOriginalCart();
+
+            modal.innerHTML = `
+              <div class="pay-status-stage">
+                <div style="font-size:2.4rem;margin-bottom:8px">✓</div>
+                <div style="font-size:1.35rem;font-weight:800;color:#6ee7b7;margin-bottom:6px">Pre-Order Confirmed!</div>
+                <div style="font-size:0.82rem;color:#cbd5e1">Official receipt dispatched to <strong>${user.email}</strong></div>
+                <div class="pay-receipt-box">
+                  <div style="display:flex;justify-content:space-between"><span style="color:#94a3b8">Order Reference</span><strong>${orderId}</strong></div>
+                  <div style="display:flex;justify-content:space-between"><span style="color:#94a3b8">Account Holder</span><strong>${user.name}</strong></div>
+                  <div style="display:flex;justify-content:space-between"><span style="color:#94a3b8">Payment Method</span><strong>${maskedMethod}</strong></div>
+                  <div style="display:flex;justify-content:space-between"><span style="color:#94a3b8">Amount Authorized</span><strong style="color:#6ee7b7">$${total.toFixed(2)} USD</strong></div>
+                  <div style="margin-top:6px;font-size:0.7rem;color:#94a3b8;letter-spacing:0.12em;text-transform:uppercase">Digital Activation / Reservation Key</div>
+                  <div class="pay-key-pill">
+                    <span>${licenseKey}</span>
+                    <button type="button" id="copy-key-btn" style="background:rgba(255,255,255,0.1);border:none;color:#fff;padding:4px 10px;border-radius:4px;cursor:pointer;font-size:0.72rem">Copy</button>
+                  </div>
+                </div>
+                <button type="button" class="pay-submit-btn" id="pay-done-btn" style="max-width:260px;margin:18px auto 0">Return to Storefront</button>
+              </div>
+            `;
+            document.getElementById('copy-key-btn').onclick = () => {
+              try { navigator.clipboard.writeText(licenseKey); } catch (_) {}
+              document.getElementById('copy-key-btn').textContent = 'Copied ✓';
+            };
+            document.getElementById('pay-done-btn').onclick = () => payBackdrop.classList.remove('open');
+          }, 1550);
+        };
+      }
+
+      payBackdrop.addEventListener('click', (e) => {
+        if (e.target === payBackdrop) payBackdrop.classList.remove('open');
+      });
+
+      const checkoutBtn = document.getElementById('checkout-btn');
+      if (checkoutBtn) checkoutBtn.onclick = null;
     })();
   </script>
 </body>
