@@ -5148,14 +5148,213 @@
                 <li>Physical 12" Polystone Statue of Kaelen the Lancer</li>
                 <li>Steelbook Case with Official Occult Blood Sigil</li>
                 <li>Cloth World Map of Valdoria with Inscribed Runes</li>
-                <li>NEO Co-Branded In-Game Armor Skin (Cyan & Violet)</li>
+                <li>NEO Co-Branded In-Game Armor Skin (Cyan &amp; Violet)</li>
                 <li>Priority VIP Access to Developer Closed Alpha Rites</li>
+                <li style="color:#ffd166;font-weight:700">✦ FIRST 13 BUYERS EXCLUSIVE: Eligible to receive 1 of ONLY 13 Serialized NEO × Crimson Night Limited Hardware Suites (#01/13 – #13/13)</li>
               </ul>
             </div>
             <button class="btn gold" style="width:100%" data-product="Crimson Night: Collector's Ultimate ($99.99)">
               Pre-Order Ultimate ⚔
             </button>
-            <a href="#merchandise" style="display:block;text-align:center;margin-top:10px;font-size:0.75rem;color:#f2cf80;text-decoration:none">📦 View 10-Piece Physical Merchandise Vault →</a>
+            <a href="#limited-13-vault" style="display:block;text-align:center;margin-top:10px;font-size:0.75rem;color:#ffd166;text-decoration:none;font-weight:700">✦ Inspect The Thirteen (13-Unit Exclusive Hardware Suite) ↓</a>
+          </div>
+        </div>
+
+        <!-- ========================================================
+             THE THIRTEEN — EXCLUSIVE FIRST-BUYER LIMITED HARDWARE SUITE (13 UNITS ONLY)
+             ======================================================== -->
+        <style>
+          .limited13-vault {
+            margin-top: 56px;
+            padding: 36px 32px;
+            border-radius: 12px;
+            background: linear-gradient(155deg, rgba(24, 9, 16, 0.94) 0%, rgba(9, 4, 10, 0.97) 60%, rgba(28, 16, 8, 0.92) 100%);
+            border: 1px solid rgba(229, 184, 92, 0.45);
+            box-shadow: 0 28px 80px rgba(0, 0, 0, 0.82), inset 0 0 60px rgba(201, 24, 52, 0.12);
+            position: relative;
+            overflow: hidden;
+          }
+          .limited13-top {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 32px;
+            align-items: center;
+            margin-bottom: 28px;
+          }
+          .limited13-hero-img {
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(229, 184, 92, 0.4);
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.75);
+          }
+          .limited13-hero-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+          }
+          .limited13-hero-img:hover img { transform: scale(1.04); }
+          .limited13-serial-tag {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            padding: 6px 12px;
+            border-radius: 4px;
+            background: rgba(8, 3, 7, 0.88);
+            border: 1px solid rgba(255, 209, 102, 0.7);
+            color: #ffd166;
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            backdrop-filter: blur(8px);
+          }
+          .limited13-pill-counter {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            border-radius: 99px;
+            background: rgba(235, 11, 42, 0.16);
+            border: 1px solid rgba(255, 71, 99, 0.5);
+            color: #ff8fa3;
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+          }
+          .limited13-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+          }
+          .limited13-card {
+            background: rgba(10, 5, 11, 0.88);
+            border: 1px solid rgba(229, 184, 92, 0.24);
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+          }
+          .limited13-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 209, 102, 0.7);
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.75), 0 0 22px rgba(201, 24, 52, 0.22);
+          }
+          .limited13-card-img {
+            aspect-ratio: 16 / 10;
+            overflow: hidden;
+            position: relative;
+          }
+          .limited13-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.45s ease;
+          }
+          .limited13-card:hover .limited13-card-img img { transform: scale(1.07); }
+          .limited13-card-body { padding: 14px 14px 16px; }
+          .limited13-card-body span {
+            display: block;
+            font-size: 0.65rem;
+            color: #e5b85c;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+            font-weight: 700;
+          }
+          .limited13-card-body h5 {
+            font-family: var(--font-gothic);
+            font-size: 0.92rem;
+            color: #fff;
+            margin-bottom: 6px;
+          }
+          .limited13-card-body p {
+            font-size: 0.74rem;
+            color: #a99ea6;
+            line-height: 1.5;
+          }
+          @media (max-width: 980px) {
+            .limited13-top { grid-template-columns: 1fr; }
+            .limited13-grid { grid-template-columns: repeat(2, 1fr); }
+          }
+          @media (max-width: 560px) {
+            .limited13-grid { grid-template-columns: 1fr; }
+            .limited13-vault { padding: 24px 18px; }
+          }
+        </style>
+
+        <div class="limited13-vault" id="limited-13-vault">
+          <div class="limited13-top">
+            <div class="limited13-hero-img" onclick="openLightbox('assets/limited13-full-suite.jpg', 'THE THIRTEEN — Complete NEO × Crimson Night Limited Hardware Suite', 'Strictly limited to 13 individually numbered sets worldwide (#01/13 to #13/13). Awarded exclusively to the first 13 lucky collectors who purchase the Collector\'s Ultimate Edition ($99.99). Includes curved Blood Eclipse OLED Monitor, Runic Mechanical Keyboard, Blood-Vein Wireless Mouse, Spatial Headset, and Valdoria Deskmat.')">
+              <span class="limited13-serial-tag">✦ ONLY 13 UNITS WORLDWIDE · #01/13 – #13/13</span>
+              <img src="assets/limited13-full-suite.jpg" alt="Crimson Night x NEO Limited 13-Unit Complete Battle Station Suite">
+            </div>
+
+            <div>
+              <div class="limited13-pill-counter">✦ FIRST-BUYER ULTRA-RARE REWARD · 13 SETS ONLY</div>
+              <h3 style="font-family:var(--font-gothic);font-size:clamp(1.65rem,3vw,2.35rem);line-height:1.12;color:#f7d78a;margin-bottom:14px">
+                THE THIRTEEN:<br>BLOOD ECLIPSE HARDWARE SUITE
+              </h3>
+              <p style="color:#c8bec5;font-size:0.92rem;line-height:1.7;margin-bottom:14px">
+                Never sold separately. Forged in an ultra-limited run of <strong>strictly 13 serialized sets worldwide</strong>, this bespoke <strong>NEO × Crimson Night</strong> peripheral suite is reserved exclusively for the <strong>first 13 luckiest collectors</strong> to acquire the highest-tier <strong>Collector's Ultimate Edition ($99.99)</strong>.
+              </p>
+              <p style="color:#a496a0;font-size:0.84rem;line-height:1.65;margin-bottom:20px">
+                Each piece features laser-etched obsidian fissures, synchronized crimson-violet aura illumination, and a hand-numbered metallic authenticity plate (<strong style="color:#ffd166">#01/13 through #13/13</strong>) engineered to deliver the ultimate tactile <em>feeling</em> inside Valdoria.
+              </p>
+              <button class="btn gold" style="padding:12px 22px;font-size:0.82rem" data-product="Crimson Night: Collector's Ultimate ($99.99)">
+                Pre-Order Collector's Ultimate — Claim 1 of 13 ⚔
+              </button>
+            </div>
+          </div>
+
+          <div class="limited13-grid">
+            <div class="limited13-card" onclick="openLightbox('assets/limited13-keyboard.jpg', 'The Sanguine Keyforge — Limited 1/13 Runic Mechanical Keyboard', 'Custom NEO × Crimson Night mechanical keyboard with engraved gothic runic keycaps, cracked crimson-lit obsidian side plates, and eldritch violet arrow cluster. Strictly 13 units worldwide.')">
+              <div class="limited13-card-img">
+                <img src="assets/limited13-keyboard.jpg" alt="Crimson Night Limited 13 Runic Mechanical Keyboard">
+              </div>
+              <div class="limited13-card-body">
+                <span>1 OF 13 · KEYBOARD</span>
+                <h5>The Sanguine Keyforge</h5>
+                <p>Gothic runic keycaps, glowing cracked-obsidian side chassis &amp; custom tactile Blood-Switch actuation.</p>
+              </div>
+            </div>
+
+            <div class="limited13-card" onclick="openLightbox('assets/limited13-monitor.jpg', 'Abyssal Vision 32&quot; OLED — Limited 1/13 Blood Eclipse Display', '240Hz HDR OLED gaming display co-engineered with NEO, featuring fractured glowing crimson fissure trim along the bezel and stand. Strictly 13 units worldwide.')">
+              <div class="limited13-card-img">
+                <img src="assets/limited13-monitor.jpg" alt="Crimson Night Limited 13 Blood Eclipse OLED Monitor">
+              </div>
+              <div class="limited13-card-body">
+                <span>1 OF 13 · 240HZ OLED</span>
+                <h5>Abyssal Vision 32" Display</h5>
+                <p>True-black HDR OLED tuned for Lumen darkness with glowing crimson fissure bezel &amp; obsidian stand.</p>
+              </div>
+            </div>
+
+            <div class="limited13-card" onclick="openLightbox('assets/limited13-mouse.jpg', 'Blood-Vein Fang — Limited 1/13 Wireless Pro Mouse', 'Ultralight 8000Hz optical mouse etched with glowing crimson cracks and the illuminated Crimson Night eclipse emblem, paired with the Valdoria cloth deskmat. Strictly 13 units worldwide.')">
+              <div class="limited13-card-img">
+                <img src="assets/limited13-mouse.jpg" alt="Crimson Night Limited 13 Wireless Gaming Mouse">
+              </div>
+              <div class="limited13-card-body">
+                <span>1 OF 13 · 8000HZ MOUSE</span>
+                <h5>Blood-Vein Fang Wireless</h5>
+                <p>Fractured ember shell, luminous Crimson Night crest &amp; surgical zero-latency tracking on Valdoria mat.</p>
+              </div>
+            </div>
+
+            <div class="limited13-card" onclick="openLightbox('assets/limited13-headset.jpg', 'Cathedral Spatial Pro — Limited 1/13 Resonance Headset', '96kHz NEO Spatial Audio studio headset with glowing Blood Moon ring earcups, violet runic perimeter accents, and forged aluminum stand. Strictly 13 units worldwide.')">
+              <div class="limited13-card-img">
+                <img src="assets/limited13-headset.jpg" alt="Crimson Night Limited 13 Spatial Audio Headset">
+              </div>
+              <div class="limited13-card-body">
+                <span>1 OF 13 · 96KHZ SPATIAL</span>
+                <h5>Cathedral Resonance Pro</h5>
+                <p>Illuminated Blood Moon ring cups &amp; violet runic acoustic chambers tuned for Valdoria's 3D soundscape.</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
