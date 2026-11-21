@@ -3458,7 +3458,10 @@
             <a href="#hero">Overview</a>
             <a href="#protagonist">Protagonist · Kaelen ✦</a>
             <a href="#bestiary">Lovecraft Bestiary 👁</a>
-            <a href="#lore">Lore & Valdoria</a>
+            <a href="#lore">Lore &amp; Valdoria</a>
+            <a href="#world-map">World Map 🗺</a>
+            <a href="#roadmap">2026–27 Roadmap</a>
+            <a href="#community-hub">Closed Beta Hub</a>
           </div>
         </div>
 
@@ -5414,6 +5417,193 @@
     <!-- ========================================================
          SECTION 13: FAQ & BETA REGISTRATION
          ======================================================== -->
+        <!-- ========================================================
+         CRIMSON NIGHT: INTERACTIVE WORLD MAP OF VALDORIA, ROADMAP & CLOSED BETA HUB
+         ======================================================== -->
+    <style id="cn-game-sections-css">
+      .cn-extra-sec { position: relative; padding: 92px 0; border-top: 1px solid rgba(201, 24, 52, 0.28); }
+      .valdoria-map-grid { display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 26px; align-items: stretch; margin-top: 28px; }
+      .valdoria-map-stage {
+        position: relative; min-height: 410px;
+        background: radial-gradient(circle at 50% 45%, rgba(92, 12, 26, 0.35), rgba(8, 3, 9, 0.96) 72%);
+        border: 1px solid rgba(229, 184, 92, 0.36);
+        clip-path: polygon(18px 0, calc(100% - 18px) 0, 100% 18px, 100% calc(100% - 18px), calc(100% - 18px) 100%, 18px 100%, 0 calc(100% - 18px), 0 18px);
+        overflow: hidden;
+      }
+      .valdoria-map-stage svg { width: 100%; height: 100%; display: block; }
+      .vmap-pin {
+        position: absolute; transform: translate(-50%, -50%);
+        width: 34px; height: 34px; border-radius: 50%;
+        background: rgba(14, 4, 10, 0.92); border: 2px solid #e5b85c;
+        color: #ffd166; font-size: 0.85rem; cursor: pointer;
+        display: grid; place-items: center;
+        box-shadow: 0 0 18px rgba(235, 11, 42, 0.65);
+        transition: transform 0.22s ease, background 0.22s ease, box-shadow 0.22s ease;
+        z-index: 3;
+      }
+      .vmap-pin:hover, .vmap-pin.active {
+        transform: translate(-50%, -50%) scale(1.25);
+        background: #eb0b2a; border-color: #fff; color: #fff;
+        box-shadow: 0 0 28px #ff2a4b, 0 0 14px #ffd166;
+      }
+      .vmap-pin-label {
+        position: absolute; top: 38px; left: 50%; transform: translateX(-50%);
+        white-space: nowrap; font-size: 0.64rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+        background: rgba(8, 3, 7, 0.9); color: #f6e0a8; padding: 3px 7px; border-radius: 3px;
+        border: 1px solid rgba(229, 184, 92, 0.35); pointer-events: none;
+      }
+      .valdoria-region-panel {
+        padding: 26px; display: flex; flex-direction: column; justify-content: space-between;
+        background: linear-gradient(160deg, rgba(24, 9, 16, 0.94), rgba(9, 4, 10, 0.97));
+        border: 1px solid rgba(201, 24, 52, 0.38);
+        clip-path: polygon(14px 0, calc(100% - 14px) 0, 100% 14px, 100% calc(100% - 14px), calc(100% - 14px) 100%, 14px 100%, 0 calc(100% - 14px), 0 14px);
+      }
+      .cn-roadmap-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 28px; }
+      .cn-rm-card {
+        padding: 22px 18px;
+        background: linear-gradient(165deg, rgba(22, 8, 15, 0.92), rgba(9, 4, 10, 0.96));
+        border: 1px solid rgba(229, 184, 92, 0.28);
+        clip-path: polygon(12px 0, calc(100% - 12px) 0, 100% 12px, 100% calc(100% - 12px), calc(100% - 12px) 100%, 12px 100%, 0 calc(100% - 12px), 0 12px);
+      }
+      .cn-press-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-bottom: 34px; }
+      .cn-press-quote {
+        padding: 22px; text-align: center;
+        background: rgba(16, 6, 12, 0.85); border: 1px solid rgba(229, 184, 92, 0.25);
+        clip-path: polygon(12px 0, calc(100% - 12px) 0, 100% 12px, 100% calc(100% - 12px), calc(100% - 12px) 100%, 12px 100%, 0 calc(100% - 12px), 0 12px);
+      }
+      .cn-beta-box {
+        padding: 32px; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 28px; align-items: center;
+        background: linear-gradient(145deg, rgba(36, 8, 18, 0.92), rgba(10, 4, 10, 0.96));
+        border: 1px solid rgba(235, 11, 42, 0.45);
+        clip-path: polygon(18px 0, calc(100% - 18px) 0, 100% 18px, 100% calc(100% - 18px), calc(100% - 18px) 100%, 18px 100%, 0 calc(100% - 18px), 0 18px);
+      }
+      @media (max-width: 960px) {
+        .valdoria-map-grid, .cn-beta-box { grid-template-columns: 1fr; }
+        .cn-roadmap-grid { grid-template-columns: repeat(2, 1fr); }
+        .cn-press-grid { grid-template-columns: 1fr; }
+      }
+      @media (max-width: 560px) {
+        .cn-roadmap-grid { grid-template-columns: 1fr; }
+      }
+    </style>
+
+    <section class="section cn-extra-sec" id="world-map">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow gold">Interactive Cartography · Kingdom of Valdoria</div>
+            <h2>EXPLORE THE CURSED REALMS.</h2>
+          </div>
+          <p>Select any cursed landmark on the Valdorian Blood Atlas to inspect its apex guardian, threat level, and forbidden relics.</p>
+        </div>
+
+        <div class="valdoria-map-grid">
+          <div class="valdoria-map-stage" style="aspect-ratio:16/9;min-height:auto">
+            <img src="assets/valdoria-world-map.jpg" data-asset-key="assets/valdoria-world-map.jpg" alt="Official World Map of Valdoria — Crimson Night" style="width:100%;height:100%;object-fit:cover;display:block;filter:contrast(1.06) brightness(0.94)">
+            <button type="button" onclick="openLightbox('assets/valdoria-world-map.jpg', 'Official World Map of Valdoria — Crimson Night', 'Hand-inked gothic cartography of the cursed continent of Valdoria, spanning the Weeping Thicket, the Grand Nave of the Blood Moon, the Northern Bastion, the Ashen Caldera, and the Eastern Eclipse Spire.')" style="position:absolute;top:12px;right:12px;z-index:5;padding:6px 12px;background:rgba(8,3,7,0.86);border:1px solid rgba(229,184,92,0.55);color:#ffd166;font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;backdrop-filter:blur(6px)">
+              🔍 Full HD Map
+            </button>
+            <button type="button" class="vmap-pin" data-region="thicket" style="left:33%;top:27%">🌿<span class="vmap-pin-label">Weeping Thicket</span></button>
+            <button type="button" class="vmap-pin" data-region="nave" style="left:41%;top:53%">👁<span class="vmap-pin-label">Blood Nave</span></button>
+            <button type="button" class="vmap-pin" data-region="peaks" style="left:63%;top:18%">⚔<span class="vmap-pin-label">Northern Bastion</span></button>
+            <button type="button" class="vmap-pin" data-region="citadel" style="left:72%;top:72%">🐉<span class="vmap-pin-label">Calamity Caldera</span></button>
+            <button type="button" class="vmap-pin active" data-region="belfry" style="left:85%;top:62%">🔔<span class="vmap-pin-label">Eclipse Spire</span></button>
+          </div>
+
+          <div class="valdoria-region-panel" id="vmap-panel">
+            <div>
+              <div style="font-size:0.7rem;color:#e5b85c;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:8px" id="vmap-threat">THREAT LEVEL: EXTREME · REGION I</div>
+              <h3 style="font-family:var(--font-gothic);font-size:1.55rem;color:#fff;margin-bottom:10px" id="vmap-title">The Shattered Belfry</h3>
+              <p style="font-size:0.88rem;color:#c2b5bd;line-height:1.7;margin-bottom:16px" id="vmap-desc">
+                Once the towering bell-spire of Valdoria's outer wall, now cracked open beneath the Blood Moon. Every resonant chime shakes loose ash and awakens the Furnace-Heart executioner guarding the inner gate.
+              </p>
+              <div style="padding:12px 14px;background:rgba(201,24,52,0.12);border:1px solid rgba(201,24,52,0.35);border-radius:4px;margin-bottom:12px">
+                <div style="font-size:0.66rem;color:#ff8fa3;letter-spacing:0.14em;text-transform:uppercase">APEX GUARDIAN</div>
+                <strong style="font-size:0.95rem;color:#fff" id="vmap-boss">Gorgath, The Iron Belfry</strong>
+              </div>
+              <div style="font-size:0.78rem;color:#e5b85c" id="vmap-loot">✦ Relics: Bell-Iron Cleaver · Cinder Ribcage Talisman</div>
+            </div>
+            <a href="#bestiary" class="btn crimson" style="width:100%;text-align:center;margin-top:18px;font-size:0.76rem">Inspect Region Bosses in Bestiary →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cn-extra-sec" id="roadmap" style="padding-top:64px">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow crimson">Post-Launch Chronicle · 2026 – 2027</div>
+            <h2>THE ECLIPSE ROADMAP.</h2>
+          </div>
+          <p>Crimson Night is supported with free seasonal challenges, boss gauntlets, and two full-scale story expansions.</p>
+        </div>
+        <div class="cn-roadmap-grid">
+          <div class="cn-rm-card">
+            <div style="font-size:0.68rem;color:#ff6b81;font-weight:800;letter-spacing:0.16em;margin-bottom:8px">FALL 2026 · LAUNCH</div>
+            <h4 style="font-family:var(--font-gothic);font-size:1.05rem;color:#fff;margin-bottom:8px">The Blood Eclipse</h4>
+            <p style="font-size:0.78rem;color:#b2a4ad;line-height:1.6">Full 45-hour campaign, 9+ Lovecraftian Bosses, Grim Chess 3D Sanctum, and NEO 96kHz Spatial Audio support.</p>
+          </div>
+          <div class="cn-rm-card">
+            <div style="font-size:0.68rem;color:#e5b85c;font-weight:800;letter-spacing:0.16em;margin-bottom:8px">WINTER 2026 · FREE UPDATE</div>
+            <h4 style="font-family:var(--font-gothic);font-size:1.05rem;color:#fff;margin-bottom:8px">Gauntlet of Blood</h4>
+            <p style="font-size:0.78rem;color:#b2a4ad;line-height:1.6">Boss Rush Trial Mode, Photo Mode with Gothic Filters, and New Game+ Abyssal Covenant difficulty tier.</p>
+          </div>
+          <div class="cn-rm-card">
+            <div style="font-size:0.68rem;color:#e5b85c;font-weight:800;letter-spacing:0.16em;margin-bottom:8px">SPRING 2027 · EXPANSION I</div>
+            <h4 style="font-family:var(--font-gothic);font-size:1.05rem;color:#fff;margin-bottom:8px">Ashes of the World-Tree</h4>
+            <p style="font-size:0.78rem;color:#b2a4ad;line-height:1.6">Unlocks the sunken High Elf roots, Lady Sylvaris's forgotten memory questline, and 12 new blood-briar weapons.</p>
+          </div>
+          <div class="cn-rm-card">
+            <div style="font-size:0.68rem;color:#c4b5fd;font-weight:800;letter-spacing:0.16em;margin-bottom:8px">FALL 2027 · EXPANSION II</div>
+            <h4 style="font-family:var(--font-gothic);font-size:1.05rem;color:#fff;margin-bottom:8px">Calamity of the Sky</h4>
+            <p style="font-size:0.78rem;color:#b2a4ad;line-height:1.6">Ascend the storm-wracked Peak of Valdoria for the 3-phase co-op apex raid against Malygor, The Calamity Wyvern.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cn-extra-sec" id="community-hub" style="padding-top:64px">
+      <div class="wrap">
+        <div class="cn-press-grid">
+          <div class="cn-press-quote">
+            <div style="color:#ffd166;font-size:0.95rem;margin-bottom:8px">★★★★★</div>
+            <p style="font-size:0.86rem;color:#efe6ea;font-style:italic;line-height:1.6;margin-bottom:10px">"A staggering marriage of Bloodborne's gothic dread and razor-sharp spear combat. Every boss looks like an ink nightmare brought to life."</p>
+            <strong style="font-size:0.7rem;color:#e5b85c;letter-spacing:0.16em">— DARK FANTASY WEEKLY · PREVIEW</strong>
+          </div>
+          <div class="cn-press-quote">
+            <div style="color:#ffd166;font-size:0.95rem;margin-bottom:8px">★★★★★</div>
+            <p style="font-size:0.86rem;color:#efe6ea;font-style:italic;line-height:1.6;margin-bottom:10px">"NEO's sensory sound design makes every toll of Gorgath's iron bell reverberate straight through your chest."</p>
+            <strong style="font-size:0.7rem;color:#e5b85c;letter-spacing:0.16em">— NEXTGEN AUDIO &amp; TECH</strong>
+          </div>
+          <div class="cn-press-quote">
+            <div style="color:#ffd166;font-size:0.95rem;margin-bottom:8px">★★★★★</div>
+            <p style="font-size:0.86rem;color:#efe6ea;font-style:italic;line-height:1.6;margin-bottom:10px">"Easily the most ambitious dark-fantasy Action RPG debut of 2026 — and the 3D Grim Chess sanctum is pure genius."</p>
+            <strong style="font-size:0.7rem;color:#e5b85c;letter-spacing:0.16em">— GLOBAL RPG CHRONICLE</strong>
+          </div>
+        </div>
+
+        <div class="cn-beta-box">
+          <div>
+            <div class="eyebrow crimson">Closed Beta Recruitment · Limited Wave</div>
+            <h3 style="font-family:var(--font-gothic);font-size:clamp(1.5rem,3vw,2.2rem);color:#fff;margin:10px 0">JOIN THE ASHEN VANGUARD BETA.</h3>
+            <p style="font-size:0.88rem;color:#c0b2ba;line-height:1.65">Register for the Closed Network Test to receive an exclusive in-game <strong>Crimson Oath Banner</strong> and early patch notes directly from the Crimson Studios team.</p>
+          </div>
+          <form id="cn-beta-form" style="display:grid;gap:10px">
+            <input type="email" id="cn-beta-email" required placeholder="Enter your Hunter email..." style="padding:11px 14px;background:rgba(255,255,255,0.05);border:1px solid rgba(201,24,52,0.38);color:#fff;font-size:0.86rem;outline:none">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+              <select id="cn-beta-platform" style="padding:10px 12px;background:#12060c;border:1px solid rgba(201,24,52,0.38);color:#fff;font-size:0.82rem">
+                <option>PC (Steam / NEO)</option>
+                <option>PlayStation 5</option>
+                <option>Xbox Series X|S</option>
+              </select>
+              <button type="submit" class="btn crimson" style="padding:10px 16px;font-size:0.78rem">Enlist For Beta ⚔</button>
+            </div>
+            <div id="cn-beta-status" style="font-size:0.76rem;color:#ffd166;min-height:18px"></div>
+          </form>
+        </div>
+      </div>
+    </section>
     <section class="section faq-section" id="faq">
       <div class="wrap faq-grid">
         <div>
@@ -9610,6 +9800,466 @@
         card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
         card.style.setProperty('--my', (e.clientY - r.top) + 'px');
       }, { passive: true });
+    })();
+  </script>
+  <!-- ========================================================
+       PEAK AAA INTERACTIVE EXPERIENCE ENGINE
+       (60fps Ambient Particle Canvas · Spring Cursor Aura · Scroll Beam ·
+        Staggered Scroll Reveals · Floating Chapter Minimap Dock)
+       ======================================================== -->
+  <style id="peak-aaa-ui-styles">
+    /* 1. Top Scroll Progress Ribbon */
+    .peak-scroll-bar {
+      position: fixed;
+      top: 0; left: 0; height: 3px; width: 0%;
+      z-index: 99990;
+      pointer-events: none;
+      transition: width 0.08s linear;
+    }
+    .peak-scroll-bar.neo-bar {
+      background: linear-gradient(90deg, #38bdf8, #8be5e3, #a78bfa, #e879f9);
+      box-shadow: 0 0 14px rgba(139, 229, 227, 0.85), 0 0 28px rgba(167, 139, 250, 0.55);
+    }
+    .peak-scroll-bar.cn-bar {
+      background: linear-gradient(90deg, #7a091b, #eb0b2a, #ff5e3a, #ffd166);
+      box-shadow: 0 0 14px rgba(235, 11, 42, 0.9), 0 0 28px rgba(255, 209, 102, 0.5);
+    }
+
+    /* 2. Full-Viewport Subtle Ambient Particle Canvas */
+    .peak-ambient-canvas {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.72;
+    }
+
+    /* 3. Custom Spring Cursor Aura (Desktop Fine Pointer Only) */
+    .peak-cursor-dot, .peak-cursor-ring {
+      position: fixed;
+      top: 0; left: 0;
+      pointer-events: none;
+      z-index: 99995;
+      transform: translate(-100px, -100px);
+      will-change: transform, width, height, opacity;
+      transition: opacity 0.25s ease;
+    }
+    .peak-cursor-dot {
+      width: 7px; height: 7px;
+      margin: -3.5px 0 0 -3.5px;
+      border-radius: 50%;
+    }
+    .peak-cursor-ring {
+      width: 34px; height: 34px;
+      margin: -17px 0 0 -17px;
+      border-radius: 50%;
+      transition: width 0.22s ease, height 0.22s ease, margin 0.22s ease, border-color 0.22s ease, background 0.22s ease, opacity 0.25s ease;
+    }
+    .peak-cursor-dot.neo-c { background: #8be5e3; box-shadow: 0 0 12px #8be5e3; border-radius: 1px; transform-origin: center; }
+    .peak-cursor-ring.neo-c { border: 1.5px solid rgba(139, 229, 227, 0.55); box-shadow: 0 0 18px rgba(167, 139, 250, 0.22); }
+    .peak-cursor-ring.neo-c.hovering {
+      width: 52px; height: 52px; margin: -26px 0 0 -26px;
+      border-color: #e879f9; background: rgba(139, 229, 227, 0.08);
+    }
+
+    .peak-cursor-dot.cn-c { background: #ff2a4b; box-shadow: 0 0 12px #ff2a4b; }
+    .peak-cursor-ring.cn-c { border: 1.5px solid rgba(229, 184, 92, 0.55); box-shadow: 0 0 18px rgba(235, 11, 42, 0.28); }
+    .peak-cursor-ring.cn-c.hovering {
+      width: 52px; height: 52px; margin: -26px 0 0 -26px;
+      border-color: #ff4763; background: rgba(235, 11, 42, 0.10);
+    }
+
+    /* 4. Floating Right-Side Chapter Minimap Dock */
+    .peak-minimap {
+      position: fixed;
+      right: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 80;
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+      padding: 12px 8px;
+      border-radius: 99px;
+      background: rgba(6, 8, 16, 0.62);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+    }
+    .peak-minimap.cn-map {
+      background: rgba(12, 4, 10, 0.68);
+      border-color: rgba(201, 24, 52, 0.28);
+    }
+    .peak-map-dot {
+      position: relative;
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.26);
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: transform 0.24s ease, background 0.24s ease, box-shadow 0.24s ease;
+    }
+    .cn-map .peak-map-dot {
+      border-radius: 1px;
+      transform: rotate(45deg);
+    }
+    .peak-map-dot:hover { background: #ffffff; transform: scale(1.35); }
+    .cn-map .peak-map-dot:hover { transform: rotate(45deg) scale(1.35); }
+    .peak-map-dot.active {
+      background: #8be5e3;
+      box-shadow: 0 0 12px #8be5e3;
+      transform: scale(1.4);
+    }
+    .cn-map .peak-map-dot.active {
+      background: #ffd166;
+      box-shadow: 0 0 12px #eb0b2a, 0 0 6px #ffd166;
+      transform: rotate(45deg) scale(1.45);
+    }
+    .peak-map-tip {
+      position: absolute;
+      right: 22px;
+      top: 50%;
+      transform: translateY(-50%) translateX(6px);
+      white-space: nowrap;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: rgba(8, 11, 22, 0.94);
+      border: 1px solid rgba(139, 229, 227, 0.35);
+      color: #e6fbff;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+    .cn-map .peak-map-tip {
+      transform: translateY(-50%) translateX(6px) rotate(-45deg);
+      transform-origin: right center;
+      background: rgba(16, 5, 11, 0.96);
+      border-color: rgba(229, 184, 92, 0.45);
+      color: #ffe8b3;
+    }
+    .peak-map-dot:hover .peak-map-tip {
+      opacity: 1;
+      transform: translateY(-50%) translateX(0);
+    }
+    .cn-map .peak-map-dot:hover .peak-map-tip {
+      transform: translateY(-50%) translateX(0) rotate(-45deg);
+    }
+
+    /* 5. Silky Scroll-Reveal Entrance Choreography */
+    .peak-reveal {
+      opacity: 0;
+      transform: translateY(26px) scale(0.98);
+      transition: opacity 0.72s cubic-bezier(0.22, 1, 0.36, 1), transform 0.72s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: opacity, transform;
+    }
+    .peak-reveal.revealed {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    @media (max-width: 1080px), (pointer: coarse) {
+      .peak-cursor-dot, .peak-cursor-ring, .peak-minimap { display: none !important; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .peak-ambient-canvas, .peak-cursor-dot, .peak-cursor-ring { display: none !important; }
+      .peak-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+    }
+  </style>
+  <script>
+    (function initPeakAaaExperience() {
+      const ROLE = 'crimson';
+      const IS_CN = (ROLE === 'crimson');
+
+      // 1. Top Scroll Progress Bar
+      const bar = document.createElement('div');
+      bar.className = 'peak-scroll-bar ' + (IS_CN ? 'cn-bar' : 'neo-bar');
+      bar.setAttribute('aria-hidden', 'true');
+      document.body.appendChild(bar);
+
+      function updateScrollBar() {
+        const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+        const pct = Math.min(100, Math.max(0, (window.scrollY / max) * 100));
+        bar.style.width = pct.toFixed(2) + '%';
+      }
+      window.addEventListener('scroll', updateScrollBar, { passive: true });
+      updateScrollBar();
+
+      // 2. Live 60fps Interactive Ambient Particle Canvas
+      const canvas = document.createElement('canvas');
+      canvas.className = 'peak-ambient-canvas';
+      canvas.setAttribute('aria-hidden', 'true');
+      document.body.insertBefore(canvas, document.body.firstChild);
+      const ctx = canvas.getContext('2d');
+
+      let cw = window.innerWidth, ch = window.innerHeight;
+      function resizeCanvas() {
+        cw = canvas.width = window.innerWidth;
+        ch = canvas.height = window.innerHeight;
+      }
+      resizeCanvas();
+      window.addEventListener('resize', resizeCanvas, { passive: true });
+
+      const mouse = { x: -9999, y: -9999 };
+      window.addEventListener('mousemove', (e) => { mouse.x = e.clientX; mouse.y = e.clientY; }, { passive: true });
+
+      if (ctx && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const particles = [];
+        const count = IS_CN ? 48 : 44;
+        for (let i = 0; i < count; i++) {
+          particles.push({
+            x: Math.random() * cw,
+            y: Math.random() * ch,
+            vx: IS_CN ? (Math.random() - 0.5) * 0.45 : (Math.random() - 0.5) * 0.38,
+            vy: IS_CN ? -(0.35 + Math.random() * 0.85) : (Math.random() - 0.5) * 0.38,
+            r: IS_CN ? (1.2 + Math.random() * 2.4) : (1.2 + Math.random() * 2.1),
+            alpha: 0.25 + Math.random() * 0.55,
+            alt: Math.random() > 0.62
+          });
+        }
+
+        function tickCanvas() {
+          ctx.clearRect(0, 0, cw, ch);
+          for (let i = 0; i < particles.length; i++) {
+            const p = particles[i];
+            p.x += p.vx;
+            p.y += p.vy;
+
+            // Gentle wind repulsion near cursor
+            const dx = p.x - mouse.x;
+            const dy = p.y - mouse.y;
+            const dist = Math.hypot(dx, dy);
+            if (dist > 1 && dist < 130) {
+              const force = (130 - dist) / 130;
+              p.x += (dx / dist) * force * (IS_CN ? 1.4 : 0.7);
+              p.y += (dy / dist) * force * (IS_CN ? 1.4 : 0.7);
+            }
+
+            if (IS_CN) {
+              if (p.y < -10) { p.y = ch + 10; p.x = Math.random() * cw; }
+              if (p.x < -10) p.x = cw + 10;
+              if (p.x > cw + 10) p.x = -10;
+              ctx.beginPath();
+              ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+              ctx.fillStyle = p.alt
+                ? `rgba(255, 209, 102, ${p.alpha * 0.85})`
+                : `rgba(255, 42, 75, ${p.alpha})`;
+              ctx.fill();
+            } else {
+              if (p.x < 0 || p.x > cw) p.vx *= -1;
+              if (p.y < 0 || p.y > ch) p.vy *= -1;
+              ctx.beginPath();
+              ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+              ctx.fillStyle = p.alt
+                ? `rgba(167, 139, 250, ${p.alpha})`
+                : `rgba(139, 229, 227, ${p.alpha})`;
+              ctx.fill();
+
+              // Connect nearby cosmic nodes with gossamer filaments near cursor
+              if (dist < 220) {
+                for (let j = i + 1; j < particles.length; j++) {
+                  const q = particles[j];
+                  const d2 = Math.hypot(p.x - q.x, p.y - q.y);
+                  if (d2 < 125) {
+                    ctx.beginPath();
+                    ctx.moveTo(p.x, p.y);
+                    ctx.lineTo(q.x, q.y);
+                    ctx.strokeStyle = `rgba(139, 229, 227, ${(1 - d2 / 125) * 0.22})`;
+                    ctx.lineWidth = 0.8;
+                    ctx.stroke();
+                  }
+                }
+              }
+            }
+          }
+          requestAnimationFrame(tickCanvas);
+        }
+        requestAnimationFrame(tickCanvas);
+      }
+
+      // 3. Spring-Interpolated Custom Cursor Aura (Desktop Only)
+      if (window.matchMedia('(pointer: fine)').matches && window.innerWidth > 1080) {
+        const dot = document.createElement('div');
+        const ring = document.createElement('div');
+        dot.className = 'peak-cursor-dot ' + (IS_CN ? 'cn-c' : 'neo-c');
+        ring.className = 'peak-cursor-ring ' + (IS_CN ? 'cn-c' : 'neo-c');
+        document.body.append(dot, ring);
+
+        let rx = -100, ry = -100;
+        let tx = -100, ty = -100;
+
+        window.addEventListener('mousemove', (e) => {
+          tx = e.clientX; ty = e.clientY;
+          dot.style.transform = `translate3d(${tx}px, ${ty}px, 0)` + (IS_CN ? '' : ' rotate(45deg)');
+          const interactive = e.target.closest('a, button, [data-product], .bestiary-card, .product-card, .limited13-card, .gallery-item, .cn-rune-node');
+          ring.classList.toggle('hovering', Boolean(interactive));
+          const inFrame = e.target.tagName === 'IFRAME';
+          dot.style.opacity = inFrame ? '0' : '1';
+          ring.style.opacity = inFrame ? '0' : '1';
+        }, { passive: true });
+
+        function animateCursor() {
+          rx += (tx - rx) * 0.18;
+          ry += (ty - ry) * 0.18;
+          ring.style.transform = `translate3d(${rx.toFixed(1)}px, ${ry.toFixed(1)}px, 0)`;
+          requestAnimationFrame(animateCursor);
+        }
+        requestAnimationFrame(animateCursor);
+      }
+
+      // 4. Floating Right-Side Chapter Minimap Dock
+      const zones = IS_CN ? [
+        { id: 'hero', label: 'Overview' },
+        { id: 'protagonist', label: 'Sir Kaelen' },
+        { id: 'bestiary', label: 'Bestiary (9)' },
+        { id: 'lore', label: 'Valdoria Lore' },
+        { id: 'gameplay', label: 'Combat' },
+        { id: 'trailer', label: 'Trailer' },
+        { id: 'soundtrack', label: 'OST Player' },
+        { id: 'minigame', label: 'Grim Chess 3D' },
+        { id: 'merchandise', label: 'Vault' },
+        { id: 'editions', label: 'Editions & 13' }
+      ] : [
+        { id: 'home', label: 'NEO Home' },
+        { id: 'about', label: 'About Studio' },
+        { id: 'crimson-night', label: 'Crimson Night' },
+        { id: 'halo-collab', label: 'Halo Collab' },
+        { id: 'products', label: 'Sensory Gear' },
+        { id: 'gallery', label: 'Gallery' },
+        { id: 'contact', label: 'Pre-Order' }
+      ];
+
+      const validZones = zones.filter(z => document.getElementById(z.id));
+      if (validZones.length >= 4) {
+        const navDock = document.createElement('nav');
+        navDock.className = 'peak-minimap' + (IS_CN ? ' cn-map' : '');
+        navDock.setAttribute('aria-label', 'Page Sections');
+        const dotMap = new Map();
+
+        validZones.forEach((z, idx) => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'peak-map-dot' + (idx === 0 ? ' active' : '');
+          btn.setAttribute('aria-label', z.label);
+          btn.innerHTML = `<span class="peak-map-tip">${z.label}</span>`;
+          btn.onclick = () => {
+            const target = document.getElementById(z.id);
+            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          };
+          navDock.appendChild(btn);
+          dotMap.set(z.id, btn);
+        });
+        document.body.appendChild(navDock);
+
+        const secObs = new IntersectionObserver((entries) => {
+          entries.forEach(en => {
+            if (en.isIntersecting) {
+              dotMap.forEach(b => b.classList.remove('active'));
+              const activeBtn = dotMap.get(en.target.id);
+              if (activeBtn) activeBtn.classList.add('active');
+            }
+          });
+        }, { rootMargin: '-38% 0px -48% 0px', threshold: 0.01 });
+        validZones.forEach(z => secObs.observe(document.getElementById(z.id)));
+      }
+
+      // 5. Staggered Scroll-Triggered Reveal Choreography
+      const revealTargets = document.querySelectorAll(
+        '.section-head, .product-card, .bestiary-card, .edition-card, .combat-card, .merch-card, .limited13-card, .gallery-item, .spec-card'
+      );
+      if ('IntersectionObserver' in window && revealTargets.length) {
+        const revObs = new IntersectionObserver((entries, observer) => {
+          let delayIdx = 0;
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.style.transitionDelay = Math.min(delayIdx * 65, 260) + 'ms';
+              entry.target.classList.add('revealed');
+              observer.unobserve(entry.target);
+              delayIdx++;
+            }
+          });
+        }, { rootMargin: '0px 0px -60px 0px', threshold: 0.05 });
+
+        revealTargets.forEach(el => {
+          const rect = el.getBoundingClientRect();
+          if (rect.top > window.innerHeight * 0.95) {
+            el.classList.add('peak-reveal');
+            revObs.observe(el);
+          }
+        });
+      }
+    })();
+  </script>
+  <script>
+    (function initCnWorldMapAndBeta() {
+      const REGIONS = {
+        belfry: {
+          threat: 'THREAT LEVEL: EXTREME · REGION I',
+          title: 'The Shattered Belfry',
+          desc: 'Once the towering bell-spire of Valdoria\'s outer wall, now cracked open beneath the Blood Moon. Every resonant chime shakes loose ash and awakens the Furnace-Heart executioner guarding the inner gate.',
+          boss: 'Gorgath, The Iron Belfry',
+          loot: '✦ Relics: Bell-Iron Cleaver · Cinder Ribcage Talisman'
+        },
+        nave: {
+          threat: 'THREAT LEVEL: NIGHTMARE · REGION II',
+          title: 'Grand Nave of the Blood Moon',
+          desc: 'A flooded gothic cathedral drowned in crimson incense and shattered stained glass. Choirs still echo through its rafters as the hundred-eyed seraph descends on chains of bronze.',
+          boss: 'Seraphim Azael, The All-Seeing Censer',
+          loot: '✦ Relics: Censer of Scalding Ichor · Halo of Insight'
+        },
+        thicket: {
+          threat: 'THREAT LEVEL: CORRUPTED · REGION III',
+          title: 'The Weeping Thicket',
+          desc: 'The ancient High Elf sanctuary built around the dying Tree of Life. Its roots have fused with crimson eyes and blackened briars, guarded eternally by its infected sovereign.',
+          boss: 'Lady Sylvaris, Remnant of the Tree of Life',
+          loot: '✦ Relics: Living Briar-Lance · Blighted Sap Vial'
+        },
+        peaks: {
+          threat: 'THREAT LEVEL: BRUTAL · REGION IV',
+          title: 'Ashen Ruins & Shattered Peaks',
+          desc: 'A war-torn mountain pass strewn with fallen lancer armor and broken cathedral pillars, stalked by parasitic oathbreakers and highland colossi.',
+          boss: 'Sir Valdris & Kragmor, The Abyss-Brute',
+          loot: '✦ Relics: Oathbreaker Greatsword · Chained Pillar Hammer'
+        },
+        citadel: {
+          threat: 'THREAT LEVEL: APEX CALAMITY · FINAL REALM',
+          title: 'Peak of Valdoria — Eclipse Citadel',
+          desc: 'The sky-piercing summit directly beneath the weeping red eclipse, where primordial calamity incarnate circles the burning ruins.',
+          boss: 'Malygor, The Calamity Wyvern & Malakor',
+          loot: '✦ Relics: Calamity Wyvern Heart · Crown of the Eclipse'
+        }
+      };
+
+      document.querySelectorAll('.vmap-pin').forEach(pin => {
+        pin.addEventListener('click', () => {
+          document.querySelectorAll('.vmap-pin').forEach(p => p.classList.remove('active'));
+          pin.classList.add('active');
+          const r = REGIONS[pin.dataset.region];
+          if (!r) return;
+          document.getElementById('vmap-threat').textContent = r.threat;
+          document.getElementById('vmap-title').textContent = r.title;
+          document.getElementById('vmap-desc').textContent = r.desc;
+          document.getElementById('vmap-boss').textContent = r.boss;
+          document.getElementById('vmap-loot').textContent = r.loot;
+        });
+      });
+
+      const betaForm = document.getElementById('cn-beta-form');
+      if (betaForm) {
+        betaForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const email = document.getElementById('cn-beta-email').value.trim();
+          const plat = document.getElementById('cn-beta-platform').value;
+          const pass = 'VAL-BETA-' + Math.floor(10000 + Math.random() * 89999);
+          document.getElementById('cn-beta-status').textContent = `✓ Enlisted (${plat})! Beta Queue Pass ${pass} sent to ${email}.`;
+          betaForm.reset();
+        });
+      }
     })();
   </script>
 </body>

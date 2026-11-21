@@ -1819,6 +1819,9 @@
             <a href="#halo-collab">Halo Collab ⚡</a>
             <a href="#campaign">Campaign</a>
             <a href="#gallery">Visual Gallery</a>
+            <a href="#studio-slate">Studio IP Slate</a>
+            <a href="#press-news">Press &amp; News</a>
+            <a href="#careers">Careers</a>
           </div>
         </div>
         <a href="crimson-night.html" class="highlight-link" title="Open Dedicated Crimson Night Website">Crimson Night ⚔</a>
@@ -2800,6 +2803,194 @@
     </section>
 
     <!-- Contact & Checkout -->
+        <!-- ========================================================
+         NEO STUDIOS: UPCOMING IP SLATE, NEWSROOM & CAREERS
+         ======================================================== -->
+    <style id="neo-corp-sections-css">
+      .neo-corp-sec { position: relative; padding: 92px 0; border-top: 1px solid rgba(139, 229, 227, 0.14); }
+      .neo-slate-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 32px; }
+      .neo-slate-card {
+        padding: 28px 24px;
+        clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+        background: linear-gradient(155deg, rgba(16, 23, 44, 0.88), rgba(7, 11, 22, 0.95));
+        border: 1px solid rgba(139, 229, 227, 0.24);
+        display: flex; flex-direction: column; justify-content: space-between; gap: 16px;
+        transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+      }
+      .neo-slate-card:hover { transform: translateY(-6px); border-color: #8be5e3; box-shadow: 0 22px 50px rgba(0,0,0,0.7), 0 0 28px rgba(56,189,248,0.2); }
+      .neo-slate-card.flagship { border-color: rgba(235, 11, 42, 0.55); background: linear-gradient(155deg, rgba(36, 10, 22, 0.9), rgba(9, 6, 16, 0.96)); }
+      .neo-status-pill {
+        display: inline-block; padding: 4px 10px; font-size: 0.66rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase;
+        border-radius: 3px; background: rgba(139, 229, 227, 0.12); color: #8be5e3; border: 1px solid rgba(139, 229, 227, 0.35);
+      }
+      .neo-status-pill.live { background: rgba(235, 11, 42, 0.2); color: #ff6b81; border-color: rgba(235, 11, 42, 0.55); }
+      .neo-awards-strip {
+        display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 36px 0;
+      }
+      .neo-award-badge {
+        text-align: center; padding: 18px 14px;
+        border: 1px solid rgba(167, 139, 250, 0.26);
+        background: rgba(167, 139, 250, 0.05);
+        clip-path: polygon(10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px), 0 10px);
+      }
+      .neo-award-badge strong { display: block; font-size: 0.78rem; letter-spacing: 0.12em; color: #e6fbff; margin-bottom: 4px; }
+      .neo-award-badge span { font-size: 0.68rem; color: #a78bfa; letter-spacing: 0.08em; text-transform: uppercase; }
+      .neo-news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+      .neo-news-card {
+        padding: 22px; cursor: pointer;
+        background: rgba(11, 16, 30, 0.88); border: 1px solid rgba(255,255,255,0.1);
+        clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
+        transition: transform 0.25s ease, border-color 0.25s ease;
+      }
+      .neo-news-card:hover { transform: translateY(-4px); border-color: #8be5e3; }
+      .neo-jobs-list { display: grid; gap: 12px; margin-top: 22px; }
+      .neo-job-row {
+        display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+        padding: 18px 22px;
+        background: rgba(10, 14, 28, 0.88); border: 1px solid rgba(139, 229, 227, 0.18);
+        clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+        transition: border-color 0.2s, background 0.2s;
+      }
+      .neo-job-row:hover { border-color: #8be5e3; background: rgba(16, 24, 46, 0.94); }
+      .neo-dept-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+      .neo-dept-btn {
+        padding: 7px 14px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.14);
+        color: #cbd5e1; font-size: 0.75rem; font-weight: 700; cursor: pointer; transition: all 0.2s;
+      }
+      .neo-dept-btn.active { background: linear-gradient(90deg, #38bdf8, #a78bfa); color: #040712; border-color: transparent; }
+      @media (max-width: 900px) {
+        .neo-slate-grid, .neo-news-grid { grid-template-columns: 1fr; }
+        .neo-awards-strip { grid-template-columns: repeat(2, 1fr); }
+      }
+    </style>
+
+    <section class="section neo-corp-sec" id="studio-slate">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">04 — NEO Game Studio Pipeline</div>
+            <h2>Worlds In Creation.</h2>
+          </div>
+          <p>As a game-first studio, our core R&amp;D teams build original dark-fantasy and sci-fi IPs engineered from day one for sensory hardware immersion.</p>
+        </div>
+
+        <div class="neo-slate-grid">
+          <article class="neo-slate-card flagship">
+            <div>
+              <span class="neo-status-pill live">FLAGSHIP · FALL 2026</span>
+              <h3 style="font-size:1.35rem;margin:14px 0 8px;color:#fff">CRIMSON NIGHT</h3>
+              <p style="font-size:0.86rem;color:#b8b0be;line-height:1.65">Dark-fantasy Lovecraftian Action RPG built on Unreal Engine 5.5. Master ruthless spearplay as Sir Kaelen across the cursed gothic citadels of Valdoria.</p>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding-top:12px;border-top:1px solid rgba(255,255,255,0.08)">
+              <span style="font-size:0.72rem;color:#ff8fa3;letter-spacing:0.1em">PC · PS5 · XBOX</span>
+              <a href="crimson-night.html" class="btn crimson" style="padding:8px 14px;font-size:0.74rem">Enter Game Site ⚔</a>
+            </div>
+          </article>
+
+          <article class="neo-slate-card">
+            <div>
+              <span class="neo-status-pill">IN DEVELOPMENT · 2027</span>
+              <h3 style="font-size:1.35rem;margin:14px 0 8px;color:#fff">PROJECT ECLIPSE: ZERO</h3>
+              <p style="font-size:0.86rem;color:#9da8be;line-height:1.65">High-stakes orbital sci-fi extraction thriller powered by NEO's proprietary zero-gravity acoustic engine and directional haptic feedback.</p>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding-top:12px;border-top:1px solid rgba(255,255,255,0.08)">
+              <span style="font-size:0.72rem;color:#8be5e3;letter-spacing:0.1em">ALPHA MILESTONE</span>
+              <span style="font-size:0.72rem;color:#94a3b8">Teaser Q4 2026</span>
+            </div>
+          </article>
+
+          <article class="neo-slate-card">
+            <div>
+              <span class="neo-status-pill" style="color:#c4b5fd;border-color:rgba(196,181,253,0.4)">R&amp;D PROTOTYPE · 2028</span>
+              <h3 style="font-size:1.35rem;margin:14px 0 8px;color:#fff">AETHERIA PROTOCOL</h3>
+              <p style="font-size:0.86rem;color:#9da8be;line-height:1.65">Next-generation spatial narrative RPG bridging real-time AI world-state reactivity with full-room sensory synchronization.</p>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding-top:12px;border-top:1px solid rgba(255,255,255,0.08)">
+              <span style="font-size:0.72rem;color:#c4b5fd;letter-spacing:0.1em">PRE-PRODUCTION</span>
+              <span style="font-size:0.72rem;color:#94a3b8">NEO Labs Tokyo</span>
+            </div>
+          </article>
+        </div>
+
+        <div class="neo-awards-strip">
+          <div class="neo-award-badge"><strong>✦ MOST ANTICIPATED RPG</strong><span>Global Game Awards 2026</span></div>
+          <div class="neo-award-badge"><strong>✦ BEST SENSORY AUDIO</strong><span>Tokyo Tech Showcase</span></div>
+          <div class="neo-award-badge"><strong>✦ UE5.5 SPOTLIGHT</strong><span>Lumen &amp; Nanite Partner</span></div>
+          <div class="neo-award-badge"><strong>✦ 13-UNIT COLLECTOR LAB</strong><span>Bespoke Hardware Craft</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section neo-corp-sec" id="press-news" style="padding-top:64px">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">05 — Pressroom &amp; Studio Dispatches</div>
+            <h2>Latest From NEO.</h2>
+          </div>
+          <p>Official studio announcements, engineering deep-dives, and hardware-game co-design dispatches.</p>
+        </div>
+
+        <div class="neo-news-grid">
+          <article class="neo-news-card" data-news-idx="0">
+            <div style="font-size:0.68rem;color:#8be5e3;letter-spacing:0.14em;margin-bottom:8px">NOV 2026 · ENGINEERING</div>
+            <h4 style="font-size:1.05rem;margin-bottom:8px;color:#fff">How NEO Engineers Physical "Feeling" Into Every Boss Fight</h4>
+            <p style="font-size:0.8rem;color:#9da8be;line-height:1.6">Inside our Tokyo &amp; San Francisco sensory labs: synchronizing 96kHz cathedral acoustics and tactile force curves directly with Crimson Night's combat frames.</p>
+            <div style="margin-top:14px;font-size:0.74rem;color:#8be5e3;font-weight:700">Read Dispatch →</div>
+          </article>
+          <article class="neo-news-card" data-news-idx="1">
+            <div style="font-size:0.68rem;color:#ff6b81;letter-spacing:0.14em;margin-bottom:8px">NOV 2026 · LIMITED EDITION</div>
+            <h4 style="font-size:1.05rem;margin-bottom:8px;color:#fff">Unveiling "The Thirteen": Only 13 Serialized Hardware Suites Worldwide</h4>
+            <p style="font-size:0.8rem;color:#9da8be;line-height:1.6">Reserved exclusively for the first 13 Collector's Ultimate buyers of Crimson Night — laser-etched obsidian fissures and hand-numbered plates.</p>
+            <div style="margin-top:14px;font-size:0.74rem;color:#ff6b81;font-weight:700">Read Dispatch →</div>
+          </article>
+          <article class="neo-news-card" data-news-idx="2">
+            <div style="font-size:0.68rem;color:#c4b5fd;letter-spacing:0.14em;margin-bottom:8px">OCT 2026 · STUDIO</div>
+            <h4 style="font-size:1.05rem;margin-bottom:8px;color:#fff">NEO Interactive Expands Global Co-Development &amp; Modding Tools</h4>
+            <p style="font-size:0.8rem;color:#9da8be;line-height:1.6">Announcing our open community SDK roadmap, Halo crossover technical post-mortem, and 2027 hiring wave across engineering and art.</p>
+            <div style="margin-top:14px;font-size:0.74rem;color:#c4b5fd;font-weight:700">Read Dispatch →</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section neo-corp-sec" id="careers" style="padding-top:64px">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">06 — Careers At NEO Studios</div>
+            <h2>Forge The Next World.</h2>
+          </div>
+          <p>We are game creators, artists, and sensory engineers united by obsessive craft. Hybrid &amp; remote roles across Tokyo, San Francisco, and Munich.</p>
+        </div>
+
+        <div class="neo-dept-tabs">
+          <button type="button" class="neo-dept-btn active" data-dept="all">All Roles (4)</button>
+          <button type="button" class="neo-dept-btn" data-dept="dev">Game Engineering</button>
+          <button type="button" class="neo-dept-btn" data-dept="art">Art &amp; Worldbuilding</button>
+          <button type="button" class="neo-dept-btn" data-dept="hw">Sensory Hardware</button>
+        </div>
+
+        <div class="neo-jobs-list" id="neo-jobs-list">
+          <div class="neo-job-row" data-job-dept="dev">
+            <div><strong style="color:#fff;font-size:0.95rem">Senior Combat &amp; Boss Systems Designer</strong><div style="font-size:0.76rem;color:#94a3b8;margin-top:3px">Game Engineering · Tokyo / Remote · Full-Time</div></div>
+            <button type="button" class="btn primary neo-apply-btn" data-role="Senior Combat &amp; Boss Systems Designer" style="padding:8px 16px;font-size:0.74rem">Apply Now →</button>
+          </div>
+          <div class="neo-job-row" data-job-dept="art">
+            <div><strong style="color:#fff;font-size:0.95rem">Principal Dark-Fantasy Creature Concept Artist</strong><div style="font-size:0.76rem;color:#94a3b8;margin-top:3px">Art &amp; Worldbuilding · Remote Global · Full-Time</div></div>
+            <button type="button" class="btn primary neo-apply-btn" data-role="Principal Dark-Fantasy Creature Concept Artist" style="padding:8px 16px;font-size:0.74rem">Apply Now →</button>
+          </div>
+          <div class="neo-job-row" data-job-dept="hw">
+            <div><strong style="color:#fff;font-size:0.95rem">Acoustic &amp; Tactile Sensory Hardware Engineer</strong><div style="font-size:0.76rem;color:#94a3b8;margin-top:3px">Sensory Hardware · San Francisco / Munich · Full-Time</div></div>
+            <button type="button" class="btn primary neo-apply-btn" data-role="Acoustic &amp; Tactile Sensory Hardware Engineer" style="padding:8px 16px;font-size:0.74rem">Apply Now →</button>
+          </div>
+          <div class="neo-job-row" data-job-dept="dev">
+            <div><strong style="color:#fff;font-size:0.95rem">Unreal Engine 5.5 Rendering &amp; Lumen Specialist</strong><div style="font-size:0.76rem;color:#94a3b8;margin-top:3px">Game Engineering · Tokyo / Hybrid · Full-Time</div></div>
+            <button type="button" class="btn primary neo-apply-btn" data-role="Unreal Engine 5.5 Rendering &amp; Lumen Specialist" style="padding:8px 16px;font-size:0.74rem">Apply Now →</button>
+          </div>
+        </div>
+      </div>
+    </section>
     <section class="section contact" id="contact">
       <!-- Chrome Watermark: Orbit Ring & Starburst -->
       <div class="chrome-watermark contact-chrome-wm" aria-hidden="true">
@@ -5092,6 +5283,488 @@
         card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
         card.style.setProperty('--my', (e.clientY - r.top) + 'px');
       }, { passive: true });
+    })();
+  </script>
+  <!-- ========================================================
+       PEAK AAA INTERACTIVE EXPERIENCE ENGINE
+       (60fps Ambient Particle Canvas · Spring Cursor Aura · Scroll Beam ·
+        Staggered Scroll Reveals · Floating Chapter Minimap Dock)
+       ======================================================== -->
+  <style id="peak-aaa-ui-styles">
+    /* 1. Top Scroll Progress Ribbon */
+    .peak-scroll-bar {
+      position: fixed;
+      top: 0; left: 0; height: 3px; width: 0%;
+      z-index: 99990;
+      pointer-events: none;
+      transition: width 0.08s linear;
+    }
+    .peak-scroll-bar.neo-bar {
+      background: linear-gradient(90deg, #38bdf8, #8be5e3, #a78bfa, #e879f9);
+      box-shadow: 0 0 14px rgba(139, 229, 227, 0.85), 0 0 28px rgba(167, 139, 250, 0.55);
+    }
+    .peak-scroll-bar.cn-bar {
+      background: linear-gradient(90deg, #7a091b, #eb0b2a, #ff5e3a, #ffd166);
+      box-shadow: 0 0 14px rgba(235, 11, 42, 0.9), 0 0 28px rgba(255, 209, 102, 0.5);
+    }
+
+    /* 2. Full-Viewport Subtle Ambient Particle Canvas */
+    .peak-ambient-canvas {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.72;
+    }
+
+    /* 3. Custom Spring Cursor Aura (Desktop Fine Pointer Only) */
+    .peak-cursor-dot, .peak-cursor-ring {
+      position: fixed;
+      top: 0; left: 0;
+      pointer-events: none;
+      z-index: 99995;
+      transform: translate(-100px, -100px);
+      will-change: transform, width, height, opacity;
+      transition: opacity 0.25s ease;
+    }
+    .peak-cursor-dot {
+      width: 7px; height: 7px;
+      margin: -3.5px 0 0 -3.5px;
+      border-radius: 50%;
+    }
+    .peak-cursor-ring {
+      width: 34px; height: 34px;
+      margin: -17px 0 0 -17px;
+      border-radius: 50%;
+      transition: width 0.22s ease, height 0.22s ease, margin 0.22s ease, border-color 0.22s ease, background 0.22s ease, opacity 0.25s ease;
+    }
+    .peak-cursor-dot.neo-c { background: #8be5e3; box-shadow: 0 0 12px #8be5e3; border-radius: 1px; transform-origin: center; }
+    .peak-cursor-ring.neo-c { border: 1.5px solid rgba(139, 229, 227, 0.55); box-shadow: 0 0 18px rgba(167, 139, 250, 0.22); }
+    .peak-cursor-ring.neo-c.hovering {
+      width: 52px; height: 52px; margin: -26px 0 0 -26px;
+      border-color: #e879f9; background: rgba(139, 229, 227, 0.08);
+    }
+
+    .peak-cursor-dot.cn-c { background: #ff2a4b; box-shadow: 0 0 12px #ff2a4b; }
+    .peak-cursor-ring.cn-c { border: 1.5px solid rgba(229, 184, 92, 0.55); box-shadow: 0 0 18px rgba(235, 11, 42, 0.28); }
+    .peak-cursor-ring.cn-c.hovering {
+      width: 52px; height: 52px; margin: -26px 0 0 -26px;
+      border-color: #ff4763; background: rgba(235, 11, 42, 0.10);
+    }
+
+    /* 4. Floating Right-Side Chapter Minimap Dock */
+    .peak-minimap {
+      position: fixed;
+      right: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 80;
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+      padding: 12px 8px;
+      border-radius: 99px;
+      background: rgba(6, 8, 16, 0.62);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+    }
+    .peak-minimap.cn-map {
+      background: rgba(12, 4, 10, 0.68);
+      border-color: rgba(201, 24, 52, 0.28);
+    }
+    .peak-map-dot {
+      position: relative;
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.26);
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: transform 0.24s ease, background 0.24s ease, box-shadow 0.24s ease;
+    }
+    .cn-map .peak-map-dot {
+      border-radius: 1px;
+      transform: rotate(45deg);
+    }
+    .peak-map-dot:hover { background: #ffffff; transform: scale(1.35); }
+    .cn-map .peak-map-dot:hover { transform: rotate(45deg) scale(1.35); }
+    .peak-map-dot.active {
+      background: #8be5e3;
+      box-shadow: 0 0 12px #8be5e3;
+      transform: scale(1.4);
+    }
+    .cn-map .peak-map-dot.active {
+      background: #ffd166;
+      box-shadow: 0 0 12px #eb0b2a, 0 0 6px #ffd166;
+      transform: rotate(45deg) scale(1.45);
+    }
+    .peak-map-tip {
+      position: absolute;
+      right: 22px;
+      top: 50%;
+      transform: translateY(-50%) translateX(6px);
+      white-space: nowrap;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: rgba(8, 11, 22, 0.94);
+      border: 1px solid rgba(139, 229, 227, 0.35);
+      color: #e6fbff;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+    .cn-map .peak-map-tip {
+      transform: translateY(-50%) translateX(6px) rotate(-45deg);
+      transform-origin: right center;
+      background: rgba(16, 5, 11, 0.96);
+      border-color: rgba(229, 184, 92, 0.45);
+      color: #ffe8b3;
+    }
+    .peak-map-dot:hover .peak-map-tip {
+      opacity: 1;
+      transform: translateY(-50%) translateX(0);
+    }
+    .cn-map .peak-map-dot:hover .peak-map-tip {
+      transform: translateY(-50%) translateX(0) rotate(-45deg);
+    }
+
+    /* 5. Silky Scroll-Reveal Entrance Choreography */
+    .peak-reveal {
+      opacity: 0;
+      transform: translateY(26px) scale(0.98);
+      transition: opacity 0.72s cubic-bezier(0.22, 1, 0.36, 1), transform 0.72s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: opacity, transform;
+    }
+    .peak-reveal.revealed {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    @media (max-width: 1080px), (pointer: coarse) {
+      .peak-cursor-dot, .peak-cursor-ring, .peak-minimap { display: none !important; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .peak-ambient-canvas, .peak-cursor-dot, .peak-cursor-ring { display: none !important; }
+      .peak-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+    }
+  </style>
+  <script>
+    (function initPeakAaaExperience() {
+      const ROLE = 'neo';
+      const IS_CN = (ROLE === 'crimson');
+
+      // 1. Top Scroll Progress Bar
+      const bar = document.createElement('div');
+      bar.className = 'peak-scroll-bar ' + (IS_CN ? 'cn-bar' : 'neo-bar');
+      bar.setAttribute('aria-hidden', 'true');
+      document.body.appendChild(bar);
+
+      function updateScrollBar() {
+        const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+        const pct = Math.min(100, Math.max(0, (window.scrollY / max) * 100));
+        bar.style.width = pct.toFixed(2) + '%';
+      }
+      window.addEventListener('scroll', updateScrollBar, { passive: true });
+      updateScrollBar();
+
+      // 2. Live 60fps Interactive Ambient Particle Canvas
+      const canvas = document.createElement('canvas');
+      canvas.className = 'peak-ambient-canvas';
+      canvas.setAttribute('aria-hidden', 'true');
+      document.body.insertBefore(canvas, document.body.firstChild);
+      const ctx = canvas.getContext('2d');
+
+      let cw = window.innerWidth, ch = window.innerHeight;
+      function resizeCanvas() {
+        cw = canvas.width = window.innerWidth;
+        ch = canvas.height = window.innerHeight;
+      }
+      resizeCanvas();
+      window.addEventListener('resize', resizeCanvas, { passive: true });
+
+      const mouse = { x: -9999, y: -9999 };
+      window.addEventListener('mousemove', (e) => { mouse.x = e.clientX; mouse.y = e.clientY; }, { passive: true });
+
+      if (ctx && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const particles = [];
+        const count = IS_CN ? 48 : 44;
+        for (let i = 0; i < count; i++) {
+          particles.push({
+            x: Math.random() * cw,
+            y: Math.random() * ch,
+            vx: IS_CN ? (Math.random() - 0.5) * 0.45 : (Math.random() - 0.5) * 0.38,
+            vy: IS_CN ? -(0.35 + Math.random() * 0.85) : (Math.random() - 0.5) * 0.38,
+            r: IS_CN ? (1.2 + Math.random() * 2.4) : (1.2 + Math.random() * 2.1),
+            alpha: 0.25 + Math.random() * 0.55,
+            alt: Math.random() > 0.62
+          });
+        }
+
+        function tickCanvas() {
+          ctx.clearRect(0, 0, cw, ch);
+          for (let i = 0; i < particles.length; i++) {
+            const p = particles[i];
+            p.x += p.vx;
+            p.y += p.vy;
+
+            // Gentle wind repulsion near cursor
+            const dx = p.x - mouse.x;
+            const dy = p.y - mouse.y;
+            const dist = Math.hypot(dx, dy);
+            if (dist > 1 && dist < 130) {
+              const force = (130 - dist) / 130;
+              p.x += (dx / dist) * force * (IS_CN ? 1.4 : 0.7);
+              p.y += (dy / dist) * force * (IS_CN ? 1.4 : 0.7);
+            }
+
+            if (IS_CN) {
+              if (p.y < -10) { p.y = ch + 10; p.x = Math.random() * cw; }
+              if (p.x < -10) p.x = cw + 10;
+              if (p.x > cw + 10) p.x = -10;
+              ctx.beginPath();
+              ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+              ctx.fillStyle = p.alt
+                ? `rgba(255, 209, 102, ${p.alpha * 0.85})`
+                : `rgba(255, 42, 75, ${p.alpha})`;
+              ctx.fill();
+            } else {
+              if (p.x < 0 || p.x > cw) p.vx *= -1;
+              if (p.y < 0 || p.y > ch) p.vy *= -1;
+              ctx.beginPath();
+              ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+              ctx.fillStyle = p.alt
+                ? `rgba(167, 139, 250, ${p.alpha})`
+                : `rgba(139, 229, 227, ${p.alpha})`;
+              ctx.fill();
+
+              // Connect nearby cosmic nodes with gossamer filaments near cursor
+              if (dist < 220) {
+                for (let j = i + 1; j < particles.length; j++) {
+                  const q = particles[j];
+                  const d2 = Math.hypot(p.x - q.x, p.y - q.y);
+                  if (d2 < 125) {
+                    ctx.beginPath();
+                    ctx.moveTo(p.x, p.y);
+                    ctx.lineTo(q.x, q.y);
+                    ctx.strokeStyle = `rgba(139, 229, 227, ${(1 - d2 / 125) * 0.22})`;
+                    ctx.lineWidth = 0.8;
+                    ctx.stroke();
+                  }
+                }
+              }
+            }
+          }
+          requestAnimationFrame(tickCanvas);
+        }
+        requestAnimationFrame(tickCanvas);
+      }
+
+      // 3. Spring-Interpolated Custom Cursor Aura (Desktop Only)
+      if (window.matchMedia('(pointer: fine)').matches && window.innerWidth > 1080) {
+        const dot = document.createElement('div');
+        const ring = document.createElement('div');
+        dot.className = 'peak-cursor-dot ' + (IS_CN ? 'cn-c' : 'neo-c');
+        ring.className = 'peak-cursor-ring ' + (IS_CN ? 'cn-c' : 'neo-c');
+        document.body.append(dot, ring);
+
+        let rx = -100, ry = -100;
+        let tx = -100, ty = -100;
+
+        window.addEventListener('mousemove', (e) => {
+          tx = e.clientX; ty = e.clientY;
+          dot.style.transform = `translate3d(${tx}px, ${ty}px, 0)` + (IS_CN ? '' : ' rotate(45deg)');
+          const interactive = e.target.closest('a, button, [data-product], .bestiary-card, .product-card, .limited13-card, .gallery-item, .cn-rune-node');
+          ring.classList.toggle('hovering', Boolean(interactive));
+          const inFrame = e.target.tagName === 'IFRAME';
+          dot.style.opacity = inFrame ? '0' : '1';
+          ring.style.opacity = inFrame ? '0' : '1';
+        }, { passive: true });
+
+        function animateCursor() {
+          rx += (tx - rx) * 0.18;
+          ry += (ty - ry) * 0.18;
+          ring.style.transform = `translate3d(${rx.toFixed(1)}px, ${ry.toFixed(1)}px, 0)`;
+          requestAnimationFrame(animateCursor);
+        }
+        requestAnimationFrame(animateCursor);
+      }
+
+      // 4. Floating Right-Side Chapter Minimap Dock
+      const zones = IS_CN ? [
+        { id: 'hero', label: 'Overview' },
+        { id: 'protagonist', label: 'Sir Kaelen' },
+        { id: 'bestiary', label: 'Bestiary (9)' },
+        { id: 'lore', label: 'Valdoria Lore' },
+        { id: 'gameplay', label: 'Combat' },
+        { id: 'trailer', label: 'Trailer' },
+        { id: 'soundtrack', label: 'OST Player' },
+        { id: 'minigame', label: 'Grim Chess 3D' },
+        { id: 'merchandise', label: 'Vault' },
+        { id: 'editions', label: 'Editions & 13' }
+      ] : [
+        { id: 'home', label: 'NEO Home' },
+        { id: 'about', label: 'About Studio' },
+        { id: 'crimson-night', label: 'Crimson Night' },
+        { id: 'halo-collab', label: 'Halo Collab' },
+        { id: 'products', label: 'Sensory Gear' },
+        { id: 'gallery', label: 'Gallery' },
+        { id: 'contact', label: 'Pre-Order' }
+      ];
+
+      const validZones = zones.filter(z => document.getElementById(z.id));
+      if (validZones.length >= 4) {
+        const navDock = document.createElement('nav');
+        navDock.className = 'peak-minimap' + (IS_CN ? ' cn-map' : '');
+        navDock.setAttribute('aria-label', 'Page Sections');
+        const dotMap = new Map();
+
+        validZones.forEach((z, idx) => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'peak-map-dot' + (idx === 0 ? ' active' : '');
+          btn.setAttribute('aria-label', z.label);
+          btn.innerHTML = `<span class="peak-map-tip">${z.label}</span>`;
+          btn.onclick = () => {
+            const target = document.getElementById(z.id);
+            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          };
+          navDock.appendChild(btn);
+          dotMap.set(z.id, btn);
+        });
+        document.body.appendChild(navDock);
+
+        const secObs = new IntersectionObserver((entries) => {
+          entries.forEach(en => {
+            if (en.isIntersecting) {
+              dotMap.forEach(b => b.classList.remove('active'));
+              const activeBtn = dotMap.get(en.target.id);
+              if (activeBtn) activeBtn.classList.add('active');
+            }
+          });
+        }, { rootMargin: '-38% 0px -48% 0px', threshold: 0.01 });
+        validZones.forEach(z => secObs.observe(document.getElementById(z.id)));
+      }
+
+      // 5. Staggered Scroll-Triggered Reveal Choreography
+      const revealTargets = document.querySelectorAll(
+        '.section-head, .product-card, .bestiary-card, .edition-card, .combat-card, .merch-card, .limited13-card, .gallery-item, .spec-card'
+      );
+      if ('IntersectionObserver' in window && revealTargets.length) {
+        const revObs = new IntersectionObserver((entries, observer) => {
+          let delayIdx = 0;
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.style.transitionDelay = Math.min(delayIdx * 65, 260) + 'ms';
+              entry.target.classList.add('revealed');
+              observer.unobserve(entry.target);
+              delayIdx++;
+            }
+          });
+        }, { rootMargin: '0px 0px -60px 0px', threshold: 0.05 });
+
+        revealTargets.forEach(el => {
+          const rect = el.getBoundingClientRect();
+          if (rect.top > window.innerHeight * 0.95) {
+            el.classList.add('peak-reveal');
+            revObs.observe(el);
+          }
+        });
+      }
+    })();
+  </script>
+  <script>
+    (function initNeoCorpInteractivity() {
+      const NEWS_DATA = [
+        {
+          tag: 'NOV 2026 · SENSORY ENGINEERING',
+          title: 'How NEO Engineers Physical "Feeling" Into Every Boss Fight',
+          body: 'At NEO, hardware is never an afterthought — it is an extension of our game directors\' vision. During Crimson Night\'s boss encounters, sub-60Hz acoustic resonance from Malakor\'s roar and the sharp metallic parry window of Kaelen\'s spear are directly mapped to NEO headset drivers and ergonomic posture frames, delivering unmistakable physical presence.'
+        },
+        {
+          tag: 'NOV 2026 · ULTRA-LIMITED ALLOCATION',
+          title: 'Unveiling "The Thirteen": Only 13 Serialized Hardware Suites Worldwide',
+          body: 'To celebrate the launch of Crimson Night, NEO Hardware Labs hand-forged strictly 13 numbered sets (#01/13 through #13/13) featuring the Sanguine Keyforge mechanical keyboard, Abyssal Vision 32" 240Hz OLED display, Blood-Vein Fang 8000Hz mouse, and Cathedral Spatial headset. These sets will never be sold separately and are awarded exclusively to the first 13 Collector\'s Ultimate buyers.'
+        },
+        {
+          tag: 'OCT 2026 · STUDIO EXPANSION',
+          title: 'NEO Interactive Expands Global Co-Development &amp; 2027 IP Slate',
+          body: 'Following our landmark Halo crossover showcase, NEO Interactive is expanding our engineering hubs in Tokyo, San Francisco, and Munich as Project Eclipse: Zero enters alpha milestone production.'
+        }
+      ];
+
+      // News Reader & Career Application Modal
+      const corpModal = document.createElement('div');
+      corpModal.className = 'neo-ux-backdrop';
+      corpModal.id = 'neo-corp-modal';
+      corpModal.innerHTML = `<div class="neo-ux-card" style="width:min(540px,100%)" id="neo-corp-modal-box"></div>`;
+      document.body.appendChild(corpModal);
+      corpModal.addEventListener('click', (e) => { if (e.target === corpModal) corpModal.classList.remove('open'); });
+
+      document.querySelectorAll('.neo-news-card').forEach(card => {
+        card.addEventListener('click', () => {
+          const item = NEWS_DATA[Number(card.dataset.newsIdx)] || NEWS_DATA[0];
+          const box = document.getElementById('neo-corp-modal-box');
+          box.innerHTML = `
+            <button class="neo-ux-close" id="ncm-close">✕</button>
+            <div class="neo-auth-brand">${item.tag}</div>
+            <div class="neo-auth-heading" style="font-size:1.25rem;line-height:1.3">${item.title}</div>
+            <p style="font-size:0.9rem;color:#cbd5e1;line-height:1.75;margin-bottom:18px">${item.body}</p>
+            <button type="button" class="neo-auth-submit" id="ncm-ok">Close Dispatch</button>
+          `;
+          document.getElementById('ncm-close').onclick = () => corpModal.classList.remove('open');
+          document.getElementById('ncm-ok').onclick = () => corpModal.classList.remove('open');
+          corpModal.classList.add('open');
+        });
+      });
+
+      document.querySelectorAll('.neo-dept-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.neo-dept-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const d = btn.dataset.dept;
+          document.querySelectorAll('.neo-job-row').forEach(row => {
+            row.style.display = (d === 'all' || row.dataset.jobDept === d) ? 'flex' : 'none';
+          });
+        });
+      });
+
+      document.querySelectorAll('.neo-apply-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const role = btn.dataset.role;
+          const box = document.getElementById('neo-corp-modal-box');
+          box.innerHTML = `
+            <button class="neo-ux-close" id="ncm-close">✕</button>
+            <div class="neo-auth-brand">NEO STUDIOS · TALENT PORTAL</div>
+            <div class="neo-auth-heading" style="font-size:1.18rem">Apply: ${role}</div>
+            <form id="neo-job-form">
+              <div class="neo-field"><label>Full Name</label><input type="text" required placeholder="Your Name"></div>
+              <div class="neo-field"><label>Email</label><input type="email" required placeholder="you@domain.com"></div>
+              <div class="neo-field"><label>Portfolio / GitHub / ArtStation URL</label><input type="url" required placeholder="https://artstation.com/..."></div>
+              <button type="submit" class="neo-auth-submit">Submit Application ✦</button>
+            </form>
+          `;
+          document.getElementById('ncm-close').onclick = () => corpModal.classList.remove('open');
+          document.getElementById('neo-job-form').onsubmit = (e) => {
+            e.preventDefault();
+            box.innerHTML = `
+              <button class="neo-ux-close" id="ncm-close2">✕</button>
+              <div class="neo-auth-brand">APPLICATION RECEIVED ✓</div>
+              <div class="neo-auth-heading">Thank you for applying!</div>
+              <p style="font-size:0.86rem;color:#cbd5e1;line-height:1.65;margin-bottom:16px">Our recruiting directors for <strong>${role}</strong> have logged your dossier into the NEO Talent Registry.</p>
+              <button type="button" class="neo-auth-submit" id="ncm-ok2">Done</button>
+            `;
+            document.getElementById('ncm-close2').onclick = () => corpModal.classList.remove('open');
+            document.getElementById('ncm-ok2').onclick = () => corpModal.classList.remove('open');
+          };
+          corpModal.classList.add('open');
+        });
+      });
     })();
   </script>
 </body>
