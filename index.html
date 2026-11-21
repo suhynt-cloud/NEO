@@ -1799,6 +1799,11 @@
       .footer-row { flex-direction: column; align-items: flex-start; gap: 10px; }
     }
   </style>
+  <meta name="theme-color" content="#050814">
+  <meta property="og:title" content="NEO Interactive — Next-Gen Game Studio & Sensory Hardware">
+  <meta property="og:description" content="Official portal of NEO Interactive Studios, creators of Crimson Night and precision sensory gaming accessories engineered for pure tactile feeling.">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23050814'/%3E%3Cpolygon points='32,8 52,32 32,56 12,32' fill='%238be5e3' stroke='%23a78bfa' stroke-width='3'/%3E%3C/svg%3E">
 </head>
 <body>
 
@@ -5765,6 +5770,196 @@
           corpModal.classList.add('open');
         });
       });
+    })();
+  </script>
+  <!-- ========================================================
+       FINAL AAA STUDIO POLISH PACK
+       (Launch Countdown · Back-to-Top & Legal Dock · Order Keys Locker)
+       ======================================================== -->
+  <style id="aaa-final-polish-styles">
+    /* Live Launch Countdown Strip */
+    .aaa-countdown-strip {
+      display: flex; align-items: center; justify-content: center; gap: 18px; flex-wrap: wrap;
+      padding: 16px 22px; margin: 0 auto 30px; max-width: 780px;
+      background: linear-gradient(95deg, rgba(28, 7, 16, 0.92), rgba(10, 4, 12, 0.96), rgba(32, 16, 8, 0.92));
+      border: 1px solid rgba(229, 184, 92, 0.38);
+      clip-path: polygon(14px 0, calc(100% - 14px) 0, 100% 14px, 100% calc(100% - 14px), calc(100% - 14px) 100%, 14px 100%, 0 calc(100% - 14px), 0 14px);
+    }
+    .aaa-countdown-strip.neo-cd {
+      background: linear-gradient(95deg, rgba(12, 22, 44, 0.92), rgba(7, 10, 22, 0.96), rgba(24, 12, 42, 0.92));
+      border-color: rgba(139, 229, 227, 0.35);
+      margin: 22px auto 0;
+    }
+    .aaa-cd-label {
+      font-size: 0.7rem; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase;
+      color: #ffd166;
+    }
+    .neo-cd .aaa-cd-label { color: #8be5e3; }
+    .aaa-cd-units { display: flex; gap: 10px; align-items: center; }
+    .aaa-cd-unit {
+      min-width: 54px; text-align: center; padding: 6px 8px;
+      background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 4px;
+    }
+    .aaa-cd-unit strong { display: block; font-family: monospace; font-size: 1.12rem; color: #fff; line-height: 1.1; }
+    .aaa-cd-unit span { font-size: 0.56rem; letter-spacing: 0.14em; color: #9ca3b8; text-transform: uppercase; }
+
+    /* Floating Utility Dock (Back-to-Top + Legal/Orders Shortcut) */
+    .aaa-util-dock {
+      position: fixed;
+      bottom: 22px; left: 22px;
+      z-index: 85;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .aaa-util-btn {
+      height: 36px; padding: 0 13px; border-radius: 99px;
+      background: rgba(8, 11, 20, 0.84); backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      color: #dbe4f3; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em;
+      cursor: pointer; display: inline-flex; align-items: center; gap: 6px;
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.55);
+      transition: all 0.22s ease;
+    }
+    .aaa-util-btn:hover { border-color: #8be5e3; color: #fff; transform: translateY(-2px); }
+    .cn-dock .aaa-util-btn:hover { border-color: #ffd166; }
+    .aaa-top-btn {
+      width: 36px; padding: 0; justify-content: center;
+      opacity: 0; pointer-events: none; transform: translateY(10px);
+    }
+    .aaa-top-btn.show { opacity: 1; pointer-events: auto; transform: translateY(0); }
+
+    /* Order History Locker inside Profile Modal */
+    .aaa-orders-list {
+      margin-top: 10px; max-height: 170px; overflow-y: auto;
+      display: grid; gap: 8px;
+    }
+    .aaa-order-item {
+      padding: 10px 12px; border-radius: 6px;
+      background: rgba(0, 0, 0, 0.35); border: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.74rem; line-height: 1.5;
+    }
+    .aaa-order-key {
+      font-family: monospace; color: #ffd166; font-weight: 700; letter-spacing: 0.06em;
+    }
+  </style>
+  <script>
+    (function initAaaFinalPolish() {
+      const ROLE = 'neo';
+      const IS_CN = (ROLE === 'crimson');
+      const ORDERS_KEY = IS_CN ? 'cn_sanctum_orders_v1' : 'neo_corp_orders_v1';
+      const AUTH_MODAL_ID = IS_CN ? 'cn-auth-modal' : 'neo-auth-modal';
+      const AUTH_BODY_ID = IS_CN ? 'cn-auth-body' : 'neo-auth-body';
+
+      // 1. Live Launch Countdown (Targeted 42 days ahead for live ticking urgency)
+      const targetTs = Date.now() + (42 * 86400 + 14 * 3600 + 37 * 60 + 29) * 1000;
+      const cdEl = document.createElement('div');
+      cdEl.className = 'aaa-countdown-strip' + (IS_CN ? '' : ' neo-cd');
+      cdEl.innerHTML = `
+        <span class="aaa-cd-label">${IS_CN ? '✦ BLOOD ECLIPSE GLOBAL LAUNCH COUNTDOWN' : '✦ CRIMSON NIGHT GLOBAL LAUNCH TELEMETRY'}</span>
+        <div class="aaa-cd-units">
+          <div class="aaa-cd-unit"><strong id="cd-d">42</strong><span>Days</span></div>
+          <div class="aaa-cd-unit"><strong id="cd-h">14</strong><span>Hours</span></div>
+          <div class="aaa-cd-unit"><strong id="cd-m">37</strong><span>Mins</span></div>
+          <div class="aaa-cd-unit"><strong id="cd-s">29</strong><span>Secs</span></div>
+        </div>
+      `;
+
+      if (IS_CN) {
+        const edGrid = document.querySelector('#editions .editions-grid');
+        if (edGrid && edGrid.parentNode) edGrid.parentNode.insertBefore(cdEl, edGrid);
+      } else {
+        const portalHub = document.querySelector('.crimson-portal-hub');
+        if (portalHub) portalHub.appendChild(cdEl);
+      }
+
+      function tickCountdown() {
+        const diff = Math.max(0, Math.floor((targetTs - Date.now()) / 1000));
+        const d = Math.floor(diff / 86400);
+        const h = Math.floor((diff % 86400) / 3600);
+        const m = Math.floor((diff % 3600) / 60);
+        const s = diff % 60;
+        const dEl = document.getElementById('cd-d');
+        if (!dEl) return;
+        dEl.textContent = String(d).padStart(2, '0');
+        document.getElementById('cd-h').textContent = String(h).padStart(2, '0');
+        document.getElementById('cd-m').textContent = String(m).padStart(2, '0');
+        document.getElementById('cd-s').textContent = String(s).padStart(2, '0');
+      }
+      setInterval(tickCountdown, 1000);
+      tickCountdown();
+
+      // 2. Floating Bottom-Left Utility Dock (Back-to-Top + Legal & Privacy Modal)
+      const dock = document.createElement('div');
+      dock.className = 'aaa-util-dock' + (IS_CN ? ' cn-dock' : '');
+      dock.innerHTML = `
+        <button type="button" class="aaa-util-btn aaa-top-btn" id="aaa-top-btn" title="Back to Top" aria-label="Back to Top">↑</button>
+        <button type="button" class="aaa-util-btn" id="aaa-legal-btn" title="Official Legal, Privacy & Pre-Order Policy">⚖ Legal &amp; Policy</button>
+      `;
+      document.body.appendChild(dock);
+
+      const topBtn = document.getElementById('aaa-top-btn');
+      window.addEventListener('scroll', () => {
+        topBtn.classList.toggle('show', window.scrollY > 450);
+      }, { passive: true });
+      topBtn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      // Legal & Compliance Modal
+      const legalModal = document.createElement('div');
+      legalModal.className = IS_CN ? 'cn-ux-backdrop' : 'neo-ux-backdrop';
+      legalModal.id = 'aaa-legal-modal';
+      legalModal.innerHTML = `
+        <div class="${IS_CN ? 'cn-ux-card' : 'neo-ux-card'}" style="width:min(540px,100%)" role="dialog" aria-modal="true">
+          <button class="${IS_CN ? 'cn-ux-close' : 'neo-ux-close'}" id="aaa-legal-close">✕</button>
+          <div class="${IS_CN ? 'cn-auth-brand' : 'neo-auth-brand'}">${IS_CN ? 'CRIMSON STUDIOS · OFFICIAL POLICIES' : 'NEO INTERACTIVE INC. · CORPORATE LEGAL'}</div>
+          <div class="${IS_CN ? 'cn-auth-heading' : 'neo-auth-heading'}" style="font-size:1.2rem">Terms, Privacy &amp; Pre-Order Guarantee</div>
+          <div style="font-size:0.82rem;color:#cbd5e1;line-height:1.7;display:grid;gap:10px;margin-bottom:18px">
+            <p><strong>1. Pre-Order Protection:</strong> All digital game editions and NEO hardware reservations include an unconditional 30-day cancellation guarantee prior to global dispatch.</p>
+            <p><strong>2. The Thirteen Allocation:</strong> Strictly 13 individually numbered NEO × Crimson Night hardware suites (#01/13 – #13/13) are allocated exclusively to the first 13 verified Collector's Ultimate buyers.</p>
+            <p><strong>3. Privacy &amp; Local Sandbox:</strong> Account profiles, order history, and activation keys are stored strictly in your browser's local storage. Checkout operates in encrypted Sandbox Simulation Mode with zero real monetary charges.</p>
+          </div>
+          <button type="button" class="${IS_CN ? 'cn-auth-submit' : 'neo-auth-submit'}" id="aaa-legal-ok">Acknowledge &amp; Close</button>
+        </div>
+      `;
+      document.body.appendChild(legalModal);
+      document.getElementById('aaa-legal-btn').onclick = () => legalModal.classList.add('open');
+      document.getElementById('aaa-legal-close').onclick = () => legalModal.classList.remove('open');
+      document.getElementById('aaa-legal-ok').onclick = () => legalModal.classList.remove('open');
+      legalModal.addEventListener('click', (e) => { if (e.target === legalModal) legalModal.classList.remove('open'); });
+
+      // 3. Inject Real Order History & Digital Keys Locker into User Profile Modal
+      const authModal = document.getElementById(AUTH_MODAL_ID);
+      if (authModal) {
+        const obs = new MutationObserver(() => {
+          if (!authModal.classList.contains('open')) return;
+          const body = document.getElementById(AUTH_BODY_ID);
+          if (!body || body.querySelector('.aaa-orders-section')) return;
+          const signoutBtn = body.querySelector('#neo-signout-btn, #cn-signout-btn');
+          if (!signoutBtn) return; // Only when signed in
+          let orders = [];
+          try { orders = JSON.parse(localStorage.getItem(ORDERS_KEY) || '[]'); } catch (_) {}
+          const sec = document.createElement('div');
+          sec.className = 'aaa-orders-section';
+          sec.style.marginBottom = '14px';
+          sec.innerHTML = `
+            <div style="font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:${IS_CN ? '#e5b85c' : '#8be5e3'};font-weight:700;margin-bottom:6px">
+              My Pre-Orders &amp; Digital Keys (${orders.length})
+            </div>
+            ${orders.length ? `
+              <div class="aaa-orders-list">
+                ${orders.map(o => `
+                  <div class="aaa-order-item">
+                    <div style="display:flex;justify-content:space-between;color:#fff"><strong>${o.orderId}</strong><span>$${o.total}</span></div>
+                    <div style="color:#94a3b8;font-size:0.7rem">${o.method} · ${o.date}</div>
+                    <div class="aaa-order-key">KEY: ${o.key}</div>
+                  </div>
+                `).join('')}
+              </div>
+            ` : `<div style="font-size:0.74rem;color:#94a3b8;padding:10px;background:rgba(255,255,255,0.03);border-radius:6px">No completed pre-orders yet. Complete checkout to receive your Digital Key here.</div>`}
+          `;
+          body.insertBefore(sec, signoutBtn);
+        });
+        obs.observe(authModal, { attributes: true, attributeFilter: ['class'] });
+      }
     })();
   </script>
 </body>
