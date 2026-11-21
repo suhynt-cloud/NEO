@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -1823,6 +1823,8 @@
             <a href="#about">About NEO</a>
             <a href="#halo-collab">Halo Collab ⚡</a>
             <a href="#campaign">Campaign</a>
+            <a href="#ambassadors">Brand Ambassadors ✦</a>
+            <a href="#commercials">Commercial Films ▷</a>
             <a href="#gallery">Visual Gallery</a>
             <a href="#studio-slate">Studio IP Slate</a>
             <a href="#press-news">Press &amp; News</a>
@@ -2688,6 +2690,395 @@
     </section>
 
     <!-- Gallery Section -->
+        <!-- ========================================================
+         SECTION A: GLOBAL BRAND AMBASSADORS (EDITORIAL ENDORSEMENT LOOKBOOK)
+         Pure brand prestige — links naturally to the actual NEO Gear in #products
+         ======================================================== -->
+    <style id="neo-ambassadors-css">
+      .neo-amb-section {
+        position: relative;
+        padding: 96px 0 88px;
+        border-top: 1px solid rgba(139, 229, 227, 0.14);
+        background:
+          radial-gradient(ellipse 68% 48% at 18% 28%, rgba(56, 189, 248, 0.10) 0%, transparent 58%),
+          radial-gradient(ellipse 62% 48% at 84% 72%, rgba(167, 139, 250, 0.12) 0%, transparent 58%),
+          #040712;
+      }
+      .neo-amb-editorial {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+        align-items: stretch;
+      }
+      .neo-amb-feature {
+        display: flex;
+        flex-direction: column;
+        clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 24px 100%, 0 calc(100% - 24px));
+        background: linear-gradient(165deg, rgba(14, 20, 38, 0.90), rgba(5, 8, 18, 0.97));
+        border: 1px solid rgba(139, 229, 227, 0.22);
+        overflow: hidden;
+        transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.32s ease, box-shadow 0.35s ease;
+      }
+      .neo-amb-feature:hover {
+        transform: translateY(-6px);
+        border-color: rgba(139, 229, 227, 0.58);
+        box-shadow: 0 28px 64px rgba(0, 0, 0, 0.8), 0 0 34px rgba(56, 189, 248, 0.18);
+      }
+      .neo-amb-visual {
+        position: relative;
+        height: 490px;
+        background: radial-gradient(circle at 50% 42%, rgba(22, 30, 56, 0.55), #03050c 82%);
+        overflow: hidden;
+        cursor: pointer;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .neo-amb-visual img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+        transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .neo-amb-feature:hover .neo-amb-visual img { transform: scale(1.035); }
+      .neo-amb-tag {
+        position: absolute;
+        top: 16px; left: 16px;
+        padding: 5px 12px;
+        background: rgba(4, 7, 16, 0.86);
+        border: 1px solid rgba(139, 229, 227, 0.45);
+        color: #8be5e3;
+        font-size: 0.66rem;
+        font-weight: 800;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        backdrop-filter: blur(8px);
+      }
+      .neo-amb-zoom {
+        position: absolute;
+        bottom: 14px; right: 16px;
+        padding: 5px 10px;
+        background: rgba(4, 7, 16, 0.82);
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        color: #cbd5e1;
+        font-size: 0.68rem;
+        letter-spacing: 0.08em;
+        backdrop-filter: blur(6px);
+      }
+      .neo-amb-copy {
+        padding: 26px 28px 28px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex: 1;
+        gap: 18px;
+      }
+      .neo-amb-role {
+        font-size: 0.7rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #a78bfa;
+        font-weight: 700;
+        margin-bottom: 6px;
+      }
+      .neo-amb-copy h3 {
+        font-family: var(--font-display);
+        font-size: 1.5rem;
+        color: #ffffff;
+        margin-bottom: 10px;
+      }
+      .neo-amb-quote {
+        font-size: 0.9rem;
+        color: #b4bfd6;
+        line-height: 1.7;
+        font-style: italic;
+        padding-left: 14px;
+        border-left: 2px solid rgba(139, 229, 227, 0.55);
+      }
+      .neo-amb-gear-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        flex-wrap: wrap;
+        padding-top: 14px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .neo-gear-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 12px;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        color: #d8f8ff;
+        background: rgba(139, 229, 227, 0.08);
+        border: 1px solid rgba(139, 229, 227, 0.28);
+        transition: all 0.2s ease;
+      }
+      .neo-gear-chip:hover {
+        background: rgba(139, 229, 227, 0.2);
+        border-color: #8be5e3;
+        color: #fff;
+      }
+
+      /* ========================================================
+         SECTION B: DEDICATED COMMERCIAL FILMS SHOWCASE (#commercials)
+         Independent Cinema Screening Room for NEO TVCs
+         ======================================================== */
+      .neo-tvc-section {
+        position: relative;
+        padding: 96px 0;
+        border-top: 1px solid rgba(167, 139, 250, 0.18);
+        background:
+          radial-gradient(ellipse 75% 50% at 50% 0%, rgba(167, 139, 250, 0.14) 0%, transparent 58%),
+          radial-gradient(ellipse 65% 45% at 50% 100%, rgba(56, 189, 248, 0.10) 0%, transparent 58%),
+          #03050d;
+      }
+      .neo-tvc-stage {
+        display: grid;
+        grid-template-columns: 1.55fr 0.65fr;
+        gap: 24px;
+        align-items: stretch;
+      }
+      .neo-tvc-main {
+        clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 22px, 100% 100%, 22px 100%, 0 calc(100% - 22px));
+        background: #02040a;
+        border: 1px solid rgba(139, 229, 227, 0.34);
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85), 0 0 42px rgba(56, 189, 248, 0.14);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+      .neo-tvc-screen {
+        position: relative;
+        aspect-ratio: 16 / 9;
+        background: #010206;
+      }
+      .neo-tvc-screen video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .neo-tvc-caption {
+        padding: 18px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        flex-wrap: wrap;
+        background: linear-gradient(90deg, rgba(12, 18, 34, 0.96), rgba(7, 10, 22, 0.98));
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .neo-tvc-playlist {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+      .neo-tvc-item {
+        flex: 1;
+        padding: 20px;
+        text-align: left;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+        background: rgba(12, 17, 32, 0.86);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        color: #cbd5e1;
+        transition: all 0.25s ease;
+      }
+      .neo-tvc-item:hover { border-color: rgba(139, 229, 227, 0.55); background: rgba(16, 24, 46, 0.94); }
+      .neo-tvc-item.active {
+        background: linear-gradient(155deg, rgba(20, 34, 62, 0.95), rgba(26, 16, 52, 0.92));
+        border-color: #8be5e3;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 22px rgba(139, 229, 227, 0.16);
+      }
+      .neo-tvc-num {
+        font-size: 0.68rem; font-weight: 800; letter-spacing: 0.18em; color: #8be5e3; margin-bottom: 6px;
+      }
+      .neo-tvc-item h4 { font-size: 1rem; color: #fff; margin-bottom: 6px; }
+      .neo-tvc-item p { font-size: 0.78rem; color: #94a3b8; line-height: 1.55; }
+
+      @media (max-width: 960px) {
+        .neo-amb-editorial, .neo-tvc-stage { grid-template-columns: 1fr; }
+        .neo-amb-visual { height: 380px; }
+      }
+    </style>
+
+    <!-- DEDICATED SECTION 1: BRAND AMBASSADORS (NO FAKE POSTER SALES) -->
+    <section class="section neo-amb-section" id="ambassadors">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">03 — Global Brand Ambassadors</div>
+            <h2>Chosen By Icons.<br>Proven On The Stage.</h2>
+          </div>
+          <p>World champions and premier creators who partner with NEO to test, calibrate, and embody the physical feeling of our flagship sensory gear.</p>
+        </div>
+
+        <div class="neo-amb-editorial">
+          <article class="neo-amb-feature">
+            <div class="neo-amb-visual" onclick="openLightbox('assets/neo-faker-ambassador.jpg', 'NEO × FAKER — Official Brand Ambassador Campaign', 'Official product endorsement lookbook featuring Faker with the NEO Spatial Gaming Headset and NEO Precision Optical Mouse.')">
+              <span class="neo-amb-tag">GLOBAL ESPORTS AMBASSADOR · T1</span>
+              <img src="assets/neo-faker-ambassador.jpg" data-asset-key="assets/neo-faker-ambassador.jpg" alt="NEO x Faker Official Brand Ambassador Campaign">
+              <span class="neo-amb-zoom">View Lookbook 🔍</span>
+            </div>
+            <div class="neo-amb-copy">
+              <div>
+                <div class="neo-amb-role">ESPORTS ICON · HEADSET &amp; MOUSE CAMPAIGN</div>
+                <h3>NEO × FAKER</h3>
+                <p class="neo-amb-quote">
+                  "Uncompromising precision is felt in the split second before a play happens. NEO's acoustic clarity and zero-latency tracking let me focus purely on the match."
+                </p>
+              </div>
+              <div class="neo-amb-gear-row">
+                <span style="font-size:0.7rem;color:#94a3b8;letter-spacing:0.12em;text-transform:uppercase">Gear Featured:</span>
+                <div style="display:flex;gap:8px;flex-wrap:wrap">
+                  <a href="#products" class="neo-gear-chip">NEO Spatial Headset →</a>
+                  <a href="#products" class="neo-gear-chip">NEO Precision Mouse →</a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="neo-amb-feature">
+            <div class="neo-amb-visual" onclick="openLightbox('assets/neo-cris-ambassador.jpg', 'NEO × Cris Devil Gamer — Make Your Own Words', 'Official NEO Ergonomic Gaming Chair endorsement campaign featuring top gaming creator Cris Devil Gamer.')">
+              <span class="neo-amb-tag" style="border-color:rgba(167,139,250,0.55);color:#c4b5fd">CREATOR AMBASSADOR · GWANGMYEONG</span>
+              <img src="assets/neo-cris-ambassador.jpg" data-asset-key="assets/neo-cris-ambassador.jpg" alt="NEO x Cris Devil Gamer Brand Ambassador Campaign">
+              <span class="neo-amb-zoom">View Lookbook 🔍</span>
+            </div>
+            <div class="neo-amb-copy">
+              <div>
+                <div class="neo-amb-role">SIGNATURE CREATOR · ERGONOMIC CHAIR CAMPAIGN</div>
+                <h3>NEO × Cris Devil Gamer</h3>
+                <p class="neo-amb-quote">
+                  "Make your own words, play your own way. Through twelve-hour streams and story marathons, the NEO Ergonomic Chair keeps the energy and comfort effortless."
+                </p>
+              </div>
+              <div class="neo-amb-gear-row">
+                <span style="font-size:0.7rem;color:#94a3b8;letter-spacing:0.12em;text-transform:uppercase">Gear Featured:</span>
+                <div style="display:flex;gap:8px;flex-wrap:wrap">
+                  <a href="#products" class="neo-gear-chip" style="border-color:rgba(167,139,250,0.38);color:#e9d5ff">NEO Ergonomic Chair →</a>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEDICATED SECTION 2: OFFICIAL COMMERCIAL FILMS / TVC SHOWREEL -->
+    <section class="section neo-tvc-section" id="commercials">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">04 — Official Commercial Films</div>
+            <h2>Watch NEO In Motion.</h2>
+          </div>
+          <p>Dedicated studio screening room featuring our official brand commercials — showcasing the craftsmanship, lighting, and tactile atmosphere behind every NEO device.</p>
+        </div>
+
+        <div class="neo-tvc-stage">
+          <div class="neo-tvc-main">
+            <div class="neo-tvc-screen">
+              <video id="neo-tvc-player" controls playsinline preload="metadata" poster="assets/neo-hero-campaign.png">
+                <source id="neo-tvc-src" src="assets/neo-commercial-1.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="neo-tvc-caption">
+              <div>
+                <strong id="neo-tvc-title" style="color:#fff;font-size:1.02rem;display:block">NEO Sensory Craft — Official Commercial I</strong>
+                <span id="neo-tvc-sub" style="font-size:0.78rem;color:#94a3b8">Flagship Hardware &amp; Tactile Feeling Film · 16:9 Studio Master</span>
+              </div>
+              <span class="trust-pill" style="color:#8be5e3">OFFICIAL TVC · HD</span>
+            </div>
+          </div>
+
+          <div class="neo-tvc-playlist">
+            <button type="button" class="neo-tvc-item active" data-tvc="0">
+              <div>
+                <div class="neo-tvc-num">FILM 01 · NOW SCREENING</div>
+                <h4>NEO Sensory Craft</h4>
+                <p>Close-up product cinematography highlighting NEO's obsidian geometry, cyan-violet perimeter lighting, and precision acoustic design.</p>
+              </div>
+              <span style="font-size:0.72rem;color:#8be5e3;font-weight:700;margin-top:12px">▶ Play Commercial I</span>
+            </button>
+
+            <button type="button" class="neo-tvc-item" data-tvc="1">
+              <div>
+                <div class="neo-tvc-num">FILM 02 · GLOBAL CAMPAIGN</div>
+                <h4>Make Your Own Choice</h4>
+                <p>Official brand anthem film celebrating NEO's game-first studio philosophy and next-generation competitive battlestations.</p>
+              </div>
+              <span style="font-size:0.72rem;color:#c4b5fd;font-weight:700;margin-top:12px">▶ Play Commercial II</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      (function initNeoTvcCinema() {
+        const FILMS = [
+          {
+            src: 'assets/neo-commercial-1.mp4',
+            poster: 'assets/neo-hero-campaign.png',
+            title: 'NEO Sensory Craft — Official Commercial I',
+            sub: 'Flagship Hardware & Tactile Feeling Film · 16:9 Studio Master'
+          },
+          {
+            src: 'assets/neo-commercial-2.mp4',
+            poster: 'assets/neo-chair-series.png',
+            title: 'Make Your Own Choice — Official Commercial II',
+            sub: 'Global Brand Anthem & Next-Gen Arena Film · 16:9 Studio Master'
+          }
+        ];
+        const player = document.getElementById('neo-tvc-player');
+        const titleEl = document.getElementById('neo-tvc-title');
+        const subEl = document.getElementById('neo-tvc-sub');
+        const items = document.querySelectorAll('.neo-tvc-item');
+
+        function resolveSrc(key) {
+          if (window.NEO_TVC_DATA && window.NEO_TVC_DATA[key]) return window.NEO_TVC_DATA[key];
+          return key;
+        }
+        function resolvePoster(key) {
+          const map = window.CRIMSON_NIGHT_IMAGES || {};
+          return map[key] || key;
+        }
+
+        items.forEach(btn => {
+          btn.addEventListener('click', () => {
+            const idx = Number(btn.dataset.tvc) || 0;
+            const f = FILMS[idx];
+            if (!f || !player) return;
+            items.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            player.pause();
+            player.setAttribute('poster', resolvePoster(f.poster));
+            player.src = resolveSrc(f.src);
+            player.load();
+            player.play().catch(() => {});
+            if (titleEl) titleEl.textContent = f.title;
+            if (subEl) subEl.textContent = f.sub;
+          });
+        });
+
+        // Initial hydration for offline standalone mode
+        window.addEventListener('load', () => {
+          if (!player) return;
+          const p0 = resolvePoster(FILMS[0].poster);
+          if (p0) player.setAttribute('poster', p0);
+          if (window.NEO_TVC_DATA && window.NEO_TVC_DATA[FILMS[0].src]) {
+            player.src = window.NEO_TVC_DATA[FILMS[0].src];
+          }
+        });
+      })();
+    </script>
+
     <section class="section gallery-section" id="gallery">
       <!-- Chrome Watermark: Heavy Chain Link & Starburst -->
       <div class="chrome-watermark gallery-chrome-wm" aria-hidden="true">
