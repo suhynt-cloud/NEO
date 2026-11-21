@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -4932,6 +4932,166 @@
 
       const checkoutBtn = document.getElementById('checkout-btn');
       if (checkoutBtn) checkoutBtn.onclick = null;
+    })();
+  </script>
+  <!-- ========================================================
+       NEO ARCHITECTURAL UPGRADE: PRISMATIC CYBER-CHAMFER & LIQUID CHROME
+       Breaks flat square boxes into beveled sci-fi geometry + iridescent depth
+       ======================================================== -->
+  <style id="neo-architectural-restyle">
+    :root {
+      --neo-prism-1: #38bdf8;
+      --neo-prism-2: #8be5e3;
+      --neo-prism-3: #a78bfa;
+      --neo-prism-4: #e879f9;
+    }
+
+    /* Richer Atmospheric Aurora Depth across NEO Body & Sections */
+    body {
+      background-image:
+        radial-gradient(ellipse 75% 45% at 18% 8%, rgba(56, 189, 248, 0.14) 0%, transparent 58%),
+        radial-gradient(ellipse 65% 42% at 84% 18%, rgba(167, 139, 250, 0.14) 0%, transparent 55%),
+        radial-gradient(ellipse 60% 45% at 50% 62%, rgba(232, 121, 249, 0.06) 0%, transparent 60%) !important;
+    }
+
+    /* Frosted Prismatic Header with subtle rainbow-cyan bottom hairline */
+    header {
+      background: rgba(5, 8, 18, 0.78) !important;
+      backdrop-filter: blur(20px) saturate(140%) !important;
+      border-bottom: 1px solid rgba(139, 229, 227, 0.22) !important;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45), 0 1px 0 rgba(167, 139, 250, 0.18) !important;
+    }
+
+    /* Vivid Gradient Typography on NEO Headings (outside Crimson Night section) */
+    .hero h1 .highlight-cyan,
+    #about h2 span,
+    #products .section-head h2,
+    #gallery .section-head h2,
+    #contact .section-head h2 {
+      background: linear-gradient(95deg, #ffffff 0%, #8be5e3 38%, #a78bfa 72%, #e879f9 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 22px rgba(139, 229, 227, 0.24));
+    }
+
+    /* Precision 45-deg Cyber-Chamfered Cards (Breaking boring squares!) */
+    .product-card,
+    .hero-metric,
+    .gallery-item,
+    .contact-card,
+    .collab-card {
+      position: relative;
+      border-radius: 0 !important;
+      clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+      background: linear-gradient(155deg, rgba(16, 23, 44, 0.86) 0%, rgba(8, 12, 24, 0.94) 60%, rgba(22, 14, 42, 0.88) 100%) !important;
+      border: 1px solid rgba(139, 229, 227, 0.22) !important;
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+      transition: transform 0.36s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.32s ease, box-shadow 0.36s ease !important;
+    }
+
+    /* Top Prismatic Accent Rail on NEO Cards */
+    .product-card::before,
+    .hero-metric::before,
+    .contact-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 20px; height: 2px;
+      background: linear-gradient(90deg, #38bdf8, #8be5e3, #a78bfa, #e879f9);
+      opacity: 0.72;
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    /* Mouse-Tracking Holographic Spotlight Layer */
+    .product-card::after,
+    .gallery-item::after,
+    .hero-metric::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(320px circle at var(--mx, 50%) var(--my, 50%), rgba(139, 229, 227, 0.16), rgba(167, 139, 250, 0.08) 42%, transparent 72%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .product-card:hover::after,
+    .gallery-item:hover::after,
+    .hero-metric:hover::after {
+      opacity: 1;
+    }
+    .product-card:hover,
+    .gallery-item:hover,
+    .hero-metric:hover {
+      transform: translateY(-6px) !important;
+      border-color: rgba(139, 229, 227, 0.65) !important;
+      box-shadow: 0 24px 56px rgba(0, 0, 0, 0.72), 0 0 32px rgba(56, 189, 248, 0.22) !important;
+    }
+
+    /* Chamfered Futuristic Buttons */
+    .btn.primary,
+    .btn.ghost,
+    .cart-btn {
+      border-radius: 0 !important;
+      clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+      transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease !important;
+    }
+    .btn.primary {
+      background: linear-gradient(100deg, #38bdf8 0%, #8be5e3 50%, #a78bfa 100%) !important;
+      color: #040712 !important;
+      font-weight: 800 !important;
+      box-shadow: 0 8px 26px rgba(56, 189, 248, 0.34) !important;
+    }
+    .btn.primary:hover {
+      filter: brightness(1.12);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 34px rgba(139, 229, 227, 0.5) !important;
+    }
+
+    /* Vibrant Spec Pills & Filter Tabs */
+    .spec-pill {
+      background: linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(167, 139, 250, 0.14)) !important;
+      border: 1px solid rgba(139, 229, 227, 0.32) !important;
+      color: #d8f8ff !important;
+    }
+    .filter-tab.active {
+      background: linear-gradient(90deg, #38bdf8, #a78bfa) !important;
+      color: #040712 !important;
+      border-color: transparent !important;
+      font-weight: 800 !important;
+    }
+
+    /* Distinct Glowing Section Separators */
+    #about, #products, #gallery, #contact {
+      position: relative;
+    }
+    #products {
+      background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(56, 189, 248, 0.11) 0%, transparent 62%),
+                  radial-gradient(ellipse 60% 45% at 90% 90%, rgba(167, 139, 250, 0.10) 0%, transparent 58%),
+                  #050814 !important;
+    }
+    #gallery {
+      background: radial-gradient(ellipse 75% 45% at 15% 20%, rgba(167, 139, 250, 0.11) 0%, transparent 58%),
+                  radial-gradient(ellipse 65% 45% at 85% 80%, rgba(56, 189, 248, 0.09) 0%, transparent 58%),
+                  #040711 !important;
+    }
+    /* Keep Crimson Night Portal Hub inside NEO rich & gothic without clashing */
+    .crimson-portal-hub {
+      border-radius: 0 !important;
+      clip-path: polygon(16px 0, calc(100% - 16px) 0, 100% 16px, 100% calc(100% - 16px), calc(100% - 16px) 100%, 16px 100%, 0 calc(100% - 16px), 0 16px);
+      background: linear-gradient(145deg, rgba(44, 7, 18, 0.85), rgba(12, 4, 12, 0.94), rgba(34, 10, 26, 0.85)) !important;
+      border: 1px solid rgba(235, 11, 42, 0.45) !important;
+    }
+  </style>
+  <script>
+    (function initNeoPrismSpotlight() {
+      document.addEventListener('mousemove', (e) => {
+        const card = e.target.closest('.product-card, .gallery-item, .hero-metric');
+        if (!card) return;
+        const r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+        card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      }, { passive: true });
     })();
   </script>
 </body>
